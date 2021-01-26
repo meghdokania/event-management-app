@@ -1,8 +1,11 @@
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-from django.http import HttpResponse
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
 
 from . import forms
 from .models import Profile
@@ -11,18 +14,19 @@ from .models import Profile
 # Create your views here.
 
 def usersList(request):
-    html = "<html><body>Hello %s.</body></html>" %'Aman'
-    return HttpResponse(html)
+    return render(request,'base.html')
 
 def userSignin(request):
     if request.method == "POST":
-        form = AuthenticationForm(data = request.POST)
+        form = AuthenticationForm(data = request.POST)#... not good practice
+
         if(form.is_valid()):
             user = form.get_user()
             login(request, user)
             # user = User.objects.get(user.username)
             profile = Profile.objects.get(user=user)
             return render(request, 'users/profile.html', {'profile':profile})
+        # need to add else here
     else:
         form = AuthenticationForm()
     return render(request, "users/signin.html", {'form': form})
@@ -49,11 +53,10 @@ def userSignup(request):
              'profile_form' : profile_form
           })
 
+@login_required
 def userLogout(request):
-    prev = request.META.get('HTTP_REFERER')
     logout(request)
-    messages.success(request, "You logged out")
-    return redirect(prev)
+    return HttpResponseRedirect(reverse('users:userslist'))
 
 def userProfile(request, email):
     user = User.objects.get(username=email)

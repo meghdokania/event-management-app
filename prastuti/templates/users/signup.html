@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block body_block %}
+<h1>Signup Page</h1>
+<form action="{users:usersignup}" method="POST">
+    {% csrf_token %}
+    <fieldset>
+        {{user_form}}
+        {{profile_form}}
+    </fieldset>
+    <button type="submit", value="Signup">Signup</button>
+</form>
+{% endblock %}
+<!--Username or any of the fields to be kept as primary key?-->
