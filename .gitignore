@@ -4,3 +4,6 @@ Include
 Scripts
 *.cfg
 *.key
+*.xml
+*.iml
+idea/
