@@ -5,4 +5,7 @@
     <h2>{{profile.user.username}}</h2>
     <h3>{{profile.name}}</h3>
 </div>
+{% for team in teams %}
+<h3>{{team.team_name}}</h3>
+{% endfor %}
 {% endblock %}

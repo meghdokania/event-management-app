@@ -25,7 +25,8 @@ def userSignin(request):
             login(request, user)
             # user = User.objects.get(user.username)
             profile = Profile.objects.get(user=user)
-            return render(request, 'users/profile.html', {'profile':profile})
+            teams = profile.team_set.all()
+            return render(request, 'users/profile.html', {'profile':profile,'teams':teams})
         # need to add else here
     else:
         form = AuthenticationForm()
@@ -43,7 +44,8 @@ def userSignup(request):
             profile.save()
             login(request, user)
             # messages.success(request, "You Signup successfully")
-            return render(request, 'users/profile.html', {'profile':profile})
+            teams = profile.team_set.all()
+            return render(request, 'users/profile.html', {'profile':profile,'teams':teams})
     else :
         user_form = forms.UserForm()
         profile_form = forms.ProfileForm()
@@ -59,7 +61,12 @@ def userLogout(request):
     return HttpResponseRedirect(reverse('users:userslist'))
 
 def userProfile(request, email):
-    user = User.objects.get(username=email)
+    user = User.objects.get(email=email)
     profile = Profile.objects.get(user=user)
-    return render(request, 'users/profile.html', {'profile':profile})
+    return render(request, 'users/profile.html', {'profile':profile,'teams':profile.team_set.all()})
 
+def isRegisteredForEvent(profile, event):
+    for team in profile.team_set():
+        if team.team_event == event:
+            return True
+    return False
