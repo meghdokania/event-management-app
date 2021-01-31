@@ -11,7 +11,7 @@ CustomUser = get_user_model()
 class UserForm(UserCreationForm):
     class Meta:
         model = CustomUser
-        fields = ('name', 'email','password1', 'password2')
+        fields = ('name', 'email','institute', 'year', 'password1', 'password2')
     def save(self, commit=True):
         user = super().save(commit=False)
         user.email = self.cleaned_data['email']
