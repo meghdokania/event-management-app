@@ -59,11 +59,7 @@ ROOT_URLCONF = 'prastuti.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-<<<<<<< HEAD
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
-=======
         'DIRS': [TEMPLATE_DIR],
->>>>>>> 879aa97f8e40793251b53c0db2078670804802da
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
