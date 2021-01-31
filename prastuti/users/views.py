@@ -1,18 +1,40 @@
-from django.contrib.auth import login, logout
+from django.contrib.auth import login, logout, get_user_model
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth.models import User
+from django.contrib.sites.shortcuts import get_current_site
+from django.core.mail import EmailMessage
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.template.loader import render_to_string
+from django.utils.encoding import force_bytes, force_text
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 
 from . import forms
-from .models import Profile
+from .emailInfo import EMAIL_HOST_USER
+from .tokens import account_activation_token
 
+CustomUser = get_user_model()
 
-# Create your views here.
+# Views start from here
 
 def usersList(request):
-    html = "<html><body>Hello %s.</body></html>" %'Aman'
-    return HttpResponse(html)
+    return HttpResponse("Hii! This is user list")
+
+@login_required
+def userUpdate(request, pk):
+    template = 'users/update.html'
+    user = CustomUser.objects.get(pk=pk)
+    if user != request.user:
+        return HttpResponse("You can update only your profile")
+    if request.method == "POST":
+        form  = forms.UserUpdateForm(data=request.POST, user=user)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect(user.get_absolute_url())
+    else:
+        form = forms.UserUpdateForm(user=user)
+    return render(request, template, {'form':form})
 
 def userSignin(request):
     if request.method == "POST":
@@ -20,9 +42,7 @@ def userSignin(request):
         if(form.is_valid()):
             user = form.get_user()
             login(request, user)
-            # user = User.objects.get(user.username)
-            profile = Profile.objects.get(user=user)
-            return render(request, 'users/profile.html', {'profile':profile})
+            return redirect(user.get_absolute_url())
     else:
         form = AuthenticationForm()
     return render(request, "users/signin.html", {'form': form})
@@ -30,33 +50,112 @@ def userSignin(request):
 def userSignup(request):
     if request.method == "POST":
         user_form = forms.UserForm(request.POST)
-        profile_form = forms.ProfileForm(request.POST, request.FILES)
-        if user_form.is_valid() and profile_form.is_valid():
+        if user_form.is_valid():
             user = user_form.save()
-            profile = profile_form.save(commit=False)
-            profile.user = user
+            user.is_active = False
             user.save()
-            profile.save()
-            login(request, user)
-            # messages.success(request, "You Signup successfully")
-            return render(request, 'users/profile.html', {'profile':profile})
+            
+            #verification mailing
+            current_site = get_current_site(request)
+            mail_subject = "Activate you prastuti account"
+            message = render_to_string('users/activate.html',{
+                'domain': current_site.domain,
+                'uid':urlsafe_base64_encode(force_bytes(user.pk)),
+                'token':account_activation_token.make_token(user),
+            })
+            to_email = user_form.cleaned_data.get('email')
+            from_email = EMAIL_HOST_USER
+            email = EmailMessage(
+                mail_subject, message, to=[to_email]
+            )
+            email.send()
+            return HttpResponse('Please confirm your email address to complete the registration')
     else :
         user_form = forms.UserForm()
-        profile_form = forms.ProfileForm()
     return render(request, 'users/signup.html',
           {
              'user_form' : user_form,
-             'profile_form' : profile_form
           })
+
+
+def activate(request, uidb64, token):
+    try:
+        uid = force_text(urlsafe_base64_decode(uidb64))
+        user = CustomUser.objects.get(pk=uid)
+    except(TypeError, ValueError, OverflowError, CustomUser.DoesNotExist):
+        user = None
+    if user is not None and account_activation_token.check_token(user, token):
+        user.is_active = True
+        user.save()
+        login(request, user)
+        return redirect(user.get_absolute_url())
+        # return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
+    else:
+        return HttpResponse('Activation link is invalid!')
 
 def userLogout(request):
     prev = request.META.get('HTTP_REFERER')
     logout(request)
-    messages.success(request, "You logged out")
     return redirect(prev)
 
+@login_required(login_url='users:usersignin')
 def userProfile(request, email):
-    user = User.objects.get(username=email)
-    profile = Profile.objects.get(user=user)
-    return render(request, 'users/profile.html', {'profile':profile})
+    user = CustomUser.objects.get(email=email)
+    # user.email_user('View Profile', "Hii you viewed your profile", EMAIL_HOST_USER)
+    update = True
+    if user != request.user:
+        update = False
+    return render(request, 'users/profile.html', {'profile':user, 'update': update})
 
+def userRecovery(request):
+    if request.method == "POST":
+        form = forms.PasswordResetForm(data=request.POST)
+        if form.is_valid():
+            to_email = form.cleaned_data['email']
+            current_site = get_current_site(request)
+            mail_subject = "Change your prastuti password"
+            user = CustomUser.objects.get(email=to_email)
+            message = render_to_string('users/activate.html',{
+                'domain': current_site.domain,
+                'uid':urlsafe_base64_encode(force_bytes(user.pk)),
+                'token':account_activation_token.make_token(user),
+                'recovery':True,
+            })
+            from_email = EMAIL_HOST_USER
+            email = EmailMessage(
+                mail_subject, message, to=[to_email]
+            )
+            email.send()
+            return HttpResponse('We have sent recovery letter to your registered email')
+        
+    else:
+        form = forms.PasswordResetForm()
+    return render(request, 'users/recovery.html', {'form':form})
+
+def userNewpassword(request, uidb64, token):
+    try:
+        uid = force_text(urlsafe_base64_decode(uidb64))
+        user = CustomUser.objects.get(pk=uid)
+    except(TypeError, ValueError, OverflowError, CustomUser.DoesNotExist):
+        user = None
+    if user is not None and account_activation_token.check_token(user, token):
+        if request.method == "POST":
+            form = forms.PasswordUpdateForm(data=request.POST, user=user)
+            if form.is_valid():
+                user = form.save()
+                user.save()
+                login(request, user)
+                return redirect(user.get_absolute_url())
+        else:
+            form = forms.PasswordUpdateForm(data=request.POST, user=user)
+        return render(request, 'users/newpassword.html', {'form':form})
+
+    else:
+        return HttpResponse('Recovery link is invalid!')
+
+
+def isRegisteredForEvent(profile, event):
+    for team in profile.team_set.all():
+        if team.team_event == event:
+            return team
+    return None

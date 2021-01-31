@@ -7,15 +7,15 @@
 </head>
 <body>
     <div>
-        <h1>Signup Page</h1>
-        <form action="{users:usersignup}" method="POST">
+        <h1>Update Page</h1>
+        <h2>{{profile.name}}</h2>
+        <form action="" method="POST">
             {% csrf_token %}
             <fieldset>
-                {{user_form}}
+                {{form}}
             </fieldset>
-            <button type="submit", value="Signup">Signup</button>
+            <button type="submit", value="update">Update</button>
         </form>
-        <a href="{% url 'users:usersignin' %}">Already have an account?</a>
     </div>
 </body>
 </html>

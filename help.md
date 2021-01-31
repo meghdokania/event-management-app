@@ -10,3 +10,5 @@
       that are already installed.
 4. If you want to create django project ```django-admin startproject <project name>``` 
 5. If you want to create django app ```python manage.py startapp <app name>```
+6. If you get any error ```no such table <model name>``` then run the command ```python manage.py migrate --run-syncdb```.
+ 
