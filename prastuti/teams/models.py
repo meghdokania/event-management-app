@@ -1,12 +1,12 @@
 from django.db import models
-from users.models import Profile
+from users.models import CustomUser
 from events.models import Event
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.urls import reverse
 
 
 class Team(models.Model):
-    team_member = models.ManyToManyField(Profile)  # we can do it with profile also
+    team_member = models.ManyToManyField(CustomUser)  # we can do it with profile also
     team_name = models.CharField(max_length=100)
     team_event = models.ForeignKey(Event, on_delete=models.CASCADE, null=True)
     team_size = models.IntegerField(default=1)

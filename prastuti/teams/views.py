@@ -1,11 +1,11 @@
 from events.models import Event
 from django.shortcuts import render
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import CustomUser
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.http import HttpResponse
 
-from users.models import Profile
+from users.models import CustomUser
 from .models import Team
 from users import views as userViews
 
@@ -18,7 +18,7 @@ def registerTeam(request, event):
         return redirect(reverse('users:usersignin'))
     event = Event.objects.get(event_name=event)
     # makes sure not more than one team for one event
-    profile = Profile.objects.get(user=request.user)
+    profile = CustomUser.objects.get(user=request.user)
     if userViews.isRegisteredForEvent(profile, event):
         team_registered = userViews.isRegisteredForEvent(profile, event)
         return HttpResponse("<h2>You have already registered for the event {0} under the team {1}.</h2>".format(event,
@@ -32,9 +32,9 @@ def registerTeam(request, event):
             email = 'email' + str(i)
             email_id = request.POST[email]
             try:
-                user = User.objects.get(email=email_id)
-                member_profile = Profile.objects.get(user=user)
-            except User.DoesNotExist:
+                user = CustomUser.objects.get(email=email_id)
+                member_profile = CustomUser.objects.get(user=user)
+            except CustomUser.DoesNotExist:
                 return HttpResponse(
                     "<h2>Enter a Valid Email Id. {} has not registered on this site.</h2>".format(email_id))
             if userViews.isRegisteredForEvent(member_profile, event):

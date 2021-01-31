@@ -8,7 +8,7 @@ CustomUser = get_user_model()
 
 @admin.register(CustomUser)
 class CustomUserAdmin(DjangoUserAdmin):
-    """Define admin model for custom User model with no email field."""
+    """Define admin model for custom CustomUser model with no email field."""
 
     fieldsets = (
         (None, {'fields': ('email', 'password')}),

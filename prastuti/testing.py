@@ -4,7 +4,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE','prastuti.settings')
 import django
 django.setup()
 
-from users.models import Profile
+from users.models import CustomUser
 from teams.models import Team
 from events.models import Event
 from django.contrib.auth.models import User

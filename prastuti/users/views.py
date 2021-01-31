@@ -10,7 +10,7 @@ from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 
 from . import forms
-from .emailInfo import EMAIL_HOST_USER
+from prastuti.settings import EMAIL_HOST_USER
 from .tokens import account_activation_token
 
 CustomUser = get_user_model()
@@ -101,7 +101,7 @@ def userLogout(request):
 @login_required(login_url='users:usersignin')
 def userProfile(request, email):
     user = CustomUser.objects.get(email=email)
-    # user.email_user('View Profile', "Hii you viewed your profile", EMAIL_HOST_USER)
+    # user.email_user('View CustomUser', "Hii you viewed your profile", EMAIL_HOST_USER)
     update = True
     if user != request.user:
         update = False

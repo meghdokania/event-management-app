@@ -1,17 +1,17 @@
-from django.contrib.auth.models import AbstractUser, BaseUserManager, User
+from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.core.mail import send_mail
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-from .emailInfo import EMAIL_HOST_USER
+from prastuti.settings import EMAIL_HOST_USER
 
 class CustomUserManager(BaseUserManager):
-    """Define a model manager for User model with no username field."""
+    """Define a model manager for CustomUser model with no username field."""
 
     use_in_migrations = True
 
     def _create_user(self, email, password, **extra_fields):
-        """Create and save a User with the given email and password."""
+        """Create and save a CustomUser with the given email and password."""
         if not email:
             raise ValueError('The given email must be set')
         email = self.normalize_email(email)
@@ -21,7 +21,7 @@ class CustomUserManager(BaseUserManager):
         return user
 
     def create_user(self, email, password=None, **extra_fields):
-        """Create and save a regular User with the given email and password."""
+        """Create and save a regular CustomUser with the given email and password."""
         extra_fields.setdefault('is_staff', False)
         extra_fields.setdefault('is_superuser', False)
         return self._create_user(email, password, **extra_fields)

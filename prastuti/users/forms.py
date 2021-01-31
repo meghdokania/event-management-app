@@ -22,7 +22,7 @@ class UserForm(UserCreationForm):
 
 class PasswordResetForm(forms.Form):
     error_messages = {
-        'email_error': _('User does not exists'),
+        'email_error': _('CustomUser does not exists'),
     }
     email = forms.EmailField(
         label=_("Email"),
