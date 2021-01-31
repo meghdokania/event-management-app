@@ -23,6 +23,11 @@ urlpatterns = [
     path('', views.Home),
     path('admin/', admin.site.urls),
     path('users/', include('users.urls')),
+<<<<<<< HEAD
     path('teams/', include('teams.urls'))
+=======
+    path('event_registration/',include('teams.urls')),
+    path('events/',include('events.urls')),
+>>>>>>> 879aa97f8e40793251b53c0db2078670804802da
     # path('events/', include('events.urls'))
 ]

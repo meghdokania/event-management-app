@@ -1,17 +1,19 @@
 from django.db import models
-from django.contrib.auth import get_user_model
-# from ..events/models import Event
+from users.models import Profile
+from events.models import Event
+from django.core.validators import MinValueValidator, MaxValueValidator
+from django.urls import reverse
 
-User = get_user_model()
 
 class Team(models.Model):
-    members = models.ManyToManyField(User)
-    # events = models.ManyToManyField(Event)
+    team_member = models.ManyToManyField(Profile)  # we can do it with profile also
+    team_name = models.CharField(max_length=100)
+    team_event = models.ForeignKey(Event, on_delete=models.CASCADE, null=True)
+    team_size = models.IntegerField(default=1)
+    team_id = models.CharField(max_length=100, null=True)  # team size between 1 and 4
 
-    # class Meta:
-    #     unique_together = (me)
-    def def get_absolute_url(self):
-        from django.core.urlresolvers import reverse
-        return reverse('teams:teamdetail', kwargs={'pk': self.pk})
-    
+    def __str__(self):
+        return self.team_name
 
+    def get_absolute_url(self):
+        return reverse('', kwargs={})

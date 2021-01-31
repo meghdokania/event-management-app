@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block body_block %}
+<div>
+    <h1>Profile</h1>
+    <h2>{{profile.user.username}}</h2>
+    <h3>{{profile.name}}</h3>
+</div>
+<h2>Events Participated in</h2>
+{% for team in teams %}
+<h3>Event: {{team.team_event}}</h3>
+<h3>Team name: {{team.team_name}}</h3>
+{% endfor %}
+{% endblock %}

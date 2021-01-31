@@ -4,3 +4,9 @@ Include
 Scripts
 *.cfg
 *.key
+*.xml
+*.iml
+.idea/
+__pycache__
+.cpython-39.pyc
+

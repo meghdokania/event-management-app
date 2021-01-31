@@ -1,10 +1,8 @@
-from django.conf.urls import url
+from django.urls import path
 from .import views
 
-app_name = 'teams'
+app_name = 'event_registration'
 
 urlpatterns = [
-    url(r'^$', views.teamsList, name='teamslist'),
-    url(r'^register/', views.teamRegister, name='teamregister'),
-    url(r'^(?P<pk>[\w-]+)/$', views.teamDetail, name = 'teamdetail'),
+    path('register/<str:event>', views.registerTeam, name='register'),
 ]

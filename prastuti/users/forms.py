@@ -18,6 +18,7 @@ class UserForm(UserCreationForm):
         if commit:
             user.save()
         return user
+    
 
 class PasswordResetForm(forms.Form):
     error_messages = {

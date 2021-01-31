@@ -38,7 +38,8 @@ def userUpdate(request, pk):
 
 def userSignin(request):
     if request.method == "POST":
-        form = AuthenticationForm(data = request.POST)
+        form = AuthenticationForm(data = request.POST)#... not good practice
+
         if(form.is_valid()):
             user = form.get_user()
             login(request, user)
@@ -94,7 +95,6 @@ def activate(request, uidb64, token):
         return HttpResponse('Activation link is invalid!')
 
 def userLogout(request):
-    prev = request.META.get('HTTP_REFERER')
     logout(request)
     return redirect(prev)
 
