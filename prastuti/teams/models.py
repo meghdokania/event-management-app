@@ -8,8 +8,9 @@ from django.urls import reverse
 class Team(models.Model):
     team_member = models.ManyToManyField(Profile)  # we can do it with profile also
     team_name = models.CharField(max_length=100)
-    team_event = models.ForeignKey(Event, on_delete=models.CASCADE,null=True)
-    team_size = models.IntegerField(default=1)  # team size between 1 and 4
+    team_event = models.ForeignKey(Event, on_delete=models.CASCADE, null=True)
+    team_size = models.IntegerField(default=1)
+    team_id = models.CharField(max_length=100, null=True)  # team size between 1 and 4
 
     def __str__(self):
         return self.team_name

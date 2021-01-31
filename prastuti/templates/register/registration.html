@@ -43,6 +43,24 @@ function emailField(){
         node.appendChild(field);
         emails.appendChild(node);
     }
+
+    {% if event.event_name == 'Codigo' or event.event_name == 'Recognizance' %}
+      var node = document.createElement("div")
+      var label = document.createElement("label")
+      {% if event.event_name == 'Codigo' %}
+      label.innerHTML = "Hackerrank id of the user"
+      {% endif %}
+      {% if event.event_name == 'Recognizance' %}
+      label.innerHTML = "kaggle id of the team"
+      {% endif %}
+      var field = document.createElement("input")
+      field.setAttribute('type',"text");
+      field.setAttribute('name','team_id');
+      node.appendChild(label);
+      node.appendChild(field);
+      emails.appendChild(node);
+    {% endif %}
+
     var but = document.createElement("button")
     but.setAttribute("value","Submit")
     but.innerHTML = "Submit"

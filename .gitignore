@@ -6,4 +6,7 @@ Scripts
 *.key
 *.xml
 *.iml
-idea/
+.idea/
+__pycache__
+.cpython-39.pyc
+
