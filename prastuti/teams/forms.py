@@ -5,9 +5,7 @@ from django.core import validators
 from users import views as userViews 
 
 class TeamForm(forms.ModelForm):
-    class Meta:
-        model = Team
-        fields = ['team_name','team_event']
+    pass
     
     # def clean_team_member(self):
     #     team_member = self.cleaned_data['team_member']

@@ -44,8 +44,7 @@ def userSignup(request):
             profile.save()
             login(request, user)
             # messages.success(request, "You Signup successfully")
-            teams = profile.team_set.all()
-            return render(request, 'users/profile.html', {'profile':profile,'teams':teams})
+            return userProfile(request,user.email)
     else :
         user_form = forms.UserForm()
         profile_form = forms.ProfileForm()
@@ -66,7 +65,7 @@ def userProfile(request, email):
     return render(request, 'users/profile.html', {'profile':profile,'teams':profile.team_set.all()})
 
 def isRegisteredForEvent(profile, event):
-    for team in profile.team_set():
+    for team in profile.team_set.all():
         if team.team_event == event:
-            return True
-    return False
+            return team
+    return None

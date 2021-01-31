@@ -7,7 +7,9 @@ django.setup()
 from users.models import Profile
 from teams.models import Team
 from events.models import Event
+from django.contrib.auth.models import User
 
+User.objects.all().delete()
 Team.objects.all().delete()
 for event in Event.objects.all():
     event.delete()
@@ -20,10 +22,6 @@ Event.objects.get_or_create(event_name = 'cognizance')
 # event2.save()
 # event3.save()
 
-profiles = Profile.objects.all()
-p1 = profiles[0]
-p2 = profiles[1]
-p3 = profiles[2]
 
 # team1 = Team(team_name = 'team1',team_event= event1)
 # team2 = Team(team_name = 'team2',team_event= event2)
@@ -35,11 +33,6 @@ p3 = profiles[2]
 # print(team1.team_member.all())
 
 # team2.save()
-
 # print(Event.objects.all())
 # # print(tr1.event)
 # team3 = Team.objects.all()[2]
-p4 = Profile.objects.all().get(name = "himanshu_bala")
-# team3.team_member.add(p4)
-for tems in p4.team_set.all():
-    print(tems)
