@@ -18,7 +18,7 @@ def registerTeam(request, event):
         return redirect(reverse('users:usersignin'))
     event = Event.objects.get(event_name=event)
     # makes sure not more than one team for one event
-    profile = CustomUser.objects.get(user=request.user)
+    profile = request.user
     if userViews.isRegisteredForEvent(profile, event):
         team_registered = userViews.isRegisteredForEvent(profile, event)
         return HttpResponse("<h2>You have already registered for the event {0} under the team {1}.</h2>".format(event,
@@ -33,12 +33,13 @@ def registerTeam(request, event):
             email_id = request.POST[email]
             try:
                 user = CustomUser.objects.get(email=email_id)
-                member_profile = CustomUser.objects.get(user=user)
+                member_profile = CustomUser.objects.get(email=email_id)
             except CustomUser.DoesNotExist:
                 return HttpResponse(
                     "<h2>Enter a Valid Email Id. {} has not registered on this site.</h2>".format(email_id))
             if userViews.isRegisteredForEvent(member_profile, event):
-                team_registered = userViews.isRegisteredForEvent(member_profile, event)
+                team_registered = userViews.isRegisteredForEvent(
+                    member_profile, event)
                 return HttpResponse(
                     "<h2>{2} has already registered for the event {0} under the team {1}.</h2>".format(event,
                                                                                                        team_registered,
@@ -50,13 +51,20 @@ def registerTeam(request, event):
                 return HttpResponse("<h2>You need to register yourself for the event.</h2>")
             team_members.append(member_profile)
         # if deemed fit
+        member_profile = request.user
+
         team_size = len(team_members)
         team = Team(team_name=team_name, team_size=team_size, team_event=event)
         if event.event_name == 'Codigo' or event.event_name == 'Recognizance':
             team.team_id = request.POST['team_id']
         team.save()
         for mem in team_members:
+            print(mem.email)
+            team.team_not_accepted.add(mem)
             team.team_member.add(mem)
+        team.team_not_accepted.remove(member_profile)
+        if(team.team_not_accepted.count() == 0):
+            team.team_active = True
         team.save()
         # sucessfull, so return a sign
         return userViews.userProfile(request, request.user.email)

@@ -1,14 +1,22 @@
-{% extends 'prastuti/base.html' %}
-{% block body_block %}
-    <div>
-        <h1>CustomUser</h1>
-        <h2>{{profile.email}}</h2>
-        <h2>{{profile.name}}</h2>
-        {% if update %}
-        <a href="{% url 'users:userupdate' pk=profile.pk%}">Let's update our name</a>
-        <h2>Now logout</h2>
-        <a href="{% url 'users:userlogout'%}">Logout</a>
-        {% endif %}
-        <!-- <h3>{{profile.name}}</h3> -->
-    </div>
-    {% endblock %}
+{% extends 'prastuti/base.html' %} {% block body_block %}
+<div>
+  <h1>Profile</h1>
+  <h2>{{profile.email}}</h2>
+  <h3>{{profile.name}}</h3>
+</div>
+<h2>Events Participated in</h2>
+{% for team in teams %}
+<h3>Event: {{team.team_event}}</h3>
+<h3>Team name: {{team.team_name}}</h3>
+{% if team.team_active is False %}
+<!-- {% if team.nacList.find(profile.user.username)} -->
+<form method="POST" action="{% url 'users:eventacceptance' team.id %}">
+  {%csrf_token %}
+  <label for="accepted"
+    >Do you accept the request to join {{team.team_name}}</label
+  ><br />
+  <input type="text" id="accepted" name="accepted" /><br />
+  <button type="submit" , value="Submit">Submit</button>
+</form>
+
+{% endif %} {% endfor %} {% endblock %}

@@ -1,5 +1,6 @@
 from django.conf.urls import url
 from .import views
+from django.urls import path
 
 app_name = 'users'
 
@@ -9,8 +10,13 @@ urlpatterns = [
     url(r'^signup/', views.userSignup, name='usersignup'),
     url(r'^logout/', views.userLogout, name='userlogout'),
     url(r'^recovery/', views.userRecovery, name="userrecovery"),
-    url(r'^activate/(?P<uidb64>[^/]+)/(?P<token>[^/]+)/$', views.activate, name='activate'),
-    url(r'newpassword/(?P<uidb64>[^/]+)/(?P<token>[^/]+)/$', views.userNewpassword, name='newpassword'),
+    url(r'^activate/(?P<uidb64>[^/]+)/(?P<token>[^/]+)/$',
+        views.activate, name='activate'),
+    url(r'newpassword/(?P<uidb64>[^/]+)/(?P<token>[^/]+)/$',
+        views.userNewpassword, name='newpassword'),
     url(r'^update/(?P<pk>[^/]+)/$', views.userUpdate, name='userupdate'),
-    url(r'^(?P<email>[\w.@+-]+)/$', views.userProfile, name = 'userprofile'),
+    url(r'^(?P<email>[\w.@+-]+)/$', views.userProfile, name='userprofile'),
+    path('eventacceptance/<str:team>',
+         views.eventAcceptance, name='eventacceptance'),
+
 ]
