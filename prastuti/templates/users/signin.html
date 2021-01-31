@@ -1,12 +1,15 @@
-{% extends 'base.html' %}
+{% extends 'prastuti/base.html' %}
 {% block body_block %}
-<h1>Signin Page</h1>
-<form action="{users:usersignin}", method="POST">
-    {% csrf_token %}
-    <fieldset>
-        {{form}}
-    </fieldset>
-    <button type="submit", value="Signin">Signin</button>
-</form>
-
-{% endblock %}
+    <div>
+        <h1>Signin Page</h1>
+        <form action="{users:usersignin}", method="POST">
+            {% csrf_token %}
+            <fieldset>
+                {{form}}
+            </fieldset>
+            <button type="submit", value="Signin">Signin</button>
+        </form>
+        <a href="{% url 'users:usersignup'%}">Don't have an account?</a>
+        <a href="{% url 'users:userrecovery'%}">Forget password?</a>
+    </div>
+    {% endblock %}
