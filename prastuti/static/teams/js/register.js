@@ -1,10 +1,12 @@
+
 function emailField(){
-    alert("Hello i am in emailfield")
+
     var lst = parseInt(document.getElementById("size").value)
     var emails = document.getElementById("emails")
     while (emails.firstChild) {
         emails.removeChild(emails.lastChild);
     }
+    if (lst == 0)return;
     var lab = document.createElement("label")
     lab.innerHTML = "Team Name"
     var name = document.createElement("input")
@@ -41,7 +43,6 @@ function emailField(){
       node.appendChild(field);
       emails.appendChild(node);
     {% endif %}
-
     var but = document.createElement("button")
     but.setAttribute("value","Submit")
     but.innerHTML = "Submit"
