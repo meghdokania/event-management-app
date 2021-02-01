@@ -12,6 +12,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from . import forms
 from prastuti.settings import EMAIL_HOST_USER
 from .tokens import account_activation_token
+from teams.models import Team
 
 CustomUser = get_user_model()
 
@@ -95,9 +96,8 @@ def activate(request, uidb64, token):
         return HttpResponse('Activation link is invalid!')
 
 def userLogout(request):
-    prev = request.META.get('HTTP_REFERER')
     logout(request)
-    return redirect(prev)
+    return redirect('home')
 
 @login_required(login_url='users:usersignin')
 def userProfile(request, email):
@@ -106,7 +106,7 @@ def userProfile(request, email):
     update = True
     if user != request.user:
         update = False
-    return render(request, 'users/profile.html', {'profile':user, 'update': update})
+    return render(request, 'users/profile.html', {'profile': user, 'update': update, 'teams':user.team_set.all()})
 
 def userRecovery(request):
     if request.method == "POST":
@@ -160,3 +160,21 @@ def isRegisteredForEvent(profile, event):
         if team.team_event == event:
             return team
     return None
+
+def eventAcceptance(request, team):
+    id = int(team)
+    if(request.method == "POST"):
+        accept = request.POST['accepted']
+
+        if(accept == "YES"):
+            team = Team.objects.get(id=id)
+            custom = CustomUser.objects.get(email=request.user.email)
+            team.team_not_accepted.remove(custom)
+            team.save()
+            if(team.team_not_accepted.count() == 0):
+                team.team_active = True
+                team.save()
+        else:
+            team = Team.objects.get(id=id)
+            team.delete()
+        return userProfile(request, request.user.email)

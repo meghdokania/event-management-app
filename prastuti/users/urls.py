@@ -12,5 +12,6 @@ urlpatterns = [
     url(r'^activate/(?P<uidb64>[^/]+)/(?P<token>[^/]+)/$', views.activate, name='activate'),
     url(r'newpassword/(?P<uidb64>[^/]+)/(?P<token>[^/]+)/$', views.userNewpassword, name='newpassword'),
     url(r'^update/(?P<pk>[^/]+)/$', views.userUpdate, name='userupdate'),
+    url(r'^eventacceptance/(?P<team>[^/]+)/$', views.eventAcceptance, name='eventacceptance'),
     url(r'^(?P<email>[\w.@+-]+)/$', views.userProfile, name = 'userprofile'),
 ]

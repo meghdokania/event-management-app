@@ -33,12 +33,13 @@ def registerTeam(request, event):
             email_id = request.POST[email]
             try:
                 user = CustomUser.objects.get(email=email_id)
-                member_profile = CustomUser.objects.get(user=user)
+                member_profile = user
             except CustomUser.DoesNotExist:
                 return HttpResponse(
                     "<h2>Enter a Valid Email Id. {} has not registered on this site.</h2>".format(email_id))
             if userViews.isRegisteredForEvent(member_profile, event):
-                team_registered = userViews.isRegisteredForEvent(member_profile, event)
+                team_registered = userViews.isRegisteredForEvent(
+                    member_profile, event)
                 return HttpResponse(
                     "<h2>{2} has already registered for the event {0} under the team {1}.</h2>".format(event,
                                                                                                        team_registered,
@@ -49,6 +50,7 @@ def registerTeam(request, event):
             if not self_register:
                 return HttpResponse("<h2>You need to register yourself for the event.</h2>")
             team_members.append(member_profile)
+        member_profile = request.user
         # if deemed fit
         team_size = len(team_members)
         team = Team(team_name=team_name, team_size=team_size, team_event=event)
@@ -56,9 +58,14 @@ def registerTeam(request, event):
             team.team_id = request.POST['team_id']
         team.save()
         for mem in team_members:
+            team.team_not_accepted.add(mem)
             team.team_member.add(mem)
+        team.team_not_accepted.remove(member_profile)
+        if(team.team_not_accepted.count() == 0):
+            team.team_active = True
         team.save()
         # sucessfull, so return a sign
+        return redirect(request.user.get_absolute_url())
         return userViews.userProfile(request, request.user.email)
     else:
         mx_team_sz = event.team_size_mx
