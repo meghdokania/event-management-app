@@ -8,8 +8,8 @@
 {% for team in teams %}
 <h3>Event: {{team.team_event}}</h3>
 <h3>Team name: {{team.team_name}}</h3>
-{% if team.team_active is False %}
-<!-- {% if team.nacList.find(profile.user.username)} -->
+
+{% if profile in team.team_not_accepted.all %}
 <form method="POST" action="{% url 'users:eventacceptance' team.id %}">
   {%csrf_token %}
   <label for="accepted"
@@ -19,4 +19,6 @@
   <button type="submit" , value="Submit">Submit</button>
 </form>
 
-{% endif %} {% endfor %} {% endblock %}
+{% endif %} {% if team.team_active is False %} Pending Requests:<br />
+{% endif %} {% for profile in team.team_not_accepted.all %} {{profile.name}}
+{%endfor %} {% endfor %} {% endblock %}
