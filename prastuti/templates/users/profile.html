@@ -1,14 +1,20 @@
 {% extends 'prastuti/base.html' %}
 {% block body_block %}
-    <div>
-        <h1>CustomUser</h1>
-        <h2>{{profile.email}}</h2>
-        <h2>{{profile.name}}</h2>
-        {% if update %}
-        <a href="{% url 'users:userupdate' pk=profile.pk%}">Let's update our name</a>
-        <h2>Now logout</h2>
-        <a href="{% url 'users:userlogout'%}">Logout</a>
-        {% endif %}
-        <!-- <h3>{{profile.name}}</h3> -->
+    <div class="container">
+        <br>
+        <hr>
+        <br>
+        <div class="card" style="width: 100;">
+            <div class="card-body">
+              <h5 class="card-title">{{profile.name}}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Email: {{profile.email}}</h6>
+              <h6 class="card-subtitle mb-2 text-muted">Institue: {{profile.institute}}</h6>
+              <h6 class="card-subtitle mb-2 text-muted">Year: {{profile.year}}</h6>
+              {% if update %}
+               <a href="{% url 'users:userupdate' pk=profile.pk%}" class="card-link">Update Profile</a>
+               <a href="{% url 'users:userlogout'%}" class="card-link">Logout</a>
+              {% endif %}
+            </div>
+          </div>
     </div>
-    {% endblock %}
+{% endblock %}

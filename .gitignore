@@ -2,6 +2,7 @@
 Lib
 Include
 Scripts
+staticroot/
 *.cfg
 *.key
 *.xml

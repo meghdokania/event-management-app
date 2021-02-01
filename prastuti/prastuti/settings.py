@@ -122,18 +122,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR,'staticroot')
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR,'static'),
+)
+
+#user model
 AUTH_USER_MODEL = 'users.CustomUser'
 
-# Email verification of user
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  
-# MAILER_EMAIL_BACKEND = EMAIL_BACKEND  
-# EMAIL_HOST = 'smtp.gmail.com'  
-# EMAIL_HOST_PASSWORD = 'love@prastuti'  
-# EMAIL_HOST_USER = 'prastuti@itbhu.ac.in'  
-# EMAIL_PORT = 465  
-# EMAIL_USE_SSL = True  
-# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-
+#Email
 EMAIL_HOST = EMAIL_HOST 
 EMAIL_USE_TLS = EMAIL_USE_TLS
 EMAIL_HOST_USER =  EMAIL_HOST_USER

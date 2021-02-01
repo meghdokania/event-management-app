@@ -95,6 +95,7 @@ def activate(request, uidb64, token):
         return HttpResponse('Activation link is invalid!')
 
 def userLogout(request):
+    prev = request.META.get('HTTP_REFERER')
     logout(request)
     return redirect(prev)
 

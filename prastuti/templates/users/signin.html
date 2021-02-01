@@ -1,15 +1,45 @@
 {% extends 'prastuti/base.html' %}
 {% block body_block %}
-    <div>
-        <h1>Signin Page</h1>
-        <form action="{users:usersignin}", method="POST">
-            {% csrf_token %}
-            <fieldset>
-                {{form}}
-            </fieldset>
-            <button type="submit", value="Signin">Signin</button>
+  <div id="sign-in-container", class="content2">
+    <div class="row">
+      <div class="col col-12 col-lg-7">
+        <h1 class="display-5">Sign In</h1>
+        <p class="lead">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum
+          assumenda ipsum aut architecto. Nesciunt quibusdam id doloribus
+          nostrum tenetur, dolor ut natus corporis qui consequatur sapiente,
+          adipisci ea deserunt quis, architecto sequi maxime consectetur quae
+          aut. Nesciunt ut animi quos quasi, consequuntur tempora obcaecati
+          soluta, cupiditate quod ipsam natus minima.
+        </p>
+      </div>
+      <div class="col col-12 col-lg-5">
+        <form id="sign-in-form" class="form" action="{users:usersignin}" method="POST">
+        {% csrf_token %}
+          <fieldset>
+            <div class="form-group">
+              <input placeholder="Enter your email" class="form-control form-control-sm"
+                type="text" name="username" maxlength="150" autofocus
+                required id="id_username" />
+            </div>
+            <div class="form-group">
+              <input
+                placeholder="Enter password"
+                class="form-control-sm form-control"
+                type="password"
+                name="password"
+                autocomplete="new-password"
+                required
+                id="id_password"
+              />
+          </fieldset>
+          <button class="btn btn-block btn-info" type="submit" ,="" value="Sign In" >
+            Sign In
+          </button>
         </form>
         <a href="{% url 'users:usersignup'%}">Don't have an account?</a>
         <a href="{% url 'users:userrecovery'%}">Forget password?</a>
+      </div>
     </div>
-    {% endblock %}
+  </div>
+{% endblock %}

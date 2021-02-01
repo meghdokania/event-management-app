@@ -1,4 +1,7 @@
 from django.shortcuts import render
 
-def Home(request):
-    return render(request, 'prastuti\home.html')
+from events import models as eventModel
+
+def Home(request, nouse=None):
+    events = eventModel.Event.objects.all()
+    return render(request, 'prastuti\home.html', {'events':events})

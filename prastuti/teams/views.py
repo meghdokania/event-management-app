@@ -18,7 +18,7 @@ def registerTeam(request, event):
         return redirect(reverse('users:usersignin'))
     event = Event.objects.get(event_name=event)
     # makes sure not more than one team for one event
-    profile = CustomUser.objects.get(user=request.user)
+    profile = request.user
     if userViews.isRegisteredForEvent(profile, event):
         team_registered = userViews.isRegisteredForEvent(profile, event)
         return HttpResponse("<h2>You have already registered for the event {0} under the team {1}.</h2>".format(event,
