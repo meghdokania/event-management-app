@@ -1,29 +1,64 @@
 {% extends 'prastuti/base.html' %}
-{% load static %}
 {% block body_block %}
-<div class="content2">
-    <form action="" method="post">
-        {% csrf_token %}
-        <form method="POST" action="{% url 'event_registration:register' event %}">
-        <h1>Registration for {{event.event_name}}</h1>
-        {{form}}
-        <label for="team_size">Choose the team size: </label>
-        <select name="team_size" id="size" onchange="emailField()">
-            <option value="0">---</option>
-            {% for i in allowed_team_sizes %}
-                <option value="{{i}}">{{i}}</option>
-            {% endfor %}
-        </select>
-        <div id = "emails">
+{% load extrafilter %}
+{% load static %}
+
+<form action="" method="post">
+{% csrf_token %}
+<form method="POST" action="{% url 'event_registration:register' event %}">
+    <h1>Registration for {{ event.event_name }} </h1>
+    <label for="team_size">Choose the team size: </label>
+    <select name="team_size" id="size" onchange="emailField()">
+        <option value="{{teamsize}}">{{teamsize}}</option>
+        {% for i in allowed_team_sizes %}
+            <option value="{{i}}">{{i}}</option>
+        {% endfor %}
+    </select>
+     <div id = "emails">
+    {% if teamsize > 0 %}
+        <div>
+        <label for="Team name">Team name:</label>
+        <input type="text"  id="teamname" name='team_name' value = "{{teamname}}">
+            {% if error|get_key:teamname %}
+            <div class="alert alert-danger">
+           <ul>{{error|get_key:teamname}}</ul>
+          </div>
+            {% endif %}
         </div>
-    </form>
-    <script>
-    function emailField(){
+         {% for key,value in emailids.items %}
+           <div>
+               <label>Email id of member {{forloop.counter}}</label>
+               <input type="email"  id ="email{{forloop.counter}}" name='email{{forloop.counter}}' value = "{{value}}">
+               {% if error|get_key:key %}
+                  <div class="alert alert-danger">
+                  <ul>{{error|get_key:key}}</ul>
+                  </div>
+               {% endif %}
+           </div>
+        {% endfor %}
+
+        {% if event.event_name == 'Codigo' or  event.event_name == 'Recognizance' %}
+        <div>
+             <label>kaggle id of the team</label>
+            <input type="text" id="team_id" name='team_id' value = "{{team_id}}">
+        </div>
+        {% endif %}
+    <button type="submit" class="btn btn-success">Submit</button>
+    {% endif %}
+         </div>
+
+</form>
+ {% endblock %}
+    {% block js %}
+     <script>
+         function emailField(){
+
     var lst = parseInt(document.getElementById("size").value)
     var emails = document.getElementById("emails")
     while (emails.firstChild) {
         emails.removeChild(emails.lastChild);
     }
+    if (lst == 0)return;
     var lab = document.createElement("label")
     lab.innerHTML = "Team Name"
     var name = document.createElement("input")
@@ -60,14 +95,10 @@
       node.appendChild(field);
       emails.appendChild(node);
     {% endif %}
-
     var but = document.createElement("button")
     but.setAttribute("value","Submit")
     but.innerHTML = "Submit"
     emails.appendChild(but)
 }
-
-    </script>
-</div>
-{% endblock %}
-
+     </script>
+    {% endblock %}
