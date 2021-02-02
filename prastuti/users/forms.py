@@ -86,26 +86,12 @@ class PasswordUpdateForm(forms.Form):
 class UserUpdateForm(forms.Form):
     error_messages = {
         'name_error': _('Length of name must be greater than zero'),
-        'password_mismatch': _('The two password fields didn’t match.'),
-        'password_incorrect': _("Your old password was entered incorrectly. Please enter it again."),
+        'year_error': _('Year must be between one to four'),
+        'institue_error': _('')
     }
     name = forms.CharField(label=_("Name"), max_length=255)
-    old_password = forms.CharField(
-        label=_("Old password"),
-        strip=False,
-        widget=forms.PasswordInput(attrs={'autocomplete': 'current-password', 'autofocus': True}),
-    )
-    new_password1 = forms.CharField(
-        label=_("New password"),
-        widget=forms.PasswordInput(attrs={'autocomplete': 'new-password'}),
-        strip=False,
-        help_text=password_validation.password_validators_help_text_html(),
-    )
-    new_password2 = forms.CharField(
-        label=_("New password confirmation"),
-        strip=False,
-        widget=forms.PasswordInput(attrs={'autocomplete': 'new-password'}),
-    )
+    year = forms.IntegerField(label=_("Year"))
+    institute = forms.CharField(label=_("Institute"), max_length=255)
 
     def __init__(self, user, *args, **kwargs):
         self.user = user
@@ -120,36 +106,22 @@ class UserUpdateForm(forms.Form):
             )
         return name
 
-    def clean_old_password(self):
-        """
-        Validate that the old_password field is correct.
-        """
-        # print('hello sir')
-        old_password = self.cleaned_data["old_password"]
-        if not self.user.check_password(old_password):
+    def clean_year(self):
+        year = self.cleaned_data['year']
+        if year < 0 or year > 5:
             raise ValidationError(
-                self.error_messages['password_incorrect'],
-                code='password_incorrect',
+                self.error_messages['year_error'],
+                code='year_error',
             )
-        return old_password
-
-    def clean_new_password2(self):
-        password1 = self.cleaned_data.get('new_password1')
-        password2 = self.cleaned_data.get('new_password2')
-        if password1 and password2:
-            if password1 != password2:
-                raise ValidationError(
-                    self.error_messages['password_mismatch'],
-                    code='password_mismatch',
-                )
-        password_validation.validate_password(password2, self.user)
-        return password2
+        return year
 
     def save(self, commit=True):
-        password = self.cleaned_data["new_password1"]
         name = self.cleaned_data['name']
-        self.user.set_password(password)
+        year = self.cleaned_data['year']
+        institute = self.cleaned_data['institute']
         self.user.name = name
+        self.user.year = year
+        self.user.institute = institute
         if commit:
             self.user.save()
         return self.user   

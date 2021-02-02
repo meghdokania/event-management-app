@@ -183,6 +183,10 @@ def eventAcceptance(request, team):
             if team.team_not_accepted.count() == 0:
                 team.team_active = True
                 team.save()
+            # auto delete other requests for same event
+            for delete_team in request.user.team_set.filter(team_event = team.team_event):
+                if not delete_team.id == id:
+                  delete_team.delete()
         else:
             team = Team.objects.get(id=id)
             team.delete()
