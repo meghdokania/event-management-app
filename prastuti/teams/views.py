@@ -27,7 +27,7 @@ def registerTeam(request, event):
         emails = {}
         team_name = request.POST['team_name']
         try:
-            team = Team.objects.get(team_name=team_name)
+            team = Team.objects.get(team_name=team_name, team_event=event)
             error[team.team_name] = "The teamname has already taken"
         except Team.DoesNotExist:
             pass
@@ -52,11 +52,11 @@ def registerTeam(request, event):
 
             #                                                                                      team_registered,
         self_register = False
-        try:
-            team = Team.objects.get(team_name=team_name)
-            error[team.team_name] = "The teamname has already taken"
-        except Team.DoesNotExist:
-            pass
+        # try:
+        #     team = Team.objects.get(team_name=team_name)
+        #     error[team.team_name] = "The teamname has already taken"
+        # except Team.DoesNotExist:
+        #     pass
         for i in range(1, team_size + 1):
             email = 'email' + str(i)
             email_id = request.POST[email]
@@ -67,7 +67,7 @@ def registerTeam(request, event):
                 member_profile = CustomUser.objects.get(email=email_id)
             except CustomUser.DoesNotExist:
                 error[email] = "The user has not registered"
-            if member_profile == None:
+            if member_profile is None:
                 continue
             if userViews.isRegisteredForEvent(member_profile, event):
                 team_registered = userViews.isRegisteredForEvent(
@@ -77,11 +77,11 @@ def registerTeam(request, event):
             if member_profile == profile:
                 self_register = True
             # make sure one registers himself
-            if not self_register:
-                error['notregister'] = 'You must be in the team'
             team_members.append(member_profile)
         member_profile = request.user
         # if there is any error
+        if not self_register:
+            error['notregister'] = 'You must be in the team'
         if len(error) > 0:
             mx_team_sz = event.team_size_mx
             mn_team_sz = event.team_size_mn
@@ -94,7 +94,7 @@ def registerTeam(request, event):
             return render(request, 'register/registration.html',
                           {'allowed_team_sizes': allowed_team_size, 'event': event, 'error': error,
                            'teamsize': team_size, 'emailids': emails, "teamname": team_name, 'team_id': team_id})
-    
+
         member_profile = request.user
         team_size = len(team_members)
         team = Team(team_name=team_name, team_size=team_size, team_event=event)
@@ -115,18 +115,20 @@ def registerTeam(request, event):
         mn_team_sz = event.team_size_mn
         allowed_team_size = []
         error = {}
-        emails = {}
+        emails = {'email1': request.user.email}
         # teamsize = 0
-        teamname = ""
+        # teamname = ""
         team_id = 'xyz'
         for i in range(mn_team_sz, mx_team_sz + 1):
             allowed_team_size.append(i)
-        return render(request, 'register/registration.html', {'allowed_team_sizes': allowed_team_size, 'event': event, 'teamsize':0})
+        return render(request, 'register/registration.html',
+                      {'allowed_team_sizes': allowed_team_size, 'event': event, 'teamsize': 0, 'error': error,
+                       'emailids': emails})
 
 
-def delete_team(request,team):
+def delete_team(request, team):
     if request.method == "POST":
-        team = Team.objects.get(team_name = team)
+        team = Team.objects.get(team_name=team)
         team.delete()
 
     return redirect(request.user.get_absolute_url())
