@@ -83,16 +83,6 @@ def registerTeam(request, event):
                           {'allowed_team_sizes': allowed_team_size, 'event': event, 'error': error,
                            'teamsize': team_size, 'emailids': emails, "teamname": team_name, 'team_id': team_id})
 
-        # if deemed fit
-
-        # team = Team(team_name=team_name, team_size=team_size, team_event=event)
-        # if event.event_name == 'Codigo' or event.event_name == 'Recognizance':
-        #     team.team_id = request.POST['team_id']
-        # team.save()
-        # for mem in team_members:
-        #     team.team_member.add(mem)
-        # team.save()
-        # sucessfull, so return a sign
         member_profile = request.user
         team_size = len(team_members)
         team = Team(team_name=team_name, team_size=team_size, team_event=event)
@@ -122,4 +112,3 @@ def registerTeam(request, event):
         return render(request, 'register/registration.html',
                       {'allowed_team_sizes': allowed_team_size, 'event': event, 'error': error, 'teamsize': teamsize,
                        'emailids': emails, 'teamname': teamname, 'team_id': team_id})
-
