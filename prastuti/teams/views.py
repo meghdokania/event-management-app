@@ -123,3 +123,10 @@ def registerTeam(request, event):
                       {'allowed_team_sizes': allowed_team_size, 'event': event, 'error': error, 'teamsize': teamsize,
                        'emailids': emails, 'teamname': teamname, 'team_id': team_id})
 
+
+def delete_team(request,team):
+    if request.method == "POST":
+        team = Team.objects.get(team_name = team)
+        team.delete()
+
+    return redirect(request.user.get_absolute_url())
