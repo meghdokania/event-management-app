@@ -21,11 +21,12 @@ from django.urls import include, path
 from . import views
 
 urlpatterns = [
-                  path('', views.Home, name="home"),
-                  path('admin/', admin.site.urls),
-                  path('users/', include('users.urls')),
-                  path('event_registration/', include('teams.urls')),
-                  path('events/', include('events.urls')),
-                  path('<str:nouse>', views.Home, name="home"),
-                  # path('events/', include('events.urls'))
-              ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path('', views.Home, name="home"),
+    path('schedule', views.Schedule, name="schedule"),
+    path('admin/', admin.site.urls),
+    path('users/', include('users.urls')),
+    path('event_registration/', include('teams.urls')),
+    path('events/', include('events.urls')),
+    path('<str:nouse>', views.Home, name="home"),
+    # path('events/', include('events.urls'))
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

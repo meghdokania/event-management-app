@@ -23,6 +23,7 @@ def registerTeam(request, event):
         return HttpResponse("<h2>You have already registered for the event {0} under the team {1}.</h2>".format(event,
                                                                                                                 team_registered))  # validation error to raise here
     if request.method == 'POST':
+        print("I am in post")
         error = {}
         emails = {}
         team_name = request.POST['team_name']
