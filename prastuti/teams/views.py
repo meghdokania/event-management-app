@@ -7,6 +7,8 @@ from django.urls import reverse
 from users.models import CustomUser
 from .models import Team
 from users import views as userViews
+from django.contrib import messages
+from events import models as eventModel
 
 
 # Create your views here.
@@ -19,9 +21,11 @@ def registerTeam(request, event):
 
     profile = request.user
     if userViews.isRegisteredForEvent(profile, event):
-        team_registered = userViews.isRegisteredForEvent(profile, event)
-        return HttpResponse("<h2>You have already registered for the event {0} under the team {1}.</h2>".format(event,
-                                                                                                                team_registered))  # validation error to raise here
+        events = eventModel.Event.objects.all()
+        messages.error(request, 'You have already registered for the event')
+        return render(request, 'prastuti/home.html', {'events': events})
+
+        # validation error to raise here
     if request.method == 'POST':
         error = {}
         emails = {}
