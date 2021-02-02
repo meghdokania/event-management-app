@@ -9,15 +9,17 @@ from teams.models import Team
 from events.models import Event
 from django.contrib.auth.models import User
 
-User.objects.all().delete()
-Team.objects.all().delete()
-for event in Event.objects.all():
-    event.delete()
+# User.objects.all().delete()
 # Team.objects.all().delete()
-
-Event.objects.get_or_create(event_name = 'codigo')
-Event.objects.get_or_create(event_name = 'cryptex')
-Event.objects.get_or_create(event_name = 'cognizance')
+# for event in Event.objects.all():
+#     event.delete()
+# Team.objects.all().delete()
+# profiles = CustomUser.objects.all()
+# pr = profiles[0]
+# print(profiles.filter())
+Event.objects.get_or_create(event_name = 'crytex')
+# Event.objects.get_or_create(event_name = 'cryptex')
+# Event.objects.get_or_create(event_name = 'cognizance')
 # event1.save()
 # event2.save()
 # event3.save()
