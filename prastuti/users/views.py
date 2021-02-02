@@ -157,7 +157,7 @@ def userNewpassword(request, uidb64, token):
 
 def isRegisteredForEvent(profile, event):
     for team in profile.team_set.all():
-        if team.team_event == event:
+        if team.team_event == event and not profile in team.team_not_accepted.all():
             return team
     return None
 
@@ -166,7 +166,7 @@ def eventAcceptance(request, team):
     if(request.method == "POST"):
         accept = request.POST['accepted']
 
-        if(accept == "YES"):
+        if(accept == "Yes"):
             team = Team.objects.get(id=id)
             custom = CustomUser.objects.get(email=request.user.email)
             team.team_not_accepted.remove(custom)

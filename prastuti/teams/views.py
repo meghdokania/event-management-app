@@ -1,9 +1,8 @@
+from django.http import HttpResponse
 from events.models import Event
 from django.shortcuts import render
-# from django.contrib.auth.models import CustomUser
 from django.shortcuts import redirect
 from django.urls import reverse
-from django.http import HttpResponse
 
 from users.models import CustomUser
 from .models import Team
@@ -24,33 +23,54 @@ def registerTeam(request, event):
         return HttpResponse("<h2>You have already registered for the event {0} under the team {1}.</h2>".format(event,
                                                                                                                 team_registered))  # validation error to raise here
     if request.method == 'POST':
+        error = {}
+        emails = {}
         team_name = request.POST['team_name']
         team_members = []
         team_size = int(request.POST['team_size'])
         self_register = False
+        try:
+            team = Team.objects.get(team_name=team_name)
+            error[team.team_name] = "The teamname has already taken"
+        except Team.DoesNotExist:
+            pass
         for i in range(1, team_size + 1):
             email = 'email' + str(i)
             email_id = request.POST[email]
+            emails[email] = email_id
+            member_profile = None
             try:
                 user = CustomUser.objects.get(email=email_id)
                 member_profile = user
             except CustomUser.DoesNotExist:
-                return HttpResponse(
-                    "<h2>Enter a Valid Email Id. {} has not registered on this site.</h2>".format(email_id))
+                error[email] = "The user has not registered"
+            if member_profile == None:
+                continue
             if userViews.isRegisteredForEvent(member_profile, event):
                 team_registered = userViews.isRegisteredForEvent(
                     member_profile, event)
-                return HttpResponse(
-                    "<h2>{2} has already registered for the event {0} under the team {1}.</h2>".format(event,
-                                                                                                       team_registered,
-                                                                                                       member_profile))
+                error[email] = 'The user has already registered for the event'
+
             if member_profile == profile:
                 self_register = True
             # make sure one registers himself
             if not self_register:
-                return HttpResponse("<h2>You need to register yourself for the event.</h2>")
+                error['notregister'] = 'You must be in the team'
             team_members.append(member_profile)
         member_profile = request.user
+        # if there is any error
+        if len(error) > 0:
+            mx_team_sz = event.team_size_mx
+            mn_team_sz = event.team_size_mn
+            allowed_team_size = []
+            team_id = 'xyz'
+            if event.event_name == 'Codigo' or event.event_name == 'Recognizance':
+                team_id = request.POST['team_id']
+            for i in range(mn_team_sz, mx_team_sz + 1):
+                allowed_team_size.append(i)
+            return render(request, 'register/registration.html',
+                          {'allowed_team_sizes': allowed_team_size, 'event': event, 'error': error,
+                           'teamsize': team_size, 'emailids': emails, "teamname": team_name, 'team_id': team_id})
         # if deemed fit
         team_size = len(team_members)
         team = Team(team_name=team_name, team_size=team_size, team_event=event)
@@ -71,6 +91,11 @@ def registerTeam(request, event):
         mx_team_sz = event.team_size_mx
         mn_team_sz = event.team_size_mn
         allowed_team_size = []
+        error = {}
+        emails = {}
+        # teamsize = 0
+        teamname = ""
+        team_id = 'xyz'
         for i in range(mn_team_sz, mx_team_sz + 1):
             allowed_team_size.append(i)
-        return render(request, 'register/registration.html', {'allowed_team_sizes': allowed_team_size, 'event': event})
+        return render(request, 'register/registration.html', {'allowed_team_sizes': allowed_team_size, 'event': event, 'teamsize':0})
