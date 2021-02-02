@@ -122,3 +122,11 @@ def registerTeam(request, event):
         for i in range(mn_team_sz, mx_team_sz + 1):
             allowed_team_size.append(i)
         return render(request, 'register/registration.html', {'allowed_team_sizes': allowed_team_size, 'event': event, 'teamsize':0})
+
+
+def delete_team(request,team):
+    if request.method == "POST":
+        team = Team.objects.get(team_name = team)
+        team.delete()
+
+    return redirect(request.user.get_absolute_url())
