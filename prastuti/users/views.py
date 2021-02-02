@@ -172,15 +172,15 @@ def isRegisteredForEvent(profile, event):
 
 def eventAcceptance(request, team):
     id = int(team)
-    if (request.method == "POST"):
+    if request.method == "POST":
         accept = request.POST['accepted']
 
-        if (accept == "Yes"):
+        if accept == "Yes":
             team = Team.objects.get(id=id)
             custom = CustomUser.objects.get(email=request.user.email)
             team.team_not_accepted.remove(custom)
             team.save()
-            if (team.team_not_accepted.count() == 0):
+            if team.team_not_accepted.count() == 0:
                 team.team_active = True
                 team.save()
         else:
