@@ -10,13 +10,13 @@ from users import views as userViews
 
 
 # Create your views here.
-
-# need to optimise
 def registerTeam(request, event):
     if not request.user.is_authenticated:
         return redirect(reverse('users:usersignin'))
+
     event = Event.objects.get(event_name=event)
     # makes sure not more than one team for one event
+
     profile = request.user
     if userViews.isRegisteredForEvent(profile, event):
         team_registered = userViews.isRegisteredForEvent(profile, event)
@@ -26,8 +26,31 @@ def registerTeam(request, event):
         error = {}
         emails = {}
         team_name = request.POST['team_name']
-        team_members = []
+        try:
+            team = Team.objects.get(team_name=team_name)
+            error[team.team_name] = "The teamname has already taken"
+        except Team.DoesNotExist:
+            pass
+
         team_size = int(request.POST['team_size'])
+
+        team_members = []
+        for i in range(1, team_size + 1):
+            email = 'email' + str(i)
+            email_id = request.POST[email]
+            emails[email] = email_id
+            try:
+                user = CustomUser.objects.get(email=email_id)
+            except CustomUser.DoesNotExist:
+                # return HttpResponse(
+                #     "<h2>Enter a Valid Email Id. {} has not registered on this site.</h2>".format(email_id))
+                error[email] = "The user has not registered"
+            # if userViews.isRegisteredForEvent(member_profile, event):
+            #     team_registered = userViews.isRegisteredForEvent(member_profile, event)
+            # return HttpResponse(
+            #     "<h2>{2} has already registered for the event {0} under the team {1}.</h2>".format(event,
+
+            #                                                                                      team_registered,
         self_register = False
         try:
             team = Team.objects.get(team_name=team_name)
@@ -41,7 +64,7 @@ def registerTeam(request, event):
             member_profile = None
             try:
                 user = CustomUser.objects.get(email=email_id)
-                member_profile = user
+                member_profile = CustomUser.objects.get(email=email_id)
             except CustomUser.DoesNotExist:
                 error[email] = "The user has not registered"
             if member_profile == None:
@@ -71,7 +94,8 @@ def registerTeam(request, event):
             return render(request, 'register/registration.html',
                           {'allowed_team_sizes': allowed_team_size, 'event': event, 'error': error,
                            'teamsize': team_size, 'emailids': emails, "teamname": team_name, 'team_id': team_id})
-        # if deemed fit
+    
+        member_profile = request.user
         team_size = len(team_members)
         team = Team(team_name=team_name, team_size=team_size, team_event=event)
         if event.event_name == 'Codigo' or event.event_name == 'Recognizance':
@@ -81,12 +105,11 @@ def registerTeam(request, event):
             team.team_not_accepted.add(mem)
             team.team_member.add(mem)
         team.team_not_accepted.remove(member_profile)
-        if(team.team_not_accepted.count() == 0):
+        if team.team_not_accepted.count() == 0:
             team.team_active = True
         team.save()
-        # sucessfull, so return a sign
         return redirect(request.user.get_absolute_url())
-        return userViews.userProfile(request, request.user.email)
+
     else:
         mx_team_sz = event.team_size_mx
         mn_team_sz = event.team_size_mn
