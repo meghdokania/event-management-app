@@ -136,14 +136,6 @@ ul.topBotomBordersOut .nav-link:hover:after {
   color: white !important;
 }
 
-#get-started {
-  position: absolute;
-  bottom: 25px;
-  left: 40vw;
-  font-size: 1.6rem;
-  color: white;
-}
-
 .fas {
   font-size: 1rem;
 }
@@ -162,16 +154,16 @@ ul.topBotomBordersOut .nav-link:hover:after {
 
 /* events section */
 
-.events-cards{
+.events-cards {
   padding: 2%;
-  color : white;
+  color: white;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
 
-.card.event-card{
+.card.event-card {
   padding: 0.5%;
   margin: 20px auto;
   width: 45%;
@@ -179,25 +171,27 @@ ul.topBotomBordersOut .nav-link:hover:after {
   border-radius: 5px;
   color: black;
   text-align: left;
-  transition : transform 1s;
+  transition: transform 1s;
 }
 
-.event-card:hover{
-  transition : transform 1s;
+.event-card:hover {
+  transition: transform 1s;
   transform: scale(1.03);
   box-shadow: 2px 4px 8px rgb(117, 117, 117);
 }
-.event-img{
+
+.event-img {
   background: grey;
 }
 
-.event-btns{
+.event-btns {
   padding: 0 10px;
 }
 
-.event-btns > .btn{
+.event-btns>.btn {
   border-radius: 2px;
 }
+
 /* end events section */
 
 
@@ -207,10 +201,12 @@ ul.topBotomBordersOut .nav-link:hover:after {
   width: 100%;
   bottom: 0;
 }
+
 .footer-top {
   padding: 15px 0 15px 0;
   text-align: left;
 }
+
 .footer-top h3 {
   padding-bottom: 10px;
 }
@@ -218,20 +214,24 @@ ul.topBotomBordersOut .nav-link:hover:after {
 .footer-bottom {
   padding: 0px 0 20px 0;
 }
+
 .footer-social {
   display: flex;
   align-items: center;
 }
+
 .footer-social a {
   margin: 0 10px;
   color: #bbb;
   border: 0;
 }
+
 .footer-social a:hover,
 .footer-social a:focus {
   color: #856dc0;
   border: 0;
 }
+
 .footer-social i {
   font-size: 30px;
   vertical-align: middle;
@@ -240,6 +240,7 @@ ul.topBotomBordersOut .nav-link:hover:after {
 #department {
   width: 500px;
 }
+
 #copyright {
   font-size: 15px;
   color: grey;
@@ -359,6 +360,7 @@ ul.topBotomBordersOut .nav-link:hover:after {
   #footer .container {
     min-width: 90%;
   }
+
   .nav-item {
     font-size: 1.2rem;
   }
@@ -393,32 +395,36 @@ ul.topBotomBordersOut .nav-link:hover:after {
     padding-top: 100px;
     padding-bottom: 50px;
   }
+
   #sign-in-container {
     padding-top: 100px;
     padding-bottom: 50px;
   }
+
   #back-btn .msg {
     font-size: 1.3rem;
   }
+
   #back-btn .fas {
     font-size: 1rem;
   }
+
   .lead {
     font-size: 1rem;
   }
+
   .display-1 {
     font-size: 1.9rem;
   }
+
   .display-5 {
     font-size: 1.4rem;
   }
+
   #overlay {
     padding: 20px;
   }
 
-  #get-started {
-    font-size: 1rem;
-  }
   .nav-item {
     margin: 0px 10px;
     font-size: 0.8rem;
@@ -432,35 +438,40 @@ ul.topBotomBordersOut .nav-link:hover:after {
     width: 100%;
     margin-top: 10px;
   }
+
   .footer-social {
     display: flex;
     align-content: center;
     justify-content: space-evenly;
   }
+
   .footer-social i {
     font-size: 20px;
     vertical-align: middle;
   }
 }
 
-@media (max-width: 1200px) and (min-width: 1000px){
-  .events-cards{
-    padding : 0px;
+@media (max-width: 1200px) and (min-width: 1000px) {
+  .events-cards {
+    padding: 0px;
   }
-  .content2{
+
+  .content2 {
     padding: 2%;
   }
 }
 
-@media (max-width: 1000px) and (min-width: 0px){
-  .events-cards{
+@media (max-width: 1000px) and (min-width: 0px) {
+  .events-cards {
     padding: 0px;
   }
-  .events-cards{
+
+  .events-cards {
     flex-direction: column;
   }
-  .card.event-card{
-    width:90%;
+
+  .card.event-card {
+    width: 90%;
   }
 }
 
@@ -474,7 +485,7 @@ ul.topBotomBordersOut .nav-link:hover:after {
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: rgb(85, 85, 85);
@@ -492,8 +503,8 @@ ul.topBotomBordersOut .nav-link:hover:after {
 /* Schdule page*/
 
 
- /*underline animation on hover*/
- .box {
+/*underline animation on hover*/
+.box {
   display: flex;
   width: 70%;
   height: 8px;
@@ -540,65 +551,71 @@ ul.topBotomBordersOut .nav-link:hover:after {
 
 
 /*section header*/
-.section-header{
-    text-align: center;
+.section-header {
+  text-align: center;
 }
-.headings{
+
+.headings {
   font-size: 60px;
-	margin: 1em 0 .6em 0;
-	font-weight: normal;
-	font-family: 'Hammersmith One', sans-serif;
-	text-shadow: 0 -1px 0 rgba(246, 252, 253, 0.4);
-	position: relative;
-	color: rgb(3, 18, 226);
+  margin: 1em 0 .6em 0;
+  font-weight: normal;
+  font-family: 'Hammersmith One', sans-serif;
+  text-shadow: 0 -1px 0 rgba(246, 252, 253, 0.4);
+  position: relative;
+  color: rgb(3, 18, 226);
 }
 
 /*general*/
-img{
- 
+img {
+
   width: 40%;
   border-radius: 50px;
 }
+
 body {
-        background-color: rgb(177, 216, 243);
-        /*color: rgba(16, 58, 245, 0.9);*/
-        font-family: "Nunito Sans", sans-serif;
-    }
-.col{
+  background-color: rgb(177, 216, 243);
+  /*color: rgba(16, 58, 245, 0.9);*/
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.col {
   text-align: center;
   align-self: center;
   font-size: 18px;
 }
-.container{
+
+.container {
   padding: 2%;
 }
 
-.timeline{
+.timeline {
   padding-left: 10%;
   width: 90%;
 }
-.previous-workshop{
-  color:black;
+
+.previous-workshop {
+  color: black;
 }
-.Next-workshop{
-  color:black;  
+
+.Next-workshop {
+  color: black;
 }
 
 
 
 .single-timeline {
-         background-color: rgb(220, 255, 247);
-          box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-          transition: 0.4s;
-          border-radius: 30px;
-          font-family: "Montserrat", sans-serif;
-          align-content: center;
-          
-        }
+  background-color: rgb(220, 255, 247);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.4s;
+  border-radius: 30px;
+  font-family: "Montserrat", sans-serif;
+  align-content: center;
+
+}
 
 .shadow-box:hover {
-            box-shadow: 0 1px 20px #556b6e;
-        }    
+  box-shadow: 0 1px 20px #556b6e;
+}
 
 
 
@@ -606,38 +623,45 @@ body {
 
 
 .timeline div {
-  padding :0px;
+  padding: 0px;
   height: 40px;
 }
+
 .timeline hr {
-  border-top: 3px solid  #53030e;
+  border-top: 3px solid #53030e;
 
   margin: 0;
   top: 17px;
   position: relative;
 }
+
 .timeline .col-2 {
   display: flex;
   overflow: hidden;
 }
+
 .timeline .corner {
   border: 3px solid #010938;
   width: 100%;
   position: relative;
   border-radius: 15px;
 }
+
 .timeline .top-right {
   left: 50%;
   top: -50%;
 }
+
 .timeline .left-bottom {
   left: -50%;
   top: calc(50% - 3px);
 }
+
 .timeline .top-left {
   left: -50%;
   top: -50%;
 }
+
 .timeline .right-bottom {
   left: 50%;
   top: calc(50% - 3px);
