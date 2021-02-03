@@ -21,7 +21,7 @@ CustomUser = get_user_model()
 def usersList(request):
     return HttpResponse("Hii! This is user list")
 
-@login_required
+@login_required(login_url="users:usersignin")
 def userUpdate(request, pk):
     template = 'users/update.html'
     user = CustomUser.objects.get(pk=pk)
@@ -38,18 +38,24 @@ def userUpdate(request, pk):
     return render(request, template, {'form':form})
 
 def userSignin(request):
+    if request.user.is_authenticated:
+        return redirect(request.user.get_absolute_url())
     if request.method == "POST":
         form = AuthenticationForm(data = request.POST)#... not good practice
 
         if(form.is_valid()):
             user = form.get_user()
             login(request, user)
+            if "next" in request.POST:
+                return redirect(request.POST.get('next'))
             return redirect(user.get_absolute_url())
     else:
         form = AuthenticationForm()
     return render(request, "users/signin.html", {'form': form})
 
 def userSignup(request):
+    if request.user.is_authenticated:
+        return redirect(request.user.get_absolute_url())
     if request.method == "POST":
         user_form = forms.UserForm(request.POST)
         if user_form.is_valid():
