@@ -132,7 +132,8 @@ def registerTeam(request, event):
 
 def delete_team(request, team):
     if request.method == "POST":
-        team = Team.objects.get(team_name=team)
+        id = int(team)
+        team = Team.objects.get(id=id)
         team.delete()
 
     return redirect(request.user.get_absolute_url())
