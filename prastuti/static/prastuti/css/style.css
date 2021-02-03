@@ -119,6 +119,12 @@ ul.topBotomBordersOut .nav-link:hover:after {
   object-fit: cover;
   /* opacity: 0.8; */
 }
+#messages{
+z-index: 200;
+margin-top:82px;
+display: flex;
+justify-content: center;
+}
 
 #overlay {
   z-index: 100;

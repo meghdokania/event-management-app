@@ -5,7 +5,14 @@
     <div id="top-section">
         <video id="bg-video" src="{% static 'prastuti/img/Circuit Board Background.mp4' %}" autoplay loop muted>
         </video>
+        {% for message in messages %}
+      <div class="alert alert-{{message.tags}} alert-dismissible fade show" id = "messages">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{message}}
+      </div>
+      {% endfor %}
         <div id="overlay">
+
             <h1 class="display-1">Prastuti - A nice tagline</h1>
             <h1 class="display-5">Official tech-fest of Electrical department, IIT BHU</h1>
         </div>
