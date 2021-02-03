@@ -8,11 +8,24 @@
               <h6 class="card-subtitle mb-2 text-muted">Institue: {{profile.institute}}</h6>
               <h6 class="card-subtitle mb-2 text-muted">Year: {{profile.year}}</h6>
               <br><hr>
-              {% for team in teams %}
-              <h6>Event: {{team.team_event}}</h6>
-             <h6>Team name: {{team.team_name}}</h6>
-             
-            <br>
+            {% for team in teams %}
+                  <h6>Event: {{team.team_event}}</h6>
+                  <h6>Team name: {{team.team_name}}</h6>
+                  {% if profile not in team.team_not_accepted.all %}
+                      <form method="POST" action="{% url 'event_registration:delete_team' team.team_name %}">
+                        {% csrf_token %}
+                            <button type="submit" value="Submit" onclick="confirm('Do you want to delete team {{team.team_name}}? It will be deleted for other team members too.')">Delete Team</button>
+                      </form>
+                  {% endif %}
+                  {% if team.team_active is False %} 
+                      <h6>Pending Requests:</h6>
+                      {% for profile in team.team_not_accepted.all %} 
+                          {{profile.name}}
+                          <br>
+                      {%endfor %} 
+                  {% endif %}
+            {% endfor %}
+            {% for team in teams %}
              {% if profile in team.team_not_accepted.all %}
                 <form method="POST" action="{% url 'users:eventacceptance' team=team.id %}">
                 {%csrf_token %}
@@ -24,20 +37,15 @@
                 <br />
                 <button type="submit"  value="Submit">Submit</button>
               </form>
-              {% else %}
-              <form method="POST" action="{% url 'event_registration:delete_team' team.team_name %}">
-                {% csrf_token %}
-                  <button type="submit" value="Submit" onclick="confirm('Do you want to delete team {{team.team_name}}? It will be deleted for other team members too.')">Delete Team</button>
-              </form>
               {% endif %} 
               {% if team.team_active is False %} 
-              <h6>Pending Requests:</h6>
-              {% endif %} 
-              {% for profile in team.team_not_accepted.all %} 
-              {{profile.name}}
-              <br>
-              {%endfor %} 
-           {% endfor %} 
+                  <h6>Pending Requests:</h6>
+                  {% for profile in team.team_not_accepted.all %} 
+                      {{profile.name}}
+                      <br>
+                  {%endfor %} 
+              {% endif %}
+            {% endfor %} 
            <hr>
             {% if update %}
             <a href="{% url 'users:userupdate' pk=profile.pk%}" class="card-link">Update Profile</a>
