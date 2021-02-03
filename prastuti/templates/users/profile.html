@@ -27,7 +27,7 @@
               {% else %}
               <form method="POST" action="{% url 'event_registration:delete_team' team.team_name %}">
                 {% csrf_token %}
-                  <button type="submit" value="Submit">Delete Team</button>
+                  <button type="submit" value="Submit" onclick="confirm('Do you want to delete team {{team.team_name}}? It will be deleted for other team members too.')">Delete Team</button>
               </form>
               {% endif %} 
               {% if team.team_active is False %} 
