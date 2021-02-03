@@ -94,8 +94,8 @@ ul.topBotomBordersOut .nav-link:hover:after {
 }
 
 .active {
-  background: rgb(255, 102, 0);
-  color: #000;
+  background: rgba(255, 123, 0, 0.952);
+  color: rgb(0, 0, 0);
   font-weight: bolder;
 }
 
