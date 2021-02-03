@@ -1,7 +1,6 @@
 {% extends 'prastuti/base.html' %}
 {% load filter %}
 {% load static %}
-
 {% block body_block %}
 <div class="content2">
     <form method="POST" action="{% url 'event_registration:register' event %}">
@@ -16,6 +15,11 @@
         </select>
          <div id = "emails">
         {% if teamsize > 0 %}
+              {% if error|get_key:'notregister' %}
+                <div class="alert alert-danger">
+               <ul>{{error|get_key:'notregister'}}</ul>
+              </div>
+              {% endif %}
             <div>
             <label for="Team name">Team name:</label>
             <input type="text"  id="teamname" name='team_name' value = "{{teamname}}">
@@ -75,6 +79,9 @@
                 field.setAttribute('type',"email");
                 field.setAttribute('name','email' + i);
                 field.required = true
+                if (i == 1){
+                 field.setAttribute('value','{{emailids|get_key:"email1"}}')
+                }
                 node.appendChild(label);
                 node.appendChild(field);
                 emails.appendChild(node);
@@ -97,6 +104,7 @@
             emails.appendChild(node);
             {% endif %}
             var but = document.createElement("button")
+            but.setAttribute("class","btn btn-success")
             but.setAttribute("value","Submit")
             but.innerHTML = "Submit"
             emails.appendChild(but)

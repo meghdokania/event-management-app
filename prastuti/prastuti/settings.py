@@ -13,10 +13,11 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 from .emailInfo import *
+from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
+TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -28,7 +29,6 @@ SECRET_KEY = 's0+e9-bacqoj1237)@_u8=*i=ajmk^ffk801o48$q1=spi&8vo'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -74,7 +74,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'prastuti.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
@@ -84,7 +83,6 @@ DATABASES = {
         'NAME': str(os.path.join(BASE_DIR, 'db.sqlite3'))
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -117,26 +115,26 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR,'staticroot')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticroot')
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR,'static'),
+    os.path.join(BASE_DIR, 'static'),
 )
 
-#user model
+# user model
 AUTH_USER_MODEL = 'users.CustomUser'
 
-#Email
-EMAIL_HOST = EMAIL_HOST 
+# Email
+EMAIL_HOST = EMAIL_HOST
 EMAIL_USE_TLS = EMAIL_USE_TLS
-EMAIL_HOST_USER =  EMAIL_HOST_USER
-EMAIL_HOST_PASSWORD =  EMAIL_HOST_PASSWORD
-EMAIL_PORT = EMAIL_PORT 
+EMAIL_HOST_USER = EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
+EMAIL_PORT = EMAIL_PORT
 
-
-
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger'
+}
