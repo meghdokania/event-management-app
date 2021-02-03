@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from events.models import Event
 from django.shortcuts import render
@@ -12,10 +13,8 @@ from events import models as eventModel
 
 
 # Create your views here.
+@login_required(login_url="users:usersignin")
 def registerTeam(request, event):
-    if not request.user.is_authenticated:
-        return redirect(reverse('users:usersignin'))
-
     event = Event.objects.get(event_name=event)
     # makes sure not more than one team for one event
 
