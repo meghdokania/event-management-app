@@ -18,6 +18,9 @@
         {% csrf_token %}
           <fieldset>
             <div class="form-group">
+              {% if form.errors %}
+                <p>Please enter a correct email adress and password. Note that both fields may be case-sensitive.</p>
+              {% endif %}
               <input placeholder="Enter your email" class="form-control form-control-sm"
                 type="text" name="username" maxlength="150" autofocus
                 required id="id_username" />

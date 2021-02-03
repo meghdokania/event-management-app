@@ -43,7 +43,7 @@ def userSignin(request):
     if request.user.is_authenticated:
         return redirect(request.user.get_absolute_url())
     if request.method == "POST":
-        form = AuthenticationForm(data=request.POST)  # ... not good practice
+        form = AuthenticationForm(data=request.POST)
 
         if (form.is_valid()):
             user = form.get_user()
