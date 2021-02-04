@@ -44,8 +44,8 @@ a:hover {
 }
 
 .nav-item {
-  color: #fff;
-  margin: 0 20px 0 10px;
+  color:rgba(246, 252, 253, 0.4);
+  margin: 1px 20px 0 10px;
   letter-spacing: 1.5px;
   cursor: pointer;
   transition: all ease 0.8s;
@@ -58,24 +58,25 @@ a:hover {
 }
 
 .nav-item:hover {
-  color: #fff;
+  color:white;
 }
 
 .navbtn {
   margin-bottom: 0px;
 }
 
-ul.topBotomBordersOut .nav-link:before,
+/* ul.topBotomBordersOut .nav-link:before,
 ul.topBotomBordersOut .nav-link:after {
   position: absolute;
   left: 0px;
   width: 100%;
   height: 2px;
-  background: rgb(255, 102, 0);
+  color: #555;
+  background: grey; 
   content: "";
   opacity: 0;
   transition: all 0.3s;
-}
+} */
 
 ul.topBotomBordersOut .nav-link:before {
   top: 0px;
@@ -94,9 +95,8 @@ ul.topBotomBordersOut .nav-link:hover:after {
 }
 
 .active {
-  background: rgba(255, 123, 0, 0.952);
-  color: rgb(0, 0, 0);
-  font-weight: bolder;
+  color:#fff;
+  font-weight: bolder; 
 }
 
 #top-section {
@@ -146,15 +146,23 @@ justify-content: center;
   font-size: 1rem;
 }
 
+.main-content {
+  background-image: url("/static/prastuti/img/background.jpg");
+  background-attachment: fixed;
+}
+
 .content {
   min-height: 100vh;
-  background-color: black;
+  /* background-color: black; */
   padding: 120px 40px;
 }
 
 .content2 {
   min-height: 100vh;
-  background-color: #ccc;
+  background-image: url("/static/prastuti/img/background.jpg");
+  background-attachment: fixed;
+  /* background-image: url("/static/prastuti/img/background.jpg"); */
+  /* background-color: #ccc; */
   padding: 120px 40px;
 }
 
@@ -671,4 +679,15 @@ body {
 .timeline .right-bottom {
   left: 50%;
   top: calc(50% - 3px);
+}
+
+.dropdown-div {
+  background-color: black;
+}
+.dropdown-link {
+  color: gray;
+}
+.dropdown-link:hover {
+  color: white;
+  background-color: grey;   
 }

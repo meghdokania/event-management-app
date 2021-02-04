@@ -17,37 +17,38 @@
             <h1 class="display-5">Official tech-fest of Electrical department, IIT BHU</h1>
         </div>
     </div>
-
-    <div class="content2 text-center" id="about">
-        <h1 class="dispay-1 text-dark">ABOUT</h1>
-    </div>
-    <div class="content text-center" id="events">
-        <h1 class="dispay-1 text-white">EVENTS</h1>
-        <div class="row">
-          {% for event in events %}
-        <div class="card mb-3 event-card">
-          <div class="row no-gutters">
-              <div class="col-md-4 event-img">
-                  <img src="..." class="card-img" alt="...">
-              </div>
-              <div class="col-md-8">
-                  <div class="card-body" style="padding: 2%">
-                      <h3 class="card-title" style="margin:2px;">{{event.event_name}}</h3>
-                      <p class="card-text" style="margin:2px;"><strong class="text-muted">An online Digital Electronics event.</strong></p>
-                      <p class="card-text">{{event.discription}}</p>
-                  </div>
-                  <div class="event-btns" style="padding: 2%">
-                      <a class="btn btn-block btn-outline-info" href="{% url 'event_registration:register' event.event_name %}">
-                          Register
-                      </a>
-                      <button class="btn btn-block btn-outline-info">
-                          About
-                      </button>
-                  </div>
-              </div>
-          </div>
-      </div>
-        {% endfor %}
+    <div class="main-content">
+        <div class="content text-center" id="about">
+            <h1 class="dispay-1 text-white">ABOUT</h1>
+        </div>
+        <div class="content text-center" id="events">
+            <h1 class="dispay-1 text-white">EVENTS</h1>
+            <div class="row">
+            {% for event in events %}
+            <div class="card mb-3 event-card">
+            <div class="row no-gutters">
+                <div class="col-md-4 event-img">
+                    <img src="..." class="card-img" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body" style="padding: 2%">
+                        <h3 class="card-title" style="margin:2px;">{{event.event_name}}</h3>
+                        <p class="card-text" style="margin:2px;"><strong class="text-muted">An online Digital Electronics event.</strong></p>
+                        <p class="card-text">{{event.discription}}</p>
+                    </div>
+                    <div class="event-btns" style="padding: 2%">
+                        <a class="btn btn-block btn-outline-info" href="{% url 'event_registration:register' event.event_name %}">
+                            Register
+                        </a>
+                        <button class="btn btn-block btn-outline-info">
+                            About
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+            {% endfor %}
+            </div>
         </div>
     </div>
 </div>
