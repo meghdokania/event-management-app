@@ -672,3 +672,113 @@ body {
   left: 50%;
   top: calc(50% - 3px);
 }
+
+.section-header{
+    text-align: center;
+    color:lightblue
+}
+
+/*general*/
+#schedule img{
+
+  width: 40%;
+  border-radius: 50px;
+}
+#schedule .col{
+  text-align: center;
+  align-self: center;
+  font-size: 18px;
+}
+.my-schedule .container{
+  padding: 2%;
+}
+
+#schedule .timeline{
+  padding-left: 10%;
+  width: 90%;
+}
+
+.prev_workshop{
+  padding-bottom: 60px;
+  color: rgb(43, 4, 105);
+  font-weight: bold;
+  font-family: 'Raleway',sans-serif; font-size: 25px; font-weight: 600; line-height: 23px; margin: 0 0 0px; text-align: center; text-transform: uppercase;
+
+}
+#schedule .up_workshop{
+  padding-bottom: 90px;
+  color: rgb(43, 4, 105);
+  font-family: 'Raleway',sans-serif; font-size: 25px; font-weight: 600; line-height: 23px; margin: 0 0 0px; text-align: center; text-transform: uppercase;
+  font-weight:bold;
+}
+#schedule .event--image {
+  list-style: none;
+}
+#schedule .image-header{
+  color: rgb(43, 4, 105);
+  font-family: 'Raleway',sans-serif; font-size: 25px; font-weight: 600; line-height: 23px; margin: 0 0 0px; text-align: center; text-transform: uppercase;
+}
+
+
+
+#schedule .single-timeline {
+  background: linear-gradient(
+    to bottom,
+    #05d7fc 0%  ,
+    #02b38c 30%,
+    #ffffff 20%,
+    #ffffff 60%
+  );
+          box-shadow: 0 4px 8px 0 rgba(24, 2, 2, 0.24);
+          transition: 0.5s;
+          border-radius: 30px;
+          font-family: "Montserrat", sans-serif;
+          align-content: center;
+
+        }
+
+#schedule .shadow-box:hover {
+            box-shadow: 0 1px 40px #36c6e2;
+        }
+
+#schedule h1{
+    margin: 0;
+    margin-top:0;
+    padding-bottom: 0rem;
+    grid-column: 1;
+    grid-row: 1;
+    z-index: 2;
+    font-family: 'Teko', sans-serif;
+    font-size: 6rem;
+    text-transform: uppercase;
+    font-weight:bold;
+    animation: glow 1s ease-in-out infinite alternate;
+    text-align: center;
+
+  }
+#schedule a{
+    font-family: 'Teko', sans-serif;
+    color: #1354df;
+    grid-column: 1;
+    grid-row: 1;
+    align-self: end;
+    justify-self: center;
+    font-weight: bold;
+
+  }
+#schedule a:hover{
+  color:black;
+ }
+
+ @keyframes glow {
+    from {
+      text-shadow: 0 0 30px #58a2b4;
+    }
+    to {
+      text-shadow: 0 0 30px #34b3c1, 0 0 10px #4dbbc7;
+    }
+  }
+#schedule{
+margin-top:0px;
+}
+
