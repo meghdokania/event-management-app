@@ -40,7 +40,7 @@
                       <a class="btn btn-block btn-outline-info" href="{% url 'event_registration:register' event.event_name %}">
                           Register
                       </a>
-                      <a class="btn btn-block btn-outline-info" href="{% url 'events:event_info' event.event_name %}">
+                      <a class="btn btn-block btn-outline-info" href="{% url 'events:event_info' event.event_name|lower %}">
                         About
                         </a>
                   </div>
