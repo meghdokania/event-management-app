@@ -314,14 +314,17 @@ h4 {
   justify-content: center;
   align-items: center;
   min-height: calc(100vh - 120px);
+  margin: 100px 0px 50px 0px;
   /* position: relative; */
 }
 
 #sign-up-container .row {
   width: 100%;
-  max-width: 1500px !important;
+  max-width: 600px !important;
+  border-radius: 10px;
   padding: 0;
   margin: 0;
+  background-color: white;
 }
 
 #sign-up-container .col {
@@ -360,9 +363,11 @@ h4 {
 
 #sign-in-container .row {
   width: 100%;
-  max-width: 1500px !important;
+  max-width: 600px !important;
+  border-radius: 10px;
   padding: 0;
   margin: 0;
+  background-color: white;
 }
 
 #sign-in-container .col {
@@ -385,6 +390,24 @@ h4 {
   max-width: 450px;
   width: 95%;
 }
+#recover-container{
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 120px);
+  margin: 60px 0px 25px 0px;
+}
+#recover-container .row {
+  width: 100%;
+  max-width: 600px !important;
+  border-radius: 10px;
+  padding: 0;
+  margin: 0;
+  background-color: white;
+}
+
+
 
 .form-control {
   background-color: #e6efff;
