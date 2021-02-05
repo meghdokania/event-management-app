@@ -1,88 +1,146 @@
 {% extends 'prastuti/base.html' %}
 {% block body_block %}
+{% load static %}
+<section id="profile" class="profile">
     <div class="content2">
-        <div class="card" style="width: 100;">
-            <div class="card-body">
-              <h5 class="card-title">Name: {{profile.name}}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Email: {{profile.email}}</h6>
-              <h6 class="card-subtitle mb-2 text-muted">Institue: {{profile.institute}}</h6>
-              <h6 class="card-subtitle mb-2 text-muted">Year: {{profile.year}}</h6>
-              <br><hr>
-            <h2>Teams Joined</h2>
-            {% for team in teams %}
-                {% if profile not in team.team_not_accepted.all %}
-                  <h6>Event: {{team.team_event}}</h6>
-                  <h6>Team name: {{team.team_name}}</h6>
-                  <h6>Team members</h6>
-                  <ul>
-                  {% for member in team.team_member.all %}
-                      {% if member == user %}
-                        <li>You</li>
-                      {% else %}
-                        <li>{{member.name}}</li>
-                      {% endif %}
-                  {% endfor %}
-                  </ul>
-                      <form method="POST" action="{% url 'event_registration:delete_team' team.id %}" id="team{{team.id}}">
-                        {% csrf_token %}
-                      </form>
-                      <button onclick="conf('{{team.team_name}}','{{team.id}}')">Delete Team</button>
-                    {% if team.team_active is False %} 
-                        <h6>Pending Requests:</h6>
-                        {% for profile in team.team_not_accepted.all %} 
-                            {{profile.name}}
-                            <br>
-                        {%endfor %} 
-                    {% endif %}
-                    <br>
-                {% endif %}
-            {% endfor %}
-            <h2>Teams Joining Request</h2>
-            {% for team in teams %}
-              {% if profile in team.team_not_accepted.all %}
-                <h6>Event: {{team.team_event}}</h6>
-                <h6>Team name: {{team.team_name}}</h6>
-                <h6>Team members</h6>
-                <ul>
-                  {% for member in team.team_member.all %}
-                    {% if member == user %}
-                      <li>You</li>
-                    {% else %}
-                      <li>{{member.name}}</li>
-                    {% endif %}
-                  {% endfor %}
-                  </ul>
-                <form method="POST" action="{% url 'users:eventacceptance' team=team.id %}">
-                {%csrf_token %}
-                <label for="accepted">Do you accept the request to join {{team.team_name}}</label><br />
-                <input type="radio" id="Yes" name="accepted" value="Yes">
-                <label for="Yes">Yes</label>
-                <input type="radio" id="No" name="accepted" value="No">
-                <label for="No">No</label>
-                <br />
-                <button type="submit"  value="Submit">Submit</button>
-              </form> 
-                {% if team.team_active is False %} 
-                    <h6>Pending Requests:</h6>
-                    {% for profile in team.team_not_accepted.all %} 
-                        {% if profile == user %}
-                          <p>You</p>
-                        {% else %}
-                          {{profile.name}}
-                        {% endif %}
-                        <br>
-                    {%endfor %} 
-                {% endif %}
-              {% endif %}
-            {% endfor %} 
-           <hr>
-            {% if update %}
-            <a href="{% url 'users:userupdate' pk=profile.pk%}" class="card-link">Update Profile</a>
-            {% endif %}
+        <!--<div class="card">-->
+        <div class="card-body">
+            <div class="personal-details">
+                <h1 class="card-title profile-name">Name: {{profile.name}}</h1>
+                <div style="color:rgb(196, 196, 196); box-shadow: 0 0 2px #f6f6f6; border-radius: 5px;">
+                    <p class="personal-details-sub">Email: {{profile.email}}</p>
+                    <p class="personal-details-sub">Institute: {{profile.institute}}</p>
+                    <p class="personal-details-sub">Year: {{profile.year}}</p>
+                </div>
             </div>
-          </div>
+            <hr style="border-color: #f6f6f6; border-style: dotted;">
+            <!-- begin accepted section -->
+
+               <h2 id="myteams">MY TEAMS</h2>
+                 <section id="my-teams">
+                {% for team in teams %}
+                 {% if profile not in team.team_not_accepted.all %}
+
+                <div class="card my-team" style="width: 19%;">
+                    <div class="card-body" style="padding: 4%; margin-bottom: 0px;">
+                        <form method="POST" action="{% url 'event_registration:delete_team' team.id %}">
+                            {%csrf_token %}
+                            <div class="team-name">
+                                <span>Team</span>
+                                <br>
+                                <span style="font-size:1.4rem" ;><strong>{{team.team_name}}</strong></span>
+                            </div>
+                            <hr style="margin: 0px;">
+                            <br>
+                            <label for="event">Event : </label><span style="font-size: 1.4rem">{{team.team_event}}</span>
+                        </form>
+                     <button onclick="conf('{{team.team_name}}','{{team.id}}') " class="btn btn-block btn-outline-danger" style="border-radius: 2px" >Delete Team</button>
+                    </div>
+                      <ul class="list-group list-group-flush">
+                     <h5 style="color: chocolate; margin-bottom: 0px; margin-top: 0px;"><strong>Members :</strong></h5>
+                     {% for member in team.team_member.all %}
+                     {% if member == user %}
+                        <a href="#">
+                            <li class="list-group-item team-mem">YOU</li>
+                        </a>
+                    {% else %}
+                        <a href="#">
+                            <li class="list-group-item team-mem">{{member.name}}</li>
+                        </a>
+                    {% endif %}
+                    {% endfor %}
+                    </ul>
+                       {% if team.team_active is False %}
+                    <ul class="list-group list-group-flush">
+                        <h5 style="color: red; margin-bottom: 0px;"><strong>Pending :</strong></h5>
+                         {% for profile in team.team_not_accepted.all %}
+                        <a href="#">
+                            <li class="list-group-item team-mem"> {{profile.name}}</li>
+                        </a>
+                       {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                {% endif %}
+                {% endfor %}
+            </section>
+            <!-- end of accepted section -->
+            <hr style="border-style: dotted; border-color:#f6f6f6; margin: 2rem 0 1rem 0;">
+            <!-- begin invitations section -->
+
+            <h2 id="myteams">INVITATIONS</h2>
+            <section id="invitations">
+                {% for team in teams %}
+                 {% if profile in team.team_not_accepted.all %}
+                <div class="card invitation" style="width: 19%;">
+                    <div class="card-body" style="padding: 6%;">
+                        <form method="POST" action="{% url 'users:eventacceptance' team=team.id %}">
+                            {%csrf_token %}
+                            <div>
+                                <span>Team</span>
+                                <br>
+                                <span style="font-size:1.4rem" ;><strong>{{team.team_name}}</strong></span>
+                                <label for="accepted">invited you to join their team.</label>
+                                <hr style="margin:5px;">
+                            </div>
+                            <label for="accepted">Accept their invitation?</label>
+                            <br>
+                            <input type="radio" id="Yes" name="accepted" value="Yes">
+                            <label for="Yes">Yes</label>
+                            <input type="radio" id="No" name="accepted" value="No">
+                            <label for="No">No</label>
+                            <br />
+                            <button class="btn btn-block btn-secondary" style="border-radius: 2px" type="submit" value="Submit">Submit</button>
+                        </form>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <h5 style="color: chocolate;"><strong>Members :</strong></h5>
+                      {% for member in team.team_member.all %}
+                      {% if member == user%}
+                       <a href="#">
+                            <li class="list-group-item team-mem">{{member.name}}</li>
+                        </a>
+                        {% else %}
+                    <a href="#">
+                            <li class="list-group-item team-mem">{{member.name}}</li>
+                        </a>
+                        {% endif %}
+                     {% endfor %}
+                    </ul>
+                    {% if team.team_active is False %}
+                    <ul class="list-group list-group-flush">
+                        <h5 style="color: red;"><strong>Pending :</strong></h5>
+                         {% for profile in team.team_not_accepted.all %}
+                         {% if user == profile%}
+                        <a href="#">
+                            <li class="list-group-item team-mem">You</li>
+                        </a>
+                        {% else %}
+                        <a href="#">
+                            <li class="list-group-item team-mem">Aman Singh</li>
+                        </a>
+                        <a href="#">
+                            <li class="list-group-item team-mem">Manas Asati</li>
+                        </a>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                 {% endif %}
+                {% endfor %}
+            </section>
+            <hr style="border-color:white; border-style: dotted;">
+            <button class="btn btn-lg btn-light">
+                <a href="{% url 'users:userupdate' pk=profile.pk%}" class="card-link">Update Profile</a>
+            </button>
+        </div>
     </div>
-    <script>
+</section>
+{% endblock %}
+
+{% block js%}
+<script>
         function conf(team_name,id){
             var yes = confirm('Do you want to delete team {{team_name}}? It will be deleted for other team members too.')
             if(yes == true){
@@ -90,4 +148,4 @@
             }
         }
     </script>
- {% endblock %}
+{% endblock %}
