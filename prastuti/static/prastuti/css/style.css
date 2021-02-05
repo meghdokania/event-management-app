@@ -115,19 +115,20 @@ h4 {
   text-decoration: none;
 }
 
-.eventName {
-  font-variant: small-caps;
-  font-family: "Righteous", cursive;
-  background: rgba(255, 0, 0, 0.5);
-  border: 1px solid #000;
-  text-shadow: 5px 0 15px #ff0000, 0 0 12px #0000ff;
-  transition: 0.5s ease-in-out;
-}
-.eventName:hover {
-  text-shadow: 0 0 5px #ff0000, 0 0 16px #0000ff;
-}
 .event_image {
   width: 90%;
+}
+
+.details {
+  font-size: 1.5rem;
+  padding: 30px 170px;
+  text-align: justify;
+}
+
+.eventName {
+  font-size: 6rem;
+  color: lightblue;
+  animation: glow 1s ease-in-out infinite alternate;
 }
 
 #top-section {
@@ -500,6 +501,9 @@ h4 {
   .event_image {
     width: 100%;
   }
+  .eventName {
+    font-size: 4rem;
+  }
 }
 
 @media (max-width: 1200px) and (min-width: 1000px) {
@@ -509,6 +513,11 @@ h4 {
 
   .content2 {
     padding: 2%;
+  }
+
+  .details {
+    font-size: 1.3rem;
+    text-align: left;
   }
 }
 
@@ -523,6 +532,12 @@ h4 {
 
   .card.event-card {
     width: 90%;
+  }
+
+  .details {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    text-align: left;
   }
 }
 
