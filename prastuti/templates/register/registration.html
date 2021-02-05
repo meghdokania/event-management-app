@@ -2,18 +2,10 @@
 {% load filter %}
 {% load static %}
 {% block body_block %}
-<div id="registration-container" class="content2">
-  <section class="section">
-    <div class="section-header">
-      
-      <h1 class="registerpage"><span>Registration for {{ event.event_name }}</span>
-      </h1>
-        
-    </div>
-   </section>
+<div id="registration-container" class="content3">
     <form method="POST" action="{% url 'event_registration:register' event %}" class="display-5">
         {% csrf_token %}
-        <!-- <h1 class='display-5 text-center'>Registration for {{ event.event_name }} </h1> -->
+        <h1 class='display-5 text-center'>Registration for {{ event.event_name }} </h1>
         <hr>
         <div class="form-group">
           <label for="team_size">Choose the team size: </label>

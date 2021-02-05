@@ -14,24 +14,34 @@
   <link rel="stylesheet" href="{% static 'prastuti/css/style.css' %}" />
   <title>Prastuti | A nice tagline</title>
 </head>
-
 <body>
-
   <div>
     <nav class="navbar fixed-top navbar-expand-lg">
       <div class="container-fluid">
-
         <button class="navbar-toggler custom-toggler float-xs-right ml-auto" type="button" data-toggle="collapse"
           data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
           aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto topBotomBordersOut">
-            <a href="{% url 'home' %}" class="nav-link nav-item home">Home</a>
+            {% if currentHome %}
+              <a href="#bg-video" class="nav-link nav-item active">Home</a>
+              {% else %}
+              <a href="{% url 'home'%}" class="nav-link nav-item active"
+                >Home</a
+              >
+              {% endif %}
+              {% if currentHome %}
+            <a href="#about" class="nav-link nav-item about">About</a>
+            {% else %}
             <a href="/#about" class="nav-link nav-item about">About</a>
+            {% endif %}
+            {% if currentHome %}
+            <a href="#events" class="nav-link nav-item events">Events</a>
+            {% else %}
             <a href="/#events" class="nav-link nav-item events">Events</a>
+            {% endif %}
             <a href="{% url 'schedule' %}" class="nav-link nav-item schedule">Schedule</a>
             {% if user.is_staff %}
             <a class="nav-link nav-item" href="/admin/">Admin</a>
@@ -56,8 +66,8 @@
               <!-- </ul> -->
               </div>
             {% else %}
-            <a class="btn btn-info text-white nav-item navbtn rounded-0" href="{% url 'users:usersignin' %}"><i class="fas fa-sign-in-alt mr-1"></i>Sign In</a>
-            <a class="btn btn-primary text-white nav-item navbtn rounded-0" href="{% url 'users:usersignup' %}"><i class="fas fa-user-plus mr-1"></i>Register</a>
+            <a class="btn btn-outline-success siginbutton mr-3" href="{% url 'users:usersignin' %}"><i class="fas fa-sign-in-alt mr-1"></i>Sign In</a>
+            <a class="btn btn-outline-primary siginbutton" href="{% url 'users:usersignup' %}"><i class="fas fa-user-plus mr-1"></i>Register</a>
             {% endif %}
           </ul>
         </div>
@@ -74,7 +84,7 @@
         <div class="row">
           <div class="col"></div>
           <div class="col">
-            <img src="{% static 'prastuti/img/Department.png'%}" id="department" />
+            <!-- <img src="{% static 'prastuti/img/Department.png'%}" id="department" /> -->
           </div>
           <div class="col"></div>
         </div>
@@ -90,56 +100,86 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"></script>
   <script>
-    var scroll = new SmoothScroll('a', {
-      speed: 1000,
-      speedAsDuration: true,
+    // var scroll = new SmoothScroll('a', {
+    //   speed: 1000,
+    //   speedAsDuration: true,
+    // });
+
+  //   $(function () {
+
+  //     if (location.href.indexOf("schedule") > -1) {
+  //       oldObj = $('.active');
+  //       oldObj.removeClass('active');
+  //       $('.schedule').addClass('active')
+
+  //     } else if (location.href.indexOf("events") > -1) {
+  //       oldObj = $('.active');
+  //       oldObj.removeClass('active');
+  //       $('.events').addClass('active')
+
+  //     } else if (location.href.indexOf("#about") > -1) {
+  //       oldObj = $('.active');
+  //       oldObj.removeClass('active');
+  //       $('.about').addClass('active')
+
+  //     } else if (location.href.indexOf("users") > -1) {
+  //       oldObj = $('.active');
+  //       oldObj.removeClass('active');
+
+  //     } else {
+  //       oldObj = $('.active');
+  //       oldObj.removeClass('active');
+  //       $('.home').addClass('active')
+
+  //     }
+  //     $('a').on('click', function (e) {
+  //       oldObj = $('.active');
+  //       oldObj.removeClass('active');
+  //       $(this).addClass('active');
+  //     });
+
+  //   });
+  //  // Basice Code keep it 
+   $(document).ready(function () {
+        $(document).on("scroll", onScroll);
+
+        //smoothscroll
+        $('a[href^="#"]').on('click', function (e) {
+            e.preventDefault();
+            $(document).off("scroll");
+
+            $('a').each(function () {
+                $(this).removeClass('active');
+            })
+            $(this).addClass('active');
+
+            var target = this.hash,
+                menu = target;
+            $target = $(target);
+            $('html, body').stop().animate({
+                'scrollTop': $target.offset().top+2
+            }, 500, 'swing', function () {
+                window.location.hash = target;
+                $(document).on("scroll", onScroll);
+            });
+        });
     });
-
-    $(function () {
-
-      if (location.href.indexOf("schedule") > -1) {
-
-        oldObjChild = $('.active > a');
-        oldObj = $('.active');
-        oldObj.removeClass('active');
-        $('.schedule').addClass('active')
-
-      } else if (location.href.indexOf("events") > -1) {
-
-        oldObjChild = $('.active > a');
-        oldObj = $('.active');
-        oldObj.removeClass('active');
-        $('.events').addClass('active')
-
-      } else if (location.href.indexOf("#about") > -1) {
-
-        oldObjChild = $('.active > a');
-        oldObj = $('.active');
-        oldObj.removeClass('active');
-        $('.about').addClass('active')
-
-      } else if (location.href.indexOf("users") > -1) {
-
-        oldObjChild = $('.active > a');
-        oldObj = $('.active');
-        oldObj.removeClass('active');
-
-      } else {
-
-        oldObjChild = $('.active > a');
-        oldObj = $('.active');
-        oldObj.removeClass('active');
-        $('.home').addClass('active')
-
-      }
-      $('a').on('click', function (e) {
-        oldObjChild = $('.active > a');
-        oldObj = $('.active');
-        oldObj.removeClass('active');
-        $(this).addClass('active');
-      });
-
-    });
+    function onScroll(event){
+        var scrollPos = $(document).scrollTop();
+        $('#navbarSupportedContent a').each(function () {
+            var currLink = $(this);
+            var refElement = $(currLink.attr("href"));
+            console.log(refElement);
+            // alert(refElement);
+            if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
+                $('#navbarSupportedContent ul a').removeClass("active");
+                currLink.addClass("active");
+            }
+            else{
+                currLink.removeClass("active");
+            }
+        });
+    }
   </script>
   {% block js%}
   {% endblock %}
