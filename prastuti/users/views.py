@@ -177,7 +177,7 @@ def eventAcceptance(request, team):
         print("hello")
         accept = request.POST['accepted']
 
-        if(accept == "YES"):
+        if(accept == "Yes"):
             team = Team.objects.get(id=id)
             custom = CustomUser.objects.get(email=request.user.email)
             team.team_not_accepted.remove(custom)
@@ -185,6 +185,7 @@ def eventAcceptance(request, team):
             if(team.team_not_accepted.count() == 0):
                 team.team_active = True
                 team.save()
+            return redirect(request.user.get_absolute_url())
         else:
             team = Team.objects.get(id=id)
             team.delete()

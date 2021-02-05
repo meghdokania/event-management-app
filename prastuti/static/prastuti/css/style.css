@@ -915,6 +915,140 @@ margin-top:0px;
 .display-head1{
   font-family: 'Righteous', cursive;
 }
+
+#profile{
+  background-image: url("/static/prastuti/img/profile.jpg");
+  background-size: cover;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  color: white;
+}
+
+/* .customcard {
+  background-color: blue;
+} */
+
+.personal-details{
+  
+  margin: 0 aut0;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+  border-radius: 3px;
+}
+
+.personal-details-sub{
+  font-size: 12px;
+  margin: 5px;
+}
+.profile-name{
+  font-size: 3rem;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  font-weight: bold;
+}
+
+#my-teams, #invitations{
+  width: 95%;
+  margin:auto;
+}
+#my-teams{
+  color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 50%;
+}
+
+#invitations{
+  color: black;
+  overflow-x: scroll;
+  white-space: nowrap;
+  scroll-snap-type: x mandatory;
+}
+
+#invitations::-webkit-scrollbar {
+  height: 0.4rem;
+}
+
+/* Track */
+#invitations::-webkit-scrollbar-track {
+  background: #001b4a;
+}
+
+/* Handle */
+#invitations::-webkit-scrollbar-thumb {
+  background: rgb(255, 255, 255);
+  border-radius: 0px;
+}
+#invitations::-webkit-scrollbar-thumb:hover{
+  background: rgb(235, 235, 235);
+}
+/* Handle on hover */
+#invitations::-webkit-scrollbar-thumb:hover {
+  background: #001B4A;
+}
+
+
+.inv-team-name{
+  margin:0;
+  font-weight: bold;
+}
+
+.team-mem{
+  background: #f6f6f6;
+  color: black;
+  padding: 0%;
+  border: none;
+}
+
+.my-team, .invitation{
+  scroll-snap-align: center;
+  scroll-behavior: smooth;
+  white-space: normal;
+  display: inline-block;
+  margin: 0.5rem 0.4%;
+  color: black;
+  border-radius: 3px;
+  box-shadow: 0 0 2px rgb(255, 255, 255);
+  background: #f6f6f6;
+  height: 60%;
+}
+
+.my-team:hover{
+  box-shadow: 0 0 15px rgb(255, 255, 255);
+}
+
+
+.profile #myteams{
+   margin-bottom: 40px;
+}
+
+.profile.team-name{
+  color: white;
+  background-color:#002e7e;
+  border-radius: 3px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+.profile.list-group.list-group-flush{
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 30px #58a2b4;
+  }
+  to {
+    text-shadow: 0 0 30px #34b3c1, 0 0 10px #4dbbc7;
+  }
+
+}
 .display-head2 {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
@@ -935,4 +1069,9 @@ margin-top:0px;
 }
 .hide {
   display: none;
+}
+.content4 {
+  min-height: 100vh;
+  background-color: #ccc;
+  padding: 120px 40px;
 }
