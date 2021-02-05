@@ -16,14 +16,14 @@ from teams.models import Team
 
 CustomUser = get_user_model()
 
-
 # Views start from here
+
 
 def usersList(request):
     return HttpResponse("Hii! This is user list")
 
 
-@login_required(login_url="users:usersignin")
+@login_required
 def userUpdate(request, pk):
     template = 'users/update.html'
     user = CustomUser.objects.get(pk=pk)
@@ -41,16 +41,12 @@ def userUpdate(request, pk):
 
 
 def userSignin(request):
-    if request.user.is_authenticated:
-        return redirect(request.user.get_absolute_url())
     if request.method == "POST":
-        form = AuthenticationForm(data=request.POST)
+        form = AuthenticationForm(data=request.POST)  # ... not good practice
 
-        if (form.is_valid()):
+        if(form.is_valid()):
             user = form.get_user()
             login(request, user)
-            if "next" in request.POST:
-                return redirect(request.POST.get('next'))
             return redirect(user.get_absolute_url())
     else:
         form = AuthenticationForm()
@@ -58,8 +54,6 @@ def userSignin(request):
 
 
 def userSignup(request):
-    if request.user.is_authenticated:
-        return redirect(request.user.get_absolute_url())
     if request.method == "POST":
         user_form = forms.UserForm(request.POST)
         if user_form.is_valid():
@@ -108,7 +102,7 @@ def activate(request, uidb64, token):
 
 def userLogout(request):
     logout(request)
-    return redirect('home')
+    return redirect(prev)
 
 
 @login_required(login_url='users:usersignin')
@@ -171,28 +165,25 @@ def userNewpassword(request, uidb64, token):
 
 def isRegisteredForEvent(profile, event):
     for team in profile.team_set.all():
-        if team.team_event == event and not profile in team.team_not_accepted.all():
+        if team.team_event == event:
             return team
     return None
 
 
 def eventAcceptance(request, team):
     id = int(team)
-    if request.method == "POST":
+    if(request.method == "POST"):
+        print("hello")
         accept = request.POST['accepted']
 
-        if accept == "Yes":
+        if(accept == "YES"):
             team = Team.objects.get(id=id)
             custom = CustomUser.objects.get(email=request.user.email)
             team.team_not_accepted.remove(custom)
             team.save()
-            if team.team_not_accepted.count() == 0:
+            if(team.team_not_accepted.count() == 0):
                 team.team_active = True
                 team.save()
-            # auto delete other requests for same event
-            for delete_team in request.user.team_set.filter(team_event=team.team_event):
-                if not delete_team.id == id:
-                    delete_team.delete()
         else:
             team = Team.objects.get(id=id)
             team.delete()

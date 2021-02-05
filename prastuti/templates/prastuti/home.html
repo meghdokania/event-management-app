@@ -1,7 +1,11 @@
 {% extends 'prastuti/base.html' %}
 {% load static %}
 {% block body_block %}
-<div>
+
+<div class="loader" ><img  class ="loader_img" src="{% static 'prastuti/img/loader.gif' %}"></div>
+
+
+
     <div id="top-section">
         <video id="bg-video" src="{% static 'prastuti/img/Circuit Board Background.mp4' %}" autoplay loop muted>
         </video>
@@ -51,4 +55,13 @@
         </div>
     </div>
 </div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script>
+    setTimeout(function(){        
+    $('.loader').fadeOut();
+    $('.loader_img').delay(150).fadeOut('slow'); 
+}, 5000);
+
+</script>
 {% endblock %}
