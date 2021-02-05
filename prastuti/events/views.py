@@ -5,3 +5,6 @@ from .models import Event
 def index(request):
     events = Event.objects.all()
     return render(request,'events/index.html',{'events':events})
+
+def event(request,event):
+    return render(request,'events/codigo.html')
