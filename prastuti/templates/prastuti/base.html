@@ -1,15 +1,26 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="shortcut icon" type="image/x-icon" href="{% static 'prastuti/img/title-logo.png'%}" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
-    integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
-    integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="{% static 'prastuti/img/title-logo.png'%}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+      integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+      crossorigin="anonymous"
+    />
     <link href="https://fonts.googleapis.com/css2?family=Monda&family=Righteous&family=Russo+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'prastuti/css/style.css' %}" />
   <title>Prastuti | A nice tagline</title>
@@ -28,7 +39,7 @@
             {% if currentHome %}
               <a href="#bg-video" class="nav-link nav-item active">Home</a>
               {% else %}
-              <a href="{% url 'home'%}" class="nav-link nav-item active"
+              <a href="{% url 'home'%}" class="nav-link nav-item"
                 >Home</a
               >
               {% endif %}
@@ -42,7 +53,11 @@
             {% else %}
             <a href="/#events" class="nav-link nav-item events">Events</a>
             {% endif %}
+            {% if currentSchedule %}
+            <a href="#" class="nav-link nav-item schedule active">Schedule</a>
+            {% else %}
             <a href="{% url 'schedule' %}" class="nav-link nav-item schedule">Schedule</a>
+            {% endif %}
             {% if user.is_staff %}
             <a class="nav-link nav-item" href="/admin/">Admin</a>
             {% endif %}

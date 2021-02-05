@@ -94,8 +94,8 @@ ul.topBotomBordersOut .nav-link:hover:after {
 
 
 /*Event Details*/
-h4{
-  display:inline-grid;
+h4 {
+  display: inline-grid;
   color: royalblue;
   overflow: hidden;
   background: linear-gradient(to right, #007bff, #007bff 50%, royalblue 50%);
@@ -108,21 +108,21 @@ h4{
   text-decoration: none;
 }
 
-.eventName{
-  font-variant:small-caps;
-  font-family: 'Righteous', cursive;
-  background: rgba(255,0,0,0.5);
-  border: 1px solid #000;
-  text-shadow: 5px 0 15px #FF0000, 0 0 12px #0000FF;
-  transition: 0.5s ease-in-out;
-}
-.eventName:hover{
-  text-shadow: 0 0 5px #FF0000, 0 0 16px #0000FF;
-}
-.event_image{
+.event_image {
   width: 90%;
 }
 
+.details {
+  font-size: 1.5rem;
+  padding: 30px 170px;
+  text-align: justify;
+}
+
+.eventName {
+  font-size: 6rem;
+  color: lightblue;
+  animation: glow 1s ease-in-out infinite alternate;
+}
 
 #top-section {
   position: relative;
@@ -144,9 +144,9 @@ h4{
   object-fit: cover;
   /* opacity: 0.8; */
 }
-#messages{
+#messages {
   z-index: 200;
-  margin-top:82px;
+  margin-top: 82px;
   display: flex;
   justify-content: center;
 }
@@ -252,12 +252,11 @@ h4{
   /* color: rgb(221, 235, 158); */
 }
 
-.event-btns>.btn {
+.event-btns > .btn {
   border-radius: 2px;
 }
 
 /* end events section */
-
 
 #footer {
   background-color:#030303;
@@ -453,9 +452,9 @@ h4{
     margin-bottom: 5px;
   }
 
-  .event_image{
+  .event_image {
     width: 100%;
-    height:90%;
+    height: 90%;
   }
 }
 
@@ -519,14 +518,17 @@ h4{
     vertical-align: middle;
   }
 
-  #update-container{
-      padding-top: 150px!important;
+  #update-container {
+    padding-top: 150px !important;
   }
   #registration-container {
-    padding-top: 100px!important;
+    padding-top: 100px !important;
   }
-  .event_image{
+  .event_image {
     width: 100%;
+  }
+  .eventName {
+    font-size: 4rem;
   }
 }
 
@@ -537,6 +539,11 @@ h4{
 
   .content2 {
     padding: 2%;
+  }
+
+  .details {
+    font-size: 1.3rem;
+    text-align: left;
   }
 }
 
@@ -551,6 +558,12 @@ h4{
 
   .card.event-card {
     width: 90%;
+  }
+
+  .details {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    text-align: left;
   }
 }
 
@@ -578,8 +591,52 @@ h4{
 
 /* end scroll bar */
 
-
 /* Schdule page*/
+
+/*underline animation on hover*/
+.box {
+  display: flex;
+  width: 70%;
+  height: 8px;
+  margin: 5px 0px 60px 0px;
+  padding-left: 25%;
+}
+
+.box-sm {
+  height: 8px;
+  margin: 0;
+  flex-grow: 1;
+  transition: all 0.8s ease-in-out;
+  cursor: pointer;
+}
+
+.box-sm:hover {
+  flex-grow: 12;
+}
+
+.red {
+  background-color: #ff5852;
+}
+
+.orange {
+  background-color: #ff9000;
+}
+
+.yellow {
+  background-color: #ffd300;
+}
+
+.green {
+  background-color: #3dcd49;
+}
+
+.blue {
+  background-color: #0089d7;
+}
+
+.purple {
+  background-color: #9e44c4;
+}
 
 /*section header*/
 .section-header{
@@ -628,7 +685,6 @@ h4{
   color: white;
   font-family: 'Raleway',sans-serif; font-size: 25px; font-weight: 600; line-height: 23px; margin: 0 0 0px; text-align: center; text-transform: uppercase;
 }
-
 
 .single-timeline {
   padding: 0.5%;
@@ -709,53 +765,54 @@ h4{
 
 /* Update page */
 
-#update-container, #registration-container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding: 100px 15px;
-    padding-top: 300px;
-    align-items: center;
+#update-container,
+#registration-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 100px 15px;
+  padding-top: 300px;
+  align-items: center;
 }
 
 #registration-container {
   padding-top: 140px;
 }
 
-#update-container hr, #registration-container hr {
-    margin-left: calc(50% - 100px);
-    background-color: #000;
-    width: 200px;
-    height: 2px;
-    margin-top: 15px;
+#update-container hr,
+#registration-container hr {
+  margin-left: calc(50% - 100px);
+  background-color: #000;
+  width: 200px;
+  height: 2px;
+  margin-top: 15px;
 }
 
 #update-container form {
-    width: 100%;
-    max-width: 600px;
+  width: 100%;
+  max-width: 600px;
 }
 
 .section-header{
     text-align: center;
-    color: #03e9f4;
+    color: #21bd35;
 }
 
 /*general*/
-#schedule img{
-
+#schedule img {
   width: 40%;
   border-radius: 50px;
 }
-#schedule .col{
+#schedule .col {
   text-align: center;
   align-self: center;
   font-size: 18px;
 }
-.my-schedule .container{
+.my-schedule .container {
   padding: 2%;
 }
 
-#schedule .timeline{
+#schedule .timeline {
   padding-left: 10%;
   width: 90%;
 }
@@ -770,27 +827,31 @@ h4{
 #schedule .up_workshop{
   padding-bottom: 90px;
   color: rgb(43, 4, 105);
-  font-family: 'Raleway',sans-serif; font-size: 25px; font-weight: 600; line-height: 23px; margin: 0 0 0px; text-align: center; text-transform: uppercase;
-  font-weight:bold;
+  font-family: "Raleway", sans-serif;
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 23px;
+  margin: 0 0 0px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 #schedule .event--image {
   list-style: none;
 }
-#schedule .image-header{
+#schedule .image-header {
   color: rgb(43, 4, 105);
-  font-family: 'Raleway',sans-serif; font-size: 25px; font-weight: 600; line-height: 23px; margin: 0 0 0px; text-align: center; text-transform: uppercase;
+  font-family: "Raleway", sans-serif;
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 23px;
+  margin: 0 0 0px;
+  text-align: center;
+  text-transform: uppercase;
 }
 
-
-
 #schedule .single-timeline {
-  background: linear-gradient(
-    to bottom,
-    #05d7fc 0%  ,
-    #02b38c 30%,
-    #ffffff 20%,
-    #ffffff 60%
-  );
+
   box-shadow: 0 4px 8px 0 rgba(24, 2, 2, 0.24);
   transition: 0.5s;
   border-radius: 30px;

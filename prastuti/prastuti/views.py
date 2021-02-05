@@ -9,4 +9,4 @@ def Home(request, nouse=None):
     return render(request, 'prastuti/home.html', {'events':events, 'currentHome':currentHome})
 
 def Schedule(request):
-    return render(request, 'prastuti/schedule.html')
+    return render(request, 'prastuti/schedule.html', {'currentSchedule':1})
