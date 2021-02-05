@@ -217,10 +217,10 @@ h4 {
   flex-wrap: wrap;
 }
 
-.card.event-card {
+.event-card {
   padding: 0.5%;
   margin: 20px auto;
-  width: 45%;
+  width: 27%;
   height: 30%;
   font-weight: bolder;
   border-radius: 5px;
@@ -234,6 +234,12 @@ h4 {
   transition: transform 1s;
   transform: scale(1.03);
   box-shadow: 2px 4px 8px rgb(44, 173, 44);
+}
+
+/* Harshit event-card-in */
+.event-card-in {
+  display: flex;
+  flex-direction: column;
 }
 
 .event-img {
@@ -334,14 +340,17 @@ h4 {
   justify-content: center;
   align-items: center;
   min-height: calc(100vh - 120px);
+  margin: 100px 0px 50px 0px;
   /* position: relative; */
 }
 
 #sign-up-container .row {
   width: 100%;
-  max-width: 1500px !important;
+  max-width: 600px !important;
+  border-radius: 10px;
   padding: 0;
   margin: 0;
+  background-color: white;
 }
 
 #sign-up-container .col {
@@ -380,9 +389,11 @@ h4 {
 
 #sign-in-container .row {
   width: 100%;
-  max-width: 1500px !important;
+  max-width: 600px !important;
+  border-radius: 10px;
   padding: 0;
   margin: 0;
+  background-color: white;
 }
 
 #sign-in-container .col {
@@ -405,6 +416,24 @@ h4 {
   max-width: 450px;
   width: 95%;
 }
+#recover-container{
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 120px);
+  margin: 60px 0px 25px 0px;
+}
+#recover-container .row {
+  width: 100%;
+  max-width: 600px !important;
+  border-radius: 10px;
+  padding: 0;
+  margin: 0;
+  background-color: white;
+}
+
+
 
 .form-control {
   background-color: #e6efff;
@@ -940,21 +969,22 @@ margin-top:0px;
   border-radius: 3px;
 }
 
-.personal-details-sub{
+.personal-details-sub {
   font-size: 12px;
   margin: 5px;
 }
-.profile-name{
+.profile-name {
   font-size: 3rem;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
   font-weight: bold;
 }
 
-#my-teams, #invitations{
+#my-teams,
+#invitations {
   width: 95%;
-  margin:auto;
+  margin: auto;
 }
-#my-teams{
+#my-teams {
   color: black;
   display: flex;
   flex-direction: row;
@@ -962,7 +992,7 @@ margin-top:0px;
   height: 50%;
 }
 
-#invitations{
+#invitations {
   color: black;
   overflow-x: scroll;
   white-space: nowrap;
@@ -983,28 +1013,28 @@ margin-top:0px;
   background: rgb(255, 255, 255);
   border-radius: 0px;
 }
-#invitations::-webkit-scrollbar-thumb:hover{
+#invitations::-webkit-scrollbar-thumb:hover {
   background: rgb(235, 235, 235);
 }
 /* Handle on hover */
 #invitations::-webkit-scrollbar-thumb:hover {
-  background: #001B4A;
+  background: #001b4a;
 }
 
-
-.inv-team-name{
-  margin:0;
+.inv-team-name {
+  margin: 0;
   font-weight: bold;
 }
 
-.team-mem{
+.team-mem {
   background: #f6f6f6;
   color: black;
   padding: 0%;
   border: none;
 }
 
-.my-team, .invitation{
+.my-team,
+.invitation {
   scroll-snap-align: center;
   scroll-behavior: smooth;
   white-space: normal;
@@ -1017,7 +1047,7 @@ margin-top:0px;
   height: 60%;
 }
 
-.my-team:hover{
+.my-team:hover {
   box-shadow: 0 0 15px rgb(255, 255, 255);
 }
 
@@ -1026,19 +1056,18 @@ margin-top:0px;
    margin-bottom: 40px;
 }
 
-.profile.team-name{
+.profile.team-name {
   color: white;
-  background-color:#002e7e;
+  background-color: #002e7e;
   border-radius: 3px;
   padding-bottom: 5px;
   padding-top: 5px;
 }
 
-.profile.list-group.list-group-flush{
-    margin-top: 0px;
-    margin-bottom: 20px;
+.profile.list-group.list-group-flush {
+  margin-top: 0px;
+  margin-bottom: 20px;
 }
-
 
 @keyframes glow {
   from {

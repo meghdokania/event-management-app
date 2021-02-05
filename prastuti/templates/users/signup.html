@@ -1,24 +1,49 @@
 {% extends 'prastuti/base.html' %}
 {% block body_block %}
+<<<<<<< HEAD
     <div id="sign-up-container" class="content3">
         <h1 class="display-5">Register with us</h1>
         <hr>
         <div class="row">
             <div class="col col-12 col-lg-6">
+=======
+    <div id="sign-up-container" class="">
+        <div class="row">
+            <div class="col col-12 col-lg-12" >
+                <h1 class="mt-5">Register with us</h1>
+            </div>
+            <div class="col col-12 col-lg-12 mt-3">
+            <div>
+                <br>
+>>>>>>> 0ce8412ed97ff3feebd40616d9cca24108c46979
                 <form id="sign-up-form" class="form" action="" method="POST">
                     {% csrf_token %}
                     <fieldset>
                         <div class="form-group">
                             <div style="color: red;">{{user_form.name.errors}}</div>
                             <input class="form-control form-control-sm" placeholder="Enter your name" type="text" name="name" maxlength="100" required="" id="id_name">
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 0ce8412ed97ff3feebd40616d9cca24108c46979
                         </div>
                         <div class="form-group">
                             <div style="color: red;">{{user_form.email.errors}}</div>
                             <input placeholder="Enter your email ID" class="form-control form-control-sm" type="email" name="email" required="" id="id_email">
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0ce8412ed97ff3feebd40616d9cca24108c46979
                         </div>
                         <div class="form-group">
                             <div style="color: red;">{{user_form.institute.errors}}</div>
                             <input class="form-control form-control-sm" placeholder="Enter institute name" type="text" name="institute" maxlength="250" required="" id="id_institute">
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 0ce8412ed97ff3feebd40616d9cca24108c46979
                         </div>
                         <div class="form-group">
                             <div style="color: red;">
@@ -27,7 +52,8 @@
                             <input class="form-control form-control-sm" placeholder="Enter year of study" type="number" name="year" required="" id="id_year">
                         </div>
                         <div class="form-group">
-                            <input placeholder="Enter password" class="form-control-sm form-control" type="password" name="password1" autocomplete="new-password" required="" id="id_password1">
+                            <input placeholder="Enter password" class="form-control-sm form-control mb-1" type="password" name="password1" autocomplete="new-password" required="" id="id_password1">
+
                             <div style="color: red;">{{user_form.password1.errors}}</div>
                             <div id="pass-instructions" class="pl-3 text-muted helptext">
                                 <ul>
@@ -40,13 +66,27 @@
                         </div>
                         <div class="form-group">
                             <div style="color: red;">{{user_form.password2.errors}}</div>
+
                             <input placeholder="Password confirm" class="form-control form-control-sm" type="password" name="password2" autocomplete="new-password" required="" id="id_password2">
                         </div>
+
                     </fieldset>
-                    <button class="btn btn-block btn-info" type="submit" ,="" value="Signup">Signup</button>
+                    <button class="btn btn-block btn-info mt-3 mb-3" style="margin-bottom:20px;" type="submit" ,="" value="Signup">Signup</button>
                 </form>
-                <p><a href="{% url 'users:usersignin' %}">Already have an account?</a>
+                <p ><a href="{% url 'users:usersignin' %}" class="mb-5">Already have an account? SignIn Instead</a>
             </div>
         </div>
     </div>
+
+    <!-- <div class="container">
+        <h1>Signup Page</h1>
+        <form action="{users:usersignup}" method="POST">
+            {% csrf_token %}
+            <fieldset>
+                {{user_form}}
+            </fieldset>
+            <button type="submit", value="Signup">Signup</button>
+        </form>
+        <a href="{% url 'users:usersignin' %}">Already have an account?</a>
+    </div> -->
 {% endblock %}

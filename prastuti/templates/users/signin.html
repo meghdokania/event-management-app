@@ -1,49 +1,46 @@
 {% extends 'prastuti/base.html' %}
 {% block body_block %}
-  <div id="sign-in-container", class="content3">
-    <!-- <div class="card"> -->
-      <div class="row">
-        <div class="col-lg-3"></div>
-        <div class=" col col-lg-6">
-          <form id="sign-in-form" class="form" action="{users:usersignin}" method="POST">
-          {% csrf_token %}
-            <fieldset>
-              <div class="form-group">
-                {% if form.errors %}
-                  <p>Please enter a correct email adress and password. Note that both fields may be case-sensitive.</p>
-                {% endif %}
-                
-                <input  placeholder="Enter your email" class="form-control form-control-sm"
-                  type="text" name="username" maxlength="150" autofocus
-                  required id="id_username" />
-              </div>
-              <div class="form-group">
-                
-                <input
-                  placeholder="Enter password"
-                  class="form-control-sm form-control"
-                  type="password"
-                  name="password"
-                  autocomplete="new-password"
-                  required
-                  id="id_password"
-                />
-            </fieldset>
-            {% if request.GET.next %}
-            <button class="btn btn-block btn-info" type="submit" name="next" value="{{request.GET.next}}" >
-              Sign In
-            </button>
-            {% else %}
-            <button class="btn btn-block btn-info" type="submit" ,="" value="Sign In" >
-              Sign In
-            </button>
-            {% endif %}
-          </form>
-          <a href="{% url 'users:usersignup'%}">Don't have an account?</a>
-          <a href="{% url 'users:userrecovery'%}">Forget password?</a>
-        </div>
-        <div class="col-lg-3"></div>
-      <!-- </div> -->
+  <div id="sign-in-container", class="">
+    <div class="row">
+      <div class="col col-12 col-lg-12" style="margin-bottom:20px;">
+        <h1 class="mt-5">Sign In</h1>
+      </div>
+      <div class="col col-12 col-lg-12">
+        <form id="sign-in-form" class="form" action="{users:usersignin}" method="POST">
+        {% csrf_token %}
+          <fieldset>
+            <div class="form-group">
+              {% if form.errors %}
+                <p>Please enter a correct email adress and password. Note that both fields may be case-sensitive.</p>
+              {% endif %}
+              <input placeholder="Enter your email" class="form-control form-control-sm"
+                type="text" name="username" maxlength="150" autofocus
+                required id="id_username" />
+            </div>
+            <div class="form-group">
+              <input
+                placeholder="Enter password"
+                class="form-control-sm form-control"
+                type="password"
+                name="password"
+                autocomplete="new-password"
+                required
+                id="id_password"
+              />
+          </fieldset>
+          {% if request.GET.next %}
+          <button class="btn btn-block btn-info" type="submit" name="next" value="{{request.GET.next}}" >
+            Sign In
+          </button>
+          {% else %}
+          <button class="btn btn-block btn-info" style="margin-bottom:20px;" type="submit" ,="" value="Sign In" >
+            Sign In
+          </button>
+          {% endif %}
+        </form>
+        <a href="{% url 'users:usersignup'%}" class="mb-2">Don't have an account?</a>
+        <a href="{% url 'users:userrecovery'%}" class="mb-5">Forget password?</a>
+      </div>
     </div>
   </div>
 {% endblock %}
