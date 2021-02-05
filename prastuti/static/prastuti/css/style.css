@@ -25,7 +25,7 @@ a:hover {
 }
 
 .navbar {
-  background-color: rgba(0, 0, 0, 0.9) !important;
+  background-color: rgba(0, 0, 0, 0.8) !important;
   transition: 200ms linear;
   z-index: 100;
   padding: 20px 0px;
@@ -55,29 +55,25 @@ a:hover {
 }
 
 .nav-link {
-  padding-left: 5px !important;
+  padding-left: 5px;
+  font-size: larger;
+  font-weight: bolder;
 }
 
 .nav-item:hover {
   color:white;
+  font-size: x-large;
+  font-weight: bolder;
+}
+.active {
+  color: white;
+  font-size: larger;
+  font-weight: bolder; 
 }
 
 .navbtn {
   margin-bottom: 0px;
 }
-
-/* ul.topBotomBordersOut .nav-link:before,
-ul.topBotomBordersOut .nav-link:after {
-  position: absolute;
-  left: 0px;
-  width: 100%;
-  height: 2px;
-  color: #555;
-  background: grey; 
-  content: "";
-  opacity: 0;
-  transition: all 0.3s;
-} */
 
 ul.topBotomBordersOut .nav-link:before {
   top: 0px;
@@ -95,10 +91,7 @@ ul.topBotomBordersOut .nav-link:hover:after {
   transform: translateY(0px);
 }
 
-.active {
-  color:#fff;
-  font-weight: bolder; 
-}
+
 
 /*Event Details*/
 h4{
@@ -610,7 +603,7 @@ img{
 .single-timeline {
 background: linear-gradient(
   to bottom, 
-  #0a0535 5%  , 
+  #1f06fd 5%  , 
   #045aca 30%, 
   #ffffff 20%, 
   #ffffff 60%
@@ -824,3 +817,6 @@ background: linear-gradient(
 margin-top:0px;
 }
 
+.registerpage{
+  font-size: 70px;
+}

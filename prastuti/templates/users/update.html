@@ -3,13 +3,6 @@
     <div id="update-container" class="content2">
         <h1 class="display-5">Update your information</h1>
         <hr>
-    <form action="" method="POST">
-        {% csrf_token %}
-        <fieldset>
-            <div class="form-group">
-            <label for="id_name">Name:</label>
-            <input type="text" name="name" maxlength="255" required id="id_name" class="form-control form-control-sm" value={{user.name}}>
-            </div>
         <div class="col col-12 col-lg-6">
         <form action="" method="POST">
             {% csrf_token %}
