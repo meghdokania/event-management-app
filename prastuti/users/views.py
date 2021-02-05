@@ -22,6 +22,7 @@ CustomUser = get_user_model()
 def usersList(request):
     return HttpResponse("Hii! This is user list")
 
+
 @login_required(login_url="users:usersignin")
 def userUpdate(request, pk):
     template = 'users/update.html'
@@ -189,9 +190,9 @@ def eventAcceptance(request, team):
                 team.team_active = True
                 team.save()
             # auto delete other requests for same event
-            for delete_team in request.user.team_set.filter(team_event = team.team_event):
+            for delete_team in request.user.team_set.filter(team_event=team.team_event):
                 if not delete_team.id == id:
-                  delete_team.delete()
+                    delete_team.delete()
         else:
             team = Team.objects.get(id=id)
             team.delete()

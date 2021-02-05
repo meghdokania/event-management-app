@@ -9,8 +9,6 @@
             <div class="col col-12 col-lg-5 mt-5">
             <div>
                 <br>
-                <br>
-                <br>
                 <form id="sign-up-form" class="form" action="" method="POST">
                     {% csrf_token %}
                     <fieldset>
@@ -49,6 +47,10 @@
                         </div>
                         <div class="form-group">
                             <div style="color: red;">{{user_form.password2.errors}}</div>
+<<<<<<< HEAD
+=======
+                            
+>>>>>>> 5c059e503ec5fc26568b50ddfbbaf5095645cf59
                             <input placeholder="Password confirm" class="form-control form-control-sm" type="password" name="password2" autocomplete="new-password" required="" id="id_password2">
                         </div>
                         

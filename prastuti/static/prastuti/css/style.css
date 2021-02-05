@@ -100,6 +100,37 @@ ul.topBotomBordersOut .nav-link:hover:after {
   font-weight: bolder; 
 }
 
+/*Event Details*/
+h4{
+  display:inline-grid;
+  color: royalblue;
+  overflow: hidden;
+  background: linear-gradient(to right, #007bff, #007bff 50%, royalblue 50%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 100%;
+  background-position: 100%;
+  transition: background-position 575ms ease;
+  text-decoration: none;
+}
+
+.eventName{
+  font-variant:small-caps;
+  font-family: 'Righteous', cursive;
+  background: rgba(255,0,0,0.5);
+  border: 1px solid #000;
+  text-shadow: 5px 0 15px #FF0000, 0 0 12px #0000FF;
+  transition: 0.5s ease-in-out;
+}
+.eventName:hover{
+  text-shadow: 0 0 5px #FF0000, 0 0 16px #0000FF;
+}
+.event_image{
+  width: 90%;
+}
+
+
 #top-section {
   position: relative;
   right: 0;
@@ -403,6 +434,11 @@ ul.topBotomBordersOut .nav-link:hover:after {
   .navbtn {
     margin-bottom: 5px;
   }
+
+  .event_image{
+    width: 100%;
+    height:90%;
+  }
 }
 
 @media (max-width: 700px) {
@@ -470,6 +506,9 @@ ul.topBotomBordersOut .nav-link:hover:after {
   }
   #registration-container {
     padding-top: 100px!important;
+  }
+  .event_image{
+    width: 100%;
   }
 }
 
@@ -675,3 +714,113 @@ background: linear-gradient(
     width: 100%;
     max-width: 600px;
 }
+
+.section-header{
+    text-align: center;
+    color:lightblue
+}
+
+/*general*/
+#schedule img{
+
+  width: 40%;
+  border-radius: 50px;
+}
+#schedule .col{
+  text-align: center;
+  align-self: center;
+  font-size: 18px;
+}
+.my-schedule .container{
+  padding: 2%;
+}
+
+#schedule .timeline{
+  padding-left: 10%;
+  width: 90%;
+}
+
+.prev_workshop{
+  padding-bottom: 60px;
+  color: rgb(43, 4, 105);
+  font-weight: bold;
+  font-family: 'Raleway',sans-serif; font-size: 25px; font-weight: 600; line-height: 23px; margin: 0 0 0px; text-align: center; text-transform: uppercase;
+
+}
+#schedule .up_workshop{
+  padding-bottom: 90px;
+  color: rgb(43, 4, 105);
+  font-family: 'Raleway',sans-serif; font-size: 25px; font-weight: 600; line-height: 23px; margin: 0 0 0px; text-align: center; text-transform: uppercase;
+  font-weight:bold;
+}
+#schedule .event--image {
+  list-style: none;
+}
+#schedule .image-header{
+  color: rgb(43, 4, 105);
+  font-family: 'Raleway',sans-serif; font-size: 25px; font-weight: 600; line-height: 23px; margin: 0 0 0px; text-align: center; text-transform: uppercase;
+}
+
+
+
+#schedule .single-timeline {
+  background: linear-gradient(
+    to bottom,
+    #05d7fc 0%  ,
+    #02b38c 30%,
+    #ffffff 20%,
+    #ffffff 60%
+  );
+          box-shadow: 0 4px 8px 0 rgba(24, 2, 2, 0.24);
+          transition: 0.5s;
+          border-radius: 30px;
+          font-family: "Montserrat", sans-serif;
+          align-content: center;
+
+        }
+
+#schedule .shadow-box:hover {
+            box-shadow: 0 1px 40px #36c6e2;
+        }
+
+#schedule h1{
+    margin: 0;
+    margin-top:0;
+    padding-bottom: 0rem;
+    grid-column: 1;
+    grid-row: 1;
+    z-index: 2;
+    font-family: 'Teko', sans-serif;
+    font-size: 6rem;
+    text-transform: uppercase;
+    font-weight:bold;
+    animation: glow 1s ease-in-out infinite alternate;
+    text-align: center;
+
+  }
+#schedule a{
+    font-family: 'Teko', sans-serif;
+    color: #1354df;
+    grid-column: 1;
+    grid-row: 1;
+    align-self: end;
+    justify-self: center;
+    font-weight: bold;
+
+  }
+#schedule a:hover{
+  color:black;
+ }
+
+ @keyframes glow {
+    from {
+      text-shadow: 0 0 30px #58a2b4;
+    }
+    to {
+      text-shadow: 0 0 30px #34b3c1, 0 0 10px #4dbbc7;
+    }
+  }
+#schedule{
+margin-top:0px;
+}
+
