@@ -70,16 +70,12 @@
   <footer id="footer">
     <div class="footer-top">
       <div class="container">
-        <div class="row mr-auto">
-          <div class="col footer-social">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-          </div>
-          <div class="m-2">
+        <div class="row">
+          <div class="col"></div>
+          <div class="col">
             <img src="{% static 'prastuti/img/Department.png'%}" id="department" />
           </div>
+          <div class="col"></div>
         </div>
       </div>
     </div>
@@ -105,7 +101,7 @@
         oldObj.removeClass('active');
         $('.schedule').addClass('active')
 
-      } else if (location.href.indexOf("#events") > -1) {
+      } else if (location.href.indexOf("events") > -1) {
 
         oldObjChild = $('.active > a');
         oldObj = $('.active');
@@ -118,6 +114,12 @@
         oldObj = $('.active');
         oldObj.removeClass('active');
         $('.about').addClass('active')
+
+      } else if (location.href.indexOf("users") > -1) {
+
+        oldObjChild = $('.active > a');
+        oldObj = $('.active');
+        oldObj.removeClass('active');
 
       } else {
 

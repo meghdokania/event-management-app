@@ -2,18 +2,8 @@
 {% block body_block %}
   <div id="sign-in-container", class="content2">
     <div class="row">
-      <div class="col col-12 col-lg-7">
-        <h1 class="display-5">Sign In</h1>
-        <p class="lead">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum
-          assumenda ipsum aut architecto. Nesciunt quibusdam id doloribus
-          nostrum tenetur, dolor ut natus corporis qui consequatur sapiente,
-          adipisci ea deserunt quis, architecto sequi maxime consectetur quae
-          aut. Nesciunt ut animi quos quasi, consequuntur tempora obcaecati
-          soluta, cupiditate quod ipsam natus minima.
-        </p>
-      </div>
-      <div class="col col-12 col-lg-5">
+      <div class="col-lg-3"></div>
+      <div class=" col col-lg-6">
         <form id="sign-in-form" class="form" action="{users:usersignin}" method="POST">
         {% csrf_token %}
           <fieldset>
@@ -49,6 +39,7 @@
         <a href="{% url 'users:usersignup'%}">Don't have an account?</a>
         <a href="{% url 'users:userrecovery'%}">Forget password?</a>
       </div>
+      <div class="col-lg-3"></div>
     </div>
   </div>
 {% endblock %}
