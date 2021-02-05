@@ -37,27 +37,27 @@
             </section>
             <div class="row">
             {% for event in events %}
-            <div class="card mb-3 event-card">
-            <div class="row no-gutters">
-                <div class="col-md-4 event-img">
-                    <img src='{% static "prastuti/img/"|add:event.event_name|add:".jpg"  %}' class="card-img" alt="...">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body" style="padding: 2%">
-                        <h3 class="card-title" style="margin:2px;">{{event.event_name}}</h3>
-                        <p class="card-text">{{event.discription}}</p>
+            <div class="row mb-3 event-card">
+                <div class="event-card-in no-gutters">
+                    <div class="event-img">
+                        <img src='{% static "prastuti/img/"|add:event.event_name|add:".jpg"  %}' class="card-img" alt="...">
                     </div>
-                    <div class="event-btns" style="padding: 2%">
-                        <a class="btn btn-block btn-outline-success" href="{% url 'event_registration:register' event.event_name %}">
-                            Register
-                        </a>
-                        <a class="btn btn-block btn-outline-success" href="{% url 'events:event_info' event.event_name|lower %}">
-                            About
+                    <div >
+                        <div class="card-body" style="padding: 2%">
+                            <h3 class="card-title" style="margin:2px;">{{event.event_name}}</h3>
+                            <p class="card-text">{{event.discription}}</p>
+                        </div>
+                        <div class="event-btns" style="padding: 2%">
+                            <a class="btn btn-block btn-outline-info" href="{% url 'event_registration:register' event.event_name %}">
+                                Register
                             </a>
+                            <a class="btn btn-block btn-outline-info" href="{% url 'events:event_info' event.event_name|lower %}">
+                              About
+                              </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
             {% endfor %}
             </div>
         </div>
