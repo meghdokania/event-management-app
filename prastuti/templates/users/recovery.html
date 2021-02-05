@@ -1,13 +1,24 @@
 {% extends 'prastuti/base.html' %}
 {% block body_block %}
-    <div>
-        <h1>Recover</h1>
-        <form action="", method="POST">
-            {% csrf_token %}
-            <fieldset>
-                {{form}}
-            </fieldset>
-            <button type="submit", value="recovery">Recover</button>
-        </form>
+<div id="recover-container" class="">
+    <div class="row">
+        <div class="col col-12 col-lg-12" >
+            <h1 class="mt-5">Recover</h1>
+        </div>
+        <div class="col col-12 col-lg-12 mt-3">
+        <div>
+            <br>
+            <form class="mb-5" action="", method="POST">
+                {% csrf_token %}
+                <fieldset>
+                    {{form}}
+                </fieldset>
+                <button type="submit", value="recovery" style="margin-top:40px;margin-bottom:40px" class="btn btn-primary">Recover</button>
+
+            </form>
+            <p ><a href="{% url 'users:usersignin' %}" class="mb-2">Already have an account? SignIn Instead</a>
+        </div>
     </div>
+</div>
+
     {% endblock %}

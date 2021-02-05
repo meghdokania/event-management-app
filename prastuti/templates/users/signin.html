@@ -1,19 +1,11 @@
 {% extends 'prastuti/base.html' %}
 {% block body_block %}
-  <div id="sign-in-container", class="content2">
+  <div id="sign-in-container", class="">
     <div class="row">
-      <div class="col col-12 col-lg-7">
-        <h1 class="display-5">Sign In</h1>
-        <p class="lead">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum
-          assumenda ipsum aut architecto. Nesciunt quibusdam id doloribus
-          nostrum tenetur, dolor ut natus corporis qui consequatur sapiente,
-          adipisci ea deserunt quis, architecto sequi maxime consectetur quae
-          aut. Nesciunt ut animi quos quasi, consequuntur tempora obcaecati
-          soluta, cupiditate quod ipsam natus minima.
-        </p>
+      <div class="col col-12 col-lg-12" style="margin-bottom:20px;">
+        <h1 class="mt-5">Sign In</h1>
       </div>
-      <div class="col col-12 col-lg-5">
+      <div class="col col-12 col-lg-12">
         <form id="sign-in-form" class="form" action="{users:usersignin}" method="POST">
         {% csrf_token %}
           <fieldset>
@@ -41,13 +33,13 @@
             Sign In
           </button>
           {% else %}
-          <button class="btn btn-block btn-info" type="submit" ,="" value="Sign In" >
+          <button class="btn btn-block btn-info" style="margin-bottom:20px;" type="submit" ,="" value="Sign In" >
             Sign In
           </button>
           {% endif %}
         </form>
-        <a href="{% url 'users:usersignup'%}">Don't have an account?</a>
-        <a href="{% url 'users:userrecovery'%}">Forget password?</a>
+        <a href="{% url 'users:usersignup'%}" class="mb-2">Don't have an account?</a>
+        <a href="{% url 'users:userrecovery'%}" class="mb-5">Forget password?</a>
       </div>
     </div>
   </div>
