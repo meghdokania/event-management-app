@@ -100,6 +100,37 @@ ul.topBotomBordersOut .nav-link:hover:after {
   font-weight: bolder;
 }
 
+/*Event Details*/
+h4{
+  display:inline-grid;
+  color: royalblue;
+  overflow: hidden;
+  background: linear-gradient(to right, #007bff, #007bff 50%, royalblue 50%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 100%;
+  background-position: 100%;
+  transition: background-position 575ms ease;
+  text-decoration: none;
+}
+
+.eventName{
+  font-variant:small-caps;
+  font-family: 'Righteous', cursive;
+  background: rgba(255,0,0,0.5);
+  border: 1px solid #000;
+  text-shadow: 5px 0 15px #FF0000, 0 0 12px #0000FF;
+  transition: 0.5s ease-in-out;
+}
+.eventName:hover{
+  text-shadow: 0 0 5px #FF0000, 0 0 16px #0000FF;
+}
+.event_image{
+  width: 90%;
+}
+
+
 #top-section {
   position: relative;
   right: 0;
@@ -395,6 +426,11 @@ justify-content: center;
   .navbtn {
     margin-bottom: 5px;
   }
+
+  .event_image{
+    width: 100%;
+    height:90%;
+  }
 }
 
 @media (max-width: 700px) {
@@ -462,6 +498,9 @@ justify-content: center;
   }
   #registration-container {
     padding-top: 100px!important;
+  }
+  .event_image{
+    width: 100%;
   }
 }
 
@@ -819,4 +858,3 @@ body {
 #schedule{
 margin-top:0px;
 }
-
