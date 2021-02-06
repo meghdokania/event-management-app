@@ -174,7 +174,6 @@ def isRegisteredForEvent(profile, event):
 def eventAcceptance(request, team):
     id = int(team)
     if(request.method == "POST"):
-        print("hello")
         accept = request.POST['accepted']
 
         if(accept == "Yes"):
@@ -182,6 +181,8 @@ def eventAcceptance(request, team):
             custom = CustomUser.objects.get(email=request.user.email)
             team.team_not_accepted.remove(custom)
             team.save()
+            for option_team in custom.pending.filter(team_event = team.team_event):
+                option_team.delete()
             if(team.team_not_accepted.count() == 0):
                 team.team_active = True
                 team.save()
