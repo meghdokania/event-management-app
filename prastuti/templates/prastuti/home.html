@@ -1,74 +1,98 @@
-{% extends 'prastuti/base.html' %}
-{% load static %}
-{% block body_block %}
+{% extends 'prastuti/base.html' %} {% load static %} {% block body_block %}
 <div>
-    <div class="loader" ><img  class ="loader_img" src="{% static 'prastuti/img/loader.gif' %}"></div>
-    <div id="top-section">
-        <video id="bg-video" src="{% static 'prastuti/img/Circuit Board Background.mp4' %}" autoplay loop muted>
-        </video>
-        {% for message in messages %}
-      <div class="alert alert-{{message.tags}} alert-dismissible fade show" id = "messages">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        {{message}}
+  <div class="loader">
+    <img class="loader_img" src="{% static 'prastuti/img/loader.gif' %}" />
+  </div>
+  <div id="top-section">
+    <video
+      id="bg-video"
+      src="{% static 'prastuti/img/Circuit Board Background.mp4' %}"
+      autoplay
+      loop
+      muted
+    ></video>
+    {% for message in messages %}
+    <div
+      class="alert alert-{{message.tags}} alert-dismissible fade show"
+      id="messages"
+    >
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      {{message}}
+    </div>
+    {% endfor %}
+    <div id="overlay">
+      <h1 class="display-head1">Prastuti - A nice tagline</h1>
+      <h1 class="display-head2">
+        Official tech-fest of Electrical department, IIT BHU
+      </h1>
+    </div>
+  </div>
+  <div class="main-content">
+    <div class="content text-center" id="about">
+      <section class="section">
+        <div class="section-header my-schedule section-heading-home">
+          <h1>
+            <span>A</span><span>B</span><span>O</span><span>U</span
+            ><span>T</span>
+          </h1>
+        </div>
+      </section>
+    </div>
+    <div class="content text-center" id="events">
+      <section class="section">
+        <div class="section-header my-schedule section-heading-home">
+          <h1>
+            <span>E</span><span>V</span><span>E</span><span>N</span
+            ><span>T</span><span>S</span>
+          </h1>
+        </div>
+      </section>
+      <div class="row">
+        {% for event in events %}
+        <div class="row mb-3 event-card">
+          <div class="event-card-in no-gutters">
+            <div class="event-img">
+              <img
+                src='{% static "prastuti/img/"|add:event.event_name|add:".jpg"  %}'
+                class="card-img"
+                alt="..."
+              />
+            </div>
+            <div>
+              <div class="card-body" style="padding: 2%">
+                <h3 class="card-title" style="margin: 2px">
+                  {{event.event_name}}
+                </h3>
+                <p class="card-text">{{event.discription}}</p>
+              </div>
+              <div class="event-btns" style="padding: 2%">
+                <a
+                  class="btn btn-block btn-outline-info"
+                  href="{% url 'event_registration:register' event.event_name %}"
+                >
+                  Register
+                </a>
+                <a
+                  class="btn btn-block btn-outline-info"
+                  href="{% url 'events:event_info' event.event_name|lower %}"
+                >
+                  About
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
       </div>
-      {% endfor %}
-        <div id="overlay">
-            <h1 class="display-head1">Prastuti - A nice tagline</h1>
-            <h1 class="display-head2">Official tech-fest of Electrical department, IIT BHU</h1>
-        </div>
     </div>
-    <div class="main-content">
-        <div class="content text-center" id="about">
-            <section class="section">
-                <div class="section-header my-schedule">
-                  
-                  <h1 ><span>A</span><span>B</span><span>O</span><span>U</span><span>T</span></h1>
-                    
-                </div>
-            </section>
-        </div>
-        <div class="content text-center" id="events">
-            <section class="section">
-                <div class="section-header my-schedule">
-                  
-                  <h1><span>E</span><span>V</span><span>E</span><span>N</span><span>T</span><span>S</span></h1>
-                    
-                </div>
-            </section>
-            <div class="row">
-            {% for event in events %}
-            <div class="row mb-3 event-card">
-                <div class="event-card-in no-gutters">
-                    <div class="event-img">
-                        <img src='{% static "prastuti/img/"|add:event.event_name|add:".jpg"  %}' class="card-img" alt="...">
-                    </div>
-                    <div >
-                        <div class="card-body" style="padding: 2%">
-                            <h3 class="card-title" style="margin:2px;">{{event.event_name}}</h3>
-                            <p class="card-text">{{event.discription}}</p>
-                        </div>
-                        <div class="event-btns" style="padding: 2%">
-                            <a class="btn btn-block btn-outline-info" href="{% url 'event_registration:register' event.event_name %}">
-                                Register
-                            </a>
-                            <a class="btn btn-block btn-outline-info" href="{% url 'events:event_info' event.event_name|lower %}">
-                              About
-                              </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-            </div>
-        </div>
-    </div>
+  </div>
 </div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 <script>
-    setTimeout(function(){        
-    $('.loader').fadeOut();
-    $('.loader_img').delay(150).fadeOut('slow'); 
-}, 300);
+  setTimeout(function () {
+    $(".loader").fadeOut();
+    $(".loader_img").delay(150).fadeOut("slow");
+  }, 300);
 </script>
 {% endblock %}
