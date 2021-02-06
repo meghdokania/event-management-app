@@ -117,7 +117,7 @@ h4 {
 }
 
 .eventName {
-  font-size: 6rem;
+  font-size: 5vw;
   color: lightblue;
   animation: glow 1s ease-in-out infinite alternate;
 }
@@ -571,7 +571,10 @@ h4 {
     width: 100%;
   }
   .eventName {
-    font-size: 4rem;
+    font-size: 2.2rem;
+  }
+  .section-heading-schedule h1 ,.section-heading-home h1{
+    font-size: 2.2rem !important;
   }
 }
 
@@ -686,10 +689,10 @@ h4 {
 }
 
 /*section header*/
-.section-header {
+/*.section-header {
   text-align: center;
   color: lightblue;
-}
+}*/
 
 /*general*/
 /* img{
@@ -868,11 +871,11 @@ h4 {
 }
 
 .section-heading-schedule h1 {
-  font-size: 4rem;
+  font-size: 5vw;
 }
 
 .section-heading-home h1 {
-  font-size: 5rem;
+  font-size: 5vw;
 }
 
 /*general*/
