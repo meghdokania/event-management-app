@@ -68,7 +68,7 @@ a:hover {
 .active {
   color: rgb(255, 41, 41);
   font-size: larger;
-  font-weight: bolder; 
+  font-weight: bolder;
 }
 
 .navbtn {
@@ -252,11 +252,11 @@ h4 {
 
 .event-btns {
   padding: 0 10px;
- 
+
 }
 
 .event-btns a{
-  
+
   font-weight: bolder;
   font-size: large;
   /* color: rgb(221, 235, 158); */
@@ -346,12 +346,12 @@ h4 {
 }
 
 #sign-up-container {
-  padding: 10px;
+  padding: 70px 10px 70px 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: calc(100vh - 120px);
-  margin: 100px 0px 50px 0px;
+  margin: 50px 0px 0px 0px;
   /* position: relative; */
 }
 
@@ -428,12 +428,13 @@ h4 {
   width: 95%;
 }
 #recover-container{
-  padding: 10px;
+  padding: 20px;
+  padding-top: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: calc(100vh - 120px);
-  margin: 60px 0px 25px 0px;
+  margin: 30px 0px 0px 0px;
 }
 #recover-container .row {
   width: 100%;
@@ -443,8 +444,27 @@ h4 {
   margin: 0;
   background-color: white;
 }
+#recover-form {
+padding-left: 40px;
+padding-right: 40px;
 
+}
+#new-password-container{
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 120px);
+}
 
+#new-password-container .row {
+  width: 100%;
+  max-width: 600px !important;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 30px;
+  background-color: white;
+}
 
 .form-control {
   background-color: #e6efff;
@@ -467,7 +487,7 @@ h4 {
   .nav-item {
     font-size: 1.2rem;
   }
-  
+
 }
 
 @media (max-width: 1000px) {
@@ -596,7 +616,7 @@ h4 {
   .events-cards {
     flex-direction: column;
   }
-  
+
   .event-card {
     width: 90%;
   }
@@ -736,14 +756,14 @@ h4 {
   background-color: rgb(0, 0, 0, 0.7);
   color: rgb(221, 235, 158);
   text-align: left;
-  transition: transform 1s;  
+  transition: transform 1s;
 }
-      
+
 
 .shadow-box:hover {
   box-shadow: 0 1px 40px #36e236;
-  
-}    
+
+}
 
 .my-schedule h1 {
   margin: 0;
@@ -765,7 +785,7 @@ h4 {
   grid-row: 1;
   align-self: end;
   justify-self: center;
-  
+
 }
 .my-schedule a:hover {
   font-family: 'Teko', sans-serif;
@@ -777,7 +797,7 @@ h4 {
   font-size: larger;
   font-weight: bolder;
   justify-self: center;
-  
+
 }
 .my-schedule ul{
   list-style: none;
@@ -801,7 +821,7 @@ h4 {
 }
 .dropdown-link:hover {
   color: white;
-  background-color: grey;   
+  background-color: grey;
 }
 
 /* Update page */
@@ -810,14 +830,27 @@ h4 {
 #registration-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   width: 100%;
   padding: 100px 15px;
-  padding-top: 300px;
+
   align-items: center;
+  margin: 50px 0px 0px 0px;
 }
 
 #registration-container {
   padding-top: 140px;
+}
+
+#update-container .row,
+#registration-container .row {
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 0;
+  background-color: white;
+  max-width: 600px;
 }
 
 #update-container hr,
@@ -831,7 +864,7 @@ h4 {
 
 #update-container form {
   width: 100%;
-  max-width: 600px;
+
 }
 
 .section-header{
@@ -1013,7 +1046,7 @@ margin-top:0px;
 
 #invitations{
   color: black;
-  overflow-x: scroll; 
+  overflow-x: scroll;
   white-space: nowrap;
   scroll-snap-type: x mandatory;
 }
