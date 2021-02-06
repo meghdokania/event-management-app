@@ -5,7 +5,7 @@
       <div class="col col-12 col-lg-12">
         <h1 class="mt-5">Sign In</h1>
       </div>
-      <div class="col col-12 col-lg-12">  
+      <div class="col col-12 col-lg-12">
         <form id="sign-in-form" class="form" action="{users:usersignin}" method="POST">
         {% csrf_token %}
           <fieldset>
@@ -29,7 +29,7 @@
               />
           </fieldset>
           {% if request.GET.next %}
-          <button class="btn btn-block btn-info" type="submit" name="next" value="{{request.GET.next}}" >
+          <button class="btn btn-block btn-info" type="submit" style="margin-bottom:20px;" name="next" value="{{request.GET.next}}" >
             Sign In
           </button>
           {% else %}
