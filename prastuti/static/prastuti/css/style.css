@@ -119,7 +119,7 @@ h4 {
 }
 
 .eventName {
-  font-size: 6rem;
+  font-size: 5vw;
   color: lightblue;
   animation: glow 1s ease-in-out infinite alternate;
 }
@@ -589,7 +589,10 @@ padding-right: 40px;
     width: 100%;
   }
   .eventName {
-    font-size: 4rem;
+    font-size: 2.2rem;
+  }
+  .section-heading-schedule h1 ,.section-heading-home h1{
+    font-size: 2.2rem !important;
   }
 }
 
@@ -699,11 +702,7 @@ padding-right: 40px;
   background-color: #9e44c4;
 }
 
-/*section header*/
-.section-header{
-  text-align: center;
-  color:lightblue
-}
+
 
 /*general*/
 /* img{
@@ -867,9 +866,17 @@ padding-right: 40px;
 
 }
 
+
 .section-header{
     text-align: center;
     color: #21bd35;
+
+.section-heading-schedule h1 {
+  font-size: 5vw;
+}
+
+.section-heading-home h1 {
+  font-size: 5vw;
 }
 
 /*general*/
