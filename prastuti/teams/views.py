@@ -26,15 +26,19 @@ def registerTeam(request, event):
 
         # validation error to raise here
     if request.method == 'POST':
-        print("I am in post")
         error = {}
         emails = {}
         team_name = request.POST['team_name']
-        try:
-            team = Team.objects.get(team_name=team_name, team_event=event)
-            error[team.team_name] = "The teamname has already taken"
-        except Team.DoesNotExist:
-            pass
+        if team_name == "":
+            print("I am in if")
+            # team_name = "no"
+            error[team_name] = "Team name can't be empty"
+        else:
+            try:
+                team = Team.objects.get(team_name=team_name, team_event=event)
+                error[team.team_name] = "The teamname has already taken"
+            except Team.DoesNotExist:
+                pass
 
         team_size = int(request.POST['team_size'])
 

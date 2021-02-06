@@ -1,67 +1,66 @@
 {% extends 'prastuti/base.html' %}
 {% load static %}
 {% block body_block %}
-<div id = 'schedule' class = 'content2' style="background-image: url('{% static 'prastuti/img/event.jpeg'%}');">
-  <div class="my-schedule">
-    <section class="section">
-      <div class="section-header">
-        <h1><span>S</span><span>C</span><span>H</span><span>E</span><span>D</span><span>U</span><span>L</span><span>E</span></h1>
-      </div>
-     </section>
+<div class="my-schedule content2 main-content">
+  <section class="section">
+    <div class="section-header">
+      <h1><span>S</span><span>C</span><span>H</span><span>E</span><span>D</span><span>U</span><span>L</span><span>E</span></h1>
+    </div>
+   </section>
 <!--events starts from here -->
 <div class="container single-timeline shadow-box event-name" >
-  <div class="row">
-    <div class="col">
-     <div >
-        <ul class="event--image">
-         <li>
-            <img src="{% static 'prastuti/img/codigo.jpeg'%}" />
-        <div class="image-header">
-            <h3><b>  Codigo </b></h3>
-        </div>
-
-        </li>
-        <span class=" time" aria-hidden="true">Feb 14</span>
-        </ul>
-     </div>
-
-    </div>
-    <div class="col " >
-      <div class="previous-workshop">
-        <div class="prev_workshop">
-        Previous Workshops
-        </div>
-        <div >
-          <ul >
-
-            <li>
-                <a href="#">Inroduction to STL</a>
-            </li>
-            <li >
-                <a href="#">Inroduction to STL</a>
-            </li>
-            <li >
-                <a href="#">Inroduction to STL</a>
-            </li>
-          </ul>
+<div class="row">
+  <div class="col">
+   <div >
+      <ul class="event--image">
+       <li>
+          <img src="{% static 'prastuti/img/Codigo.jpg'%}" class="card-img"/>
+      <div class="image-header">
+          <h3><b>  Codigo </b></h3>
       </div>
-      </div>
-    </div>
-    <div class="col">
-        <div class="Next-workshop">
-          <div class="up_workshop">
-        Upcoming workshops
-        </div>
-          <ul>
+          
+      </li>
+      <span class=" time" aria-hidden="true">Feb 14</span>
+      </ul>
+   </div>
 
-            <li>
-                <a href="#">Graphs-Djikstra</a><br/>
-                <small><cite>Feb 12 | 10:AM</cite></small>
-            </li>
-          </ul>
-      </div>
- </div>
   </div>
+  <div class="col " >
+    <div class="previous-workshop">
+      <div class="prev_workshop">
+      Previous Workshops
+      </div>
+      <div >
+        <ul >
+
+          <li>
+              <a href="#">Inroduction to STL</a>
+          </li>
+          <li >
+              <a href="#">Inroduction to STL</a>
+          </li>
+          <li >
+              <a href="#">Inroduction to STL</a>
+          </li>
+        </ul>
+    </div>
+    </div>
+  </div>
+  <div class="col">
+      <div class="Next-workshop">
+        <div class="up_workshop">
+      Upcoming workshops
+      </div>
+        <ul>
+
+          <li>
+              <a href="#">Graphs-Djikstra</a><br/>
+              <small><cite>Feb 12 | 10:AM</cite></small>
+          </li>
+        </ul>
+    </div>
+</div>
+</div>
 </div>
 
 <br/>
@@ -69,233 +68,226 @@
 <!--This is second event-->
 
 <div class="container single-timeline shadow-box event-name" >
-  <div class="row">
-    <div class="col">
-     <div >
-        <ul class="event--image">
-         <li>
-            <img src="{% static 'prastuti/img/codigo.jpeg'%}" />
-        <div class="image-header">
-            <h3><b> cryptX </b></h3>
-        </div>
-
-        </li>
-        <span class=" time" aria-hidden="true">Feb 14</span>
-        </ul>
-     </div>
-
-    </div>
-    <div class="col " >
-      <div class="previous-workshop">
-        <div class="prev_workshop">
-        Previous Workshops
-        </div>
-          <ul>
-
-            <li>
-                <a href="#">Inroduction to STL</a>
-            </li>
-            <li>
-                <a href="#">Inroduction to STL</a>
-            </li>
-            <li>
-                <a href="#">Inroduction to STL</a>
-            </li>
-          </ul>
+<div class="row">
+  <div class="col">
+   <div >
+      <ul class="event--image">
+       <li>
+          <img src="{% static 'prastuti/img/Cryptx.jpg'%}" class="card-img"/>
+      <div class="image-header">
+          <h3><b> CryptX </b></h3>
       </div>
-    </div>
-    <div class="col">
-        <div class="Next-workshop">
-          <div class="up_workshop">
-        Upcoming workshops
-        </div>
-          <ul>
+          
+      </li>
+      <span class=" time" aria-hidden="true">Feb 14</span>
+      </ul>
+   </div>
 
-            <li>
-                <a href="#">Graphs-Djikstra</a><br/>
-                <small><cite>Feb 12 | 10:AM</cite></small>
-            </li>
-          </ul>
-      </div>
- </div>
   </div>
+  <div class="col " >
+    <div class="previous-workshop">
+      <div class="prev_workshop">
+      Previous Workshops
+      </div>
+        <ul>
+
+          <li>
+              <a href="#">Inroduction to STL</a>
+          </li>
+          <li>
+              <a href="#">Inroduction to STL</a>
+          </li>
+          <li>
+              <a href="#">Inroduction to STL</a>
+          </li>
+        </ul>
+    </div>
+  </div>
+  <div class="col">
+      <div class="Next-workshop">
+        <div class="up_workshop">
+      Upcoming workshops
+      </div>
+        <ul>
+
+          <li>
+              <a href="#">Graphs-Djikstra</a><br/>
+              <small><cite>Feb 12 | 10:AM</cite></small>
+          </li>
+        </ul>
+    </div>
+</div>
+</div>
 </div>
 
 <br/>
 <!--And here comes the third one-->
 
 <div class="container single-timeline shadow-box event-name" >
-  <div class="row">
-    <div class="col">
-     <div >
-        <ul class="event--image">
-         <li>
-            <img src="{% static 'prastuti/img/codigo.jpeg'%}" />
-        <div class="image-header">
-            <h3><b>  RECOGNIZANCE </b></h3>
-        </div>
-
-        </li>
-        <span class=" time" aria-hidden="true">Feb 14</span>
-        </ul>
-     </div>
-
-    </div>
-    <div class="col " >
-      <div class="previous-workshop">
-        <div class="prev_workshop">
-        Previous Workshops
-        </div>
-          <ul>
-
-            <li>
-                <a href="#">Inroduction to STL</a>
-            </li>
-            <li>
-                <a href="#">Inroduction to STL</a>
-            </li>
-            <li>
-                <a href="#">Inroduction to STL</a>
-            </li>
-          </ul>
+<div class="row">
+  <div class="col">
+   <div >
+      <ul class="event--image">
+       <li>
+          <img src="{% static 'prastuti/img/Recognizance.jpg'%}" class="card-img"/>
+      <div class="image-header">
+          <h3><b>  RECOGNIZANCE </b></h3>
       </div>
-    </div>
-    <div class="col">
-        <div class="Next-workshop">
-          <div class="up_workshop">
-        Upcoming workshops
-        </div>
-          <ul>
+          
+      </li>
+      <span class=" time" aria-hidden="true">Feb 14</span>
+      </ul>
+   </div>
 
-            <li>
-                <a href="#">Graphs-Djikstra</a><br/>
-                <small><cite>Feb 12 | 10:AM</cite></small>
-            </li>
-          </ul>
-      </div>
- </div>
   </div>
+  <div class="col " >
+    <div class="previous-workshop">
+      <div class="prev_workshop">
+      Previous Workshops
+      </div>
+        <ul>
+
+          <li>
+              <a href="#">Inroduction to STL</a>
+          </li>
+          <li>
+              <a href="#">Inroduction to STL</a>
+          </li>
+          <li>
+              <a href="#">Inroduction to STL</a>
+          </li>
+        </ul>
+    </div>
+  </div>
+  <div class="col">
+      <div class="Next-workshop">
+        <div class="up_workshop">
+      Upcoming workshops
+      </div>
+        <ul>
+
+          <li>
+              <a href="#">Graphs-Djikstra</a><br/>
+              <small><cite>Feb 12 | 10:AM</cite></small>
+          </li>
+        </ul>
+    </div>
+</div>
+</div>
 </div>
 <br/>
 <!--the fourth one-->
 
 <div class="container single-timeline shadow-box event-name" >
-  <div class="row">
-    <div class="col">
-     <div >
-        <ul class="event--image">
-         <li>
-            <img src="{% static 'prastuti/img/codigo.jpeg'%}" />
-        <div class="image-header">
-            <h3><b>  simulim </b></h3>
-        </div>
-
-        </li>
-        <span class=" time" aria-hidden="true">Feb 14</span>
-        </ul>
-     </div>
-
-    </div>
-    <div class="col " >
-      <div class="previous-workshop">
-        <div class="prev_workshop">
-        Previous Workshops
-        </div>
-          <ul>
-
-            <li>
-                <a href="#">Inroduction to STL</a>
-            </li>
-            <li>
-                <a href="#">Inroduction to STL</a>
-            </li>
-            <li>
-                <a href="#">Inroduction to STL</a>
-            </li>
-          </ul>
+<div class="row">
+  <div class="col">
+   <div >
+      <ul class="event--image">
+       <li>
+          <img src="{% static 'prastuti/img/Simulim.jpg'%}" class="card-img"/>
+      <div class="image-header">
+          <h3><b>  Simulim </b></h3>
       </div>
-    </div>
-    <div class="col">
-        <div class="Next-workshop">
-          <div class="up_workshop">
-        Upcoming workshops
-        </div>
-          <ul>
+          
+      </li>
+      <span class=" time" aria-hidden="true">Feb 14</span>
+      </ul>
+   </div>
 
-            <li>
-                <a href="#">Graphs-Djikstra</a><br/>
-                <small><cite>Feb 12 | 10:AM</cite></small>
-            </li>
-          </ul>
-      </div>
- </div>
   </div>
+  <div class="col " >
+    <div class="previous-workshop">
+      <div class="prev_workshop">
+      Previous Workshops
+      </div>
+        <ul>
+
+          <li>
+              <a href="#">Inroduction to STL</a>
+          </li>
+          <li>
+              <a href="#">Inroduction to STL</a>
+          </li>
+          <li>
+              <a href="#">Inroduction to STL</a>
+          </li>
+        </ul>
+    </div>
+  </div>
+  <div class="col">
+      <div class="Next-workshop">
+        <div class="up_workshop">
+      Upcoming workshops
+      </div>
+        <ul>
+
+          <li>
+              <a href="#">Graphs-Djikstra</a><br/>
+              <small><cite>Feb 12 | 10:AM</cite></small>
+          </li>
+        </ul>
+    </div>
+</div>
+</div>
 </div>
 
 <br/>
 <!--Fifth one-->
 
 <div class="container single-timeline shadow-box event-name" >
-  <div class="row">
-    <div class="col">
-     <div >
-        <ul class="event--image">
-         <li>
-            <img src="{% static 'prastuti/img/codigo.jpeg'%}" />
-        <div class="image-header">
-            <h3><b>  Consilium </b></h3>
-        </div>
-
-        </li>
-        <span class=" time" aria-hidden="true">Feb 14</span>
-        </ul>
-     </div>
-
-    </div>
-    <div class="col " >
-      <div class="previous-workshop">
-        <div class="prev_workshop">
-        Previous Workshops
-        </div>
-          <ul>
-
-            <li>
-                <a href="#">Inroduction to STL</a>
-            </li>
-            <li>
-                <a href="#">Inroduction to STL</a>
-            </li>
-            <li>
-                <a href="#">Inroduction to STL</a>
-            </li>
-          </ul>
+<div class="row">
+  <div class="col">
+   <div >
+      <ul class="event--image">
+       <li>
+          <img src="{% static 'prastuti/img/Consilium.jpg'%}" class="card-img"/>
+      <div class="image-header">
+          <h3><b>  Consilium </b></h3>
       </div>
-    </div>
-    <div class="col">
-        <div class="Next-workshop">
-          <div class="up_workshop">
-        Upcoming workshops
-        </div>
-          <ul>
+          
+      </li>
+      <span class=" time" aria-hidden="true">Feb 14</span>
+      </ul>
+   </div>
 
-            <li>
-                <a href="#">Graphs-Djikstra</a><br/>
-                <small><cite>Feb 12 | 10:AM</cite></small>
-            </li>
-          </ul>
-      </div>
- </div>
   </div>
+  <div class="col " >
+    <div class="previous-workshop">
+      <div class="prev_workshop">
+      Previous Workshops
+      </div>
+        <ul>
+
+          <li>
+              <a href="#">Inroduction to STL</a>
+          </li>
+          <li>
+              <a href="#">Inroduction to STL</a>
+          </li>
+          <li>
+              <a href="#">Inroduction to STL</a>
+          </li>
+        </ul>
+    </div>
+  </div>
+  <div class="col">
+      <div class="Next-workshop">
+        <div class="up_workshop">
+      Upcoming workshops
+      </div>
+        <ul>
+
+          <li>
+              <a href="#">Graphs-Djikstra</a><br/>
+              <small><cite>Feb 12 | 10:AM</cite></small>
+          </li>
+        </ul>
+    </div>
+</div>
+</div>
 </div>
 <br/>
-
-
-
-  </div>
-
-
-</div>
-
+</div> 
 {% endblock %}             
               
             

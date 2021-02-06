@@ -12,6 +12,16 @@ class UserForm(UserCreationForm):
     class Meta:
         model = CustomUser
         fields = ('name', 'email','institute', 'year', 'password1', 'password2')
+
+    def clean_year(self):
+        year = self.cleaned_data['year']
+        if year <= 0 or year > 5:
+            raise ValidationError(
+                self.error_messages['year_error'],
+                code='year_error',
+            )
+        return year
+        
     def save(self, commit=True):
         user = super().save(commit=False)
         user.email = self.cleaned_data['email']
@@ -108,7 +118,7 @@ class UserUpdateForm(forms.Form):
 
     def clean_year(self):
         year = self.cleaned_data['year']
-        if year < 0 or year > 5:
+        if year <= 0 or year > 5:
             raise ValidationError(
                 self.error_messages['year_error'],
                 code='year_error',

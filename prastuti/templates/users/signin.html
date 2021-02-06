@@ -1,11 +1,11 @@
 {% extends 'prastuti/base.html' %}
 {% block body_block %}
-  <div id="sign-in-container", class="">
+  <div id="sign-in-container", class="content3 mt-5">
     <div class="row">
-      <div class="col col-12 col-lg-12" style="margin-bottom:20px;">
+      <div class="col col-12 col-lg-12">
         <h1 class="mt-5">Sign In</h1>
       </div>
-      <div class="col col-12 col-lg-12">
+      <div class="col col-12 col-lg-12">  
         <form id="sign-in-form" class="form" action="{users:usersignin}" method="POST">
         {% csrf_token %}
           <fieldset>
