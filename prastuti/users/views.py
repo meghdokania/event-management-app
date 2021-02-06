@@ -166,7 +166,7 @@ def userNewpassword(request, uidb64, token):
 
 def isRegisteredForEvent(profile, event):
     for team in profile.team_set.all():
-        if team.team_event == event:
+        if team.team_event == event and not profile in team.team_not_accepted.all():
             return team
     return None
 

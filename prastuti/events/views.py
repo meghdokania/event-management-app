@@ -7,4 +7,4 @@ def index(request):
     return render(request,'events/index.html',{'events':events})
 
 def event(request,event):
-    return render(request,'events/codigo.html')
+    return render(request,'events/'+event+'.html')
