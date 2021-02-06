@@ -1,6 +1,6 @@
 {% extends 'prastuti/base.html' %}
 {% block body_block %}
-<div id="recover-container" class="">
+<div id="recover-container" class="content3">
     <div class="row">
         <div class="col col-12 col-lg-12" >
             <h1 class="mt-5">Recover</h1>
@@ -8,15 +8,24 @@
         <div class="col col-12 col-lg-12 mt-3">
         <div>
             <br>
-            <form class="mb-5" action="", method="POST">
-                {% csrf_token %}
-                <fieldset>
-                    {{form}}
-                </fieldset>
-                <button type="submit", value="recovery" style="margin-top:40px;margin-bottom:40px" class="btn btn-primary">Recover</button>
+            <form id="recover-form" class="form" action="" method="POST">
+            {% csrf_token %}
+              <fieldset>
+                <div class="form-group">
+                  {% if form.errors %}
+                    <p>Please enter a correct email adress. Note that the field may be case-sensitive.</p>
+                  {% endif %}
+                  <input placeholder="Enter your email" class="form-control form-control-sm"
+                    type="text" name="email" maxlength="150" autofocus  />
+                </div>
+              </fieldset>
+              <button class="btn  btn-outline-success" style="margin-bottom:50px; margin-top:50px;" type="submit" ,="" value="recovery" >
+                Recover
+              </button>
 
             </form>
-            <p ><a href="{% url 'users:usersignin' %}" class="mb-2">Already have an account? SignIn Instead</a>
+
+
         </div>
     </div>
 </div>

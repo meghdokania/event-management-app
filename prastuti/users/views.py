@@ -23,7 +23,7 @@ def usersList(request):
     return HttpResponse("Hii! This is user list")
 
 
-@login_required
+@login_required(login_url='users:usersignin')
 def userUpdate(request, pk):
     template = 'users/update.html'
     user = CustomUser.objects.get(pk=pk)
@@ -99,7 +99,7 @@ def activate(request, uidb64, token):
     else:
         return HttpResponse('Activation link is invalid!')
 
-
+@login_required(login_url='users:usersignin')
 def userLogout(request):
     prev = request.META.get('HTTP_REFERER')
     logout(request)
@@ -116,6 +116,7 @@ def userProfile(request, email):
     return render(request, 'users/profile.html', {'profile': user, 'update': update, 'teams': user.team_set.all()})
 
 
+@login_required(login_url='users:usersignin')
 def userRecovery(request):
     if request.method == "POST":
         form = forms.PasswordResetForm(data=request.POST)
@@ -142,6 +143,7 @@ def userRecovery(request):
     return render(request, 'users/recovery.html', {'form': form})
 
 
+@login_required(login_url='users:usersignin')
 def userNewpassword(request, uidb64, token):
     try:
         uid = force_text(urlsafe_base64_decode(uidb64))
@@ -166,7 +168,7 @@ def userNewpassword(request, uidb64, token):
 
 def isRegisteredForEvent(profile, event):
     for team in profile.team_set.all():
-        if team.team_event == event:
+        if team.team_event == event and not profile in team.team_not_accepted.all():
             return team
     return None
 
@@ -174,7 +176,6 @@ def isRegisteredForEvent(profile, event):
 def eventAcceptance(request, team):
     id = int(team)
     if(request.method == "POST"):
-        print("hello")
         accept = request.POST['accepted']
 
         if(accept == "Yes"):
@@ -182,6 +183,8 @@ def eventAcceptance(request, team):
             custom = CustomUser.objects.get(email=request.user.email)
             team.team_not_accepted.remove(custom)
             team.save()
+            for option_team in custom.pending.filter(team_event = team.team_event):
+                option_team.delete()
             if(team.team_not_accepted.count() == 0):
                 team.team_active = True
                 team.save()
