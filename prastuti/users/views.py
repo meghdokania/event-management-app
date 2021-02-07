@@ -47,6 +47,8 @@ def userSignin(request):
         if(form.is_valid()):
             user = form.get_user()
             login(request, user)
+            if "next" in request.POST:
+                return redirect(request.POST.get('next'))
             return redirect(user.get_absolute_url())
     else:
         form = AuthenticationForm()
