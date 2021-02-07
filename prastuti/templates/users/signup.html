@@ -36,14 +36,7 @@
                             <input placeholder="Enter password" class="form-control-sm form-control mb-1" type="password" name="password1" autocomplete="new-password" required="" id="id_password1">
 
                             <div style="color: red;">{{user_form.password1.errors}}</div>
-                            <div id="pass-instructions" class="pl-3 text-muted helptext">
-                                <ul>
-                                    <li>Your password can’t be too similar to your other personal information.</li>
-                                    <li>Your password must contain at least 8 characters.</li>
-                                    <li>Your password can’t be a commonly used password.</li>
-                                    <li>Your password can’t be entirely numeric.</li>
-                                </ul>
-                            </div>
+
                         </div>
                         <div class="form-group">
                             <div style="color: red;">{{user_form.password2.errors}}</div>

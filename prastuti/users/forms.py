@@ -13,6 +13,10 @@ class UserForm(UserCreationForm):
         model = CustomUser
         fields = ('name', 'email','institute', 'year', 'password1', 'password2')
 
+    error_messages = {
+        'year_error': _('Year must be between 1 to 5'),
+    }
+
     def clean_year(self):
         year = self.cleaned_data['year']
         if year <= 0 or year > 5:
@@ -32,7 +36,7 @@ class UserForm(UserCreationForm):
 
 class PasswordResetForm(forms.Form):
     error_messages = {
-        'email_error': _('CustomUser does not exists'),
+        'email_error': _('Email does not exists'),
     }
     email = forms.EmailField(
         label=_("Email"),
@@ -96,7 +100,7 @@ class PasswordUpdateForm(forms.Form):
 class UserUpdateForm(forms.Form):
     error_messages = {
         'name_error': _('Length of name must be greater than zero'),
-        'year_error': _('Year must be between one to four'),
+        'year_error': _('Year must be between 1 to 5'),
         'institue_error': _('')
     }
     name = forms.CharField(label=_("Name"), max_length=255)

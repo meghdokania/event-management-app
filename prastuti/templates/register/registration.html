@@ -26,8 +26,13 @@
                   <span>{{error|get_key:'notregister'}}</span>
                 </div>
               {% endif %}
+              {% if error|get_key:teamsize %}
+                <div class="alert alert-danger">
+                  <span>{{error|get_key:teamsize}}</span>
+                </div>
+              {% endif %}
               <div class="form-group">
-                <label for="Team name">Team name:</label>
+                <label for="teamname">Team name:</label>
                 <input class="form-control form-control-sm" type="text"  id="teamname" name='team_name' value = "{{teamname}}">
                     {% if error|get_key:teamname %}
                       <div class="alert alert-danger">
@@ -37,7 +42,7 @@
               </div>
               {% for key,value in emailids.items %}
                 <div class="form-group">
-                    <label>Email id of member {{forloop.counter}}</label>
+                    <label for="email{{forloop.counter}}">Email id of member {{forloop.counter}}</label>
                     <input class="form-control form-control-sm" type="email"  id ="email{{forloop.counter}}" name='email{{forloop.counter}}' value = "{{value}}">
                     {% if error|get_key:key %}
                         <div class="alert alert-danger">
@@ -49,8 +54,13 @@
 
               {% if event.event_name == 'Codigo' or  event.event_name == 'Recognizance' %}
                 <div class="form-group">
-                    <label>kaggle id of the team</label>
-                    <input class="form-control form-control-sm" type="text" id="team_id" name='team_id' value = "{{team_id}}">
+                    {% if event.event_name == 'Recognizance'%}
+                    <label for="team_id">kaggle id of the team</label>
+                    <input class="form-control form-control-sm" type="text"  id="team_id" name='team_id' value = "{{team_id}}">
+                  {% else %}
+                   <label for="team_id">Hackerank id of the user</label>
+                  <input class="form-control form-control-sm" type="text" id="team_id" name='team_id' value = "{{team_id}}">
+                    {% endif %}
                 </div>
               {% endif %}
               <button type="submit" class="btn-block btn btn-success">Submit</button>
