@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" /> 
     <link
       rel="shortcut icon"
       type="image/x-icon"
@@ -70,7 +70,7 @@
                  src="{% static 'users/img/default_profile.png'%}" alt="{{user.name}}">
               </a>
               <div class="dropdown-menu dropdown-menu-right dropdown-div">
-                <!-- <ul class="dropdown-item"> -->
+               
                 <a href="{% url 'users:userprofile' email=user.email%}" class="dropdown-item dropdown-link">
                   Dashboard
                 </a>
@@ -78,7 +78,7 @@
                 <a href="{% url 'users:userupdate' pk=user.pk%}" class="dropdown-item dropdown-link">Profile Update</a>
                 <div class="dropdown-divider"></div>
                 <a href="{% url 'users:userlogout' %}" class="dropdown-item dropdown-link" >Log Out</a>
-              <!-- </ul> -->
+         
               </div>
             {% else %}
             <a class="btn btn-outline-success siginbutton" href="{% url 'users:usersignin' %}"><i class="fas fa-sign-in-alt mr-1"></i>Sign In</a>

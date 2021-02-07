@@ -189,9 +189,7 @@ h4 {
 .content2 {
   min-height: 100vh;
   background-image: url("/static/prastuti/img/background.jpg");
-  background-attachment: fixed;
-  /* background-image: url("/static/prastuti/img/background.jpg"); */
-  /* background-color: #ccc; */
+  /* background-attachment: fixed; */
   padding: 120px 40px;
 }
 
@@ -765,7 +763,7 @@ padding-right: 40px;
 }
 
 .my-schedule h1 {
-  margin: 0;
+  margin: auto;
   padding-bottom: 0rem;
   grid-column: 1;
   grid-row: 1;
@@ -867,10 +865,10 @@ padding-right: 40px;
 }
 
 
-.section-header{
+/* .section-header{
     text-align: center;
     color: #21bd35;
-}
+} */
 .section-heading-schedule h1 {
   font-size: 5vw;
 }
@@ -1005,8 +1003,9 @@ margin-top:0px;
   text-align: center;
   color: white;
   background-image: url("/static/prastuti/img/profile.jpg");
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat; */
   background-size: cover;
+  min-height: 100vh;
 }
 
 .personal-details{
