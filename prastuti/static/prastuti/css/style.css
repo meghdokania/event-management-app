@@ -45,7 +45,7 @@ a:hover {
 }
 
 .nav-item {
-  color: rgba(246, 252, 253, 0.4);
+  color:rgba(246, 252, 253, 0.4);
   margin: 1px 20px 0 10px;
   letter-spacing: 1.5px;
   cursor: pointer;
@@ -61,7 +61,7 @@ a:hover {
 }
 
 .nav-item:hover {
-  color: white;
+  color:white;
   font-size: larger;
   font-weight: bolder;
 }
@@ -91,6 +91,8 @@ ul.topBotomBordersOut .nav-link:hover:after {
   transform: translateY(0px);
 }
 
+
+
 /*Event Details*/
 h4 {
   display: inline-grid;
@@ -117,7 +119,7 @@ h4 {
 }
 
 .eventName {
-  font-size: 6rem;
+  font-size: 5vw;
   color: lightblue;
   animation: glow 1s ease-in-out infinite alternate;
 }
@@ -206,6 +208,11 @@ h4 {
 
 /* events section */
 
+
+
+
+
+
 .events-cards {
   padding: 2%;
   color: white;
@@ -245,9 +252,11 @@ h4 {
 
 .event-btns {
   padding: 0 10px;
+
 }
 
-.event-btns a {
+.event-btns a{
+
   font-weight: bolder;
   font-size: large;
   /* color: rgb(221, 235, 158); */
@@ -259,8 +268,15 @@ h4 {
 
 /* end events section */
 
+
+
+
+
+
+
+
 #footer {
-  background-color: #030303;
+  background-color:#030303;
   /* position: fixed; */
   width: 100%;
   bottom: 0;
@@ -411,7 +427,7 @@ h4 {
   max-width: 450px;
   width: 95%;
 }
-#recover-container {
+#recover-container{
   padding: 20px;
   padding-top: 40px;
   display: flex;
@@ -429,10 +445,11 @@ h4 {
   background-color: white;
 }
 #recover-form {
-  padding-left: 40px;
-  padding-right: 40px;
+padding-left: 40px;
+padding-right: 40px;
+
 }
-#new-password-container {
+#new-password-container{
   padding: 40px;
   display: flex;
   justify-content: center;
@@ -470,6 +487,7 @@ h4 {
   .nav-item {
     font-size: 1.2rem;
   }
+
 }
 
 @media (max-width: 1000px) {
@@ -571,17 +589,16 @@ h4 {
     width: 100%;
   }
   .eventName {
-    font-size: 4rem;
+    font-size: 2.2rem;
+  }
+  .section-heading-schedule h1 ,.section-heading-home h1{
+    font-size: 2.2rem !important;
   }
 }
 
 @media (max-width: 1200px) and (min-width: 1000px) {
   .events-cards {
     padding: 0px;
-  }
-
-  .siginbutton {
-    margin-right: 5px;
   }
 
   .content2 {
@@ -685,11 +702,7 @@ h4 {
   background-color: #9e44c4;
 }
 
-/*section header*/
-.section-header {
-  text-align: center;
-  color: lightblue;
-}
+
 
 /*general*/
 /* img{
@@ -697,56 +710,40 @@ h4 {
   border-radius: 20px;
 } */
 
-.col {
+
+
+.col{
   text-align: center;
   align-self: center;
   font-size: 18px;
 }
-.container {
+.container{
   padding: 2%;
 }
 
-.timeline {
+.timeline{
   padding-left: 10%;
   width: 90%;
 }
 
-.prev_workshop {
+.prev_workshop{
   padding-bottom: 60px;
   color: white;
   font-weight: bolder;
-  font-family: "Raleway", sans-serif;
-  font-size: 25px;
-  font-weight: 600;
-  line-height: 23px;
-  margin: 0 0 0px;
-  text-align: center;
-  text-transform: uppercase;
+  font-family: 'Raleway',sans-serif; font-size: 25px; font-weight: 600; line-height: 23px; margin: 0 0 0px; text-align: center; text-transform: uppercase;
 }
-.up_workshop {
+.up_workshop{
   padding-bottom: 90px;
   color: white;
-  font-family: "Raleway", sans-serif;
-  font-size: 25px;
-  font-weight: 600;
-  line-height: 23px;
-  margin: 0 0 0px;
-  text-align: center;
-  text-transform: uppercase;
+  font-family: 'Raleway',sans-serif; font-size: 25px; font-weight: 600; line-height: 23px; margin: 0 0 0px; text-align: center; text-transform: uppercase;
 }
 .event--image {
   border: #555;
   list-style: none;
 }
-.image-header {
+.image-header{
   color: white;
-  font-family: "Raleway", sans-serif;
-  font-size: 25px;
-  font-weight: 600;
-  line-height: 23px;
-  margin: 0 0 0px;
-  text-align: center;
-  text-transform: uppercase;
+  font-family: 'Raleway',sans-serif; font-size: 25px; font-weight: 600; line-height: 23px; margin: 0 0 0px; text-align: center; text-transform: uppercase;
 }
 
 .single-timeline {
@@ -761,8 +758,10 @@ h4 {
   transition: transform 1s;
 }
 
+
 .shadow-box:hover {
   box-shadow: 0 1px 40px #36e236;
+
 }
 
 .my-schedule h1 {
@@ -771,22 +770,24 @@ h4 {
   grid-column: 1;
   grid-row: 1;
   z-index: 1;
-  font-family: "Teko", sans-serif;
+  font-family: 'Teko', sans-serif;
+  font-size: 7rem;
   font-weight: bolder;
   text-transform: uppercase;
   animation: glow 1s ease-in-out infinite alternate;
   text-align: center;
 }
 .my-schedule a {
-  font-family: "Teko", sans-serif;
+  font-family: 'Teko', sans-serif;
   grid-column: 1;
   font-weight: bolder;
   grid-row: 1;
   align-self: end;
   justify-self: center;
+
 }
 .my-schedule a:hover {
-  font-family: "Teko", sans-serif;
+  font-family: 'Teko', sans-serif;
   /* background-color: grey; */
   /* color: white; */
   grid-column: 1;
@@ -795,8 +796,9 @@ h4 {
   font-size: larger;
   font-weight: bolder;
   justify-self: center;
+
 }
-.my-schedule ul {
+.my-schedule ul{
   list-style: none;
 }
 
@@ -808,6 +810,7 @@ h4 {
     text-shadow: 0 0 30px #34b3c1, 0 0 10px #4dbbc7;
   }
 }
+
 
 .dropdown-div {
   background-color: black;
@@ -860,19 +863,20 @@ h4 {
 
 #update-container form {
   width: 100%;
+
 }
 
-.section-header {
-  text-align: center;
-  color: #21bd35;
-}
 
+.section-header{
+    text-align: center;
+    color: #21bd35;
+}
 .section-heading-schedule h1 {
-  font-size: 4rem;
+  font-size: 5vw;
 }
 
 .section-heading-home h1 {
-  font-size: 5rem;
+  font-size: 5vw;
 }
 
 /*general*/
@@ -901,7 +905,7 @@ h4 {
   font-family: 'Raleway',sans-serif; font-size: 25px; font-weight: 600; line-height: 23px; margin: 0 0 0px; text-align: center; text-transform: uppercase;
 
 } */
-#schedule .up_workshop {
+#schedule .up_workshop{
   padding-bottom: 90px;
   color: rgb(43, 4, 105);
   font-family: "Raleway", sans-serif;
@@ -928,72 +932,76 @@ h4 {
 }
 
 #schedule .single-timeline {
+
   box-shadow: 0 4px 8px 0 rgba(24, 2, 2, 0.24);
   transition: 0.5s;
   border-radius: 30px;
   font-family: "Montserrat", sans-serif;
   align-content: center;
+
 }
 
 #schedule .shadow-box:hover {
-  box-shadow: 0 1px 40px #36c6e2;
+    box-shadow: 0 1px 40px #36c6e2;
 }
 
-#schedule h1 {
-  margin: 0;
-  margin-top: 0;
-  padding-bottom: 0rem;
-  grid-column: 1;
-  grid-row: 1;
-  z-index: 2;
-  font-family: "Teko", sans-serif;
-  font-size: 6rem;
-  text-transform: uppercase;
-  font-weight: bold;
-  animation: glow 1s ease-in-out infinite alternate;
-  text-align: center;
-}
-#schedule a {
-  font-family: "Teko", sans-serif;
-  color: #1354df;
-  grid-column: 1;
-  grid-row: 1;
-  align-self: end;
-  justify-self: center;
-  font-weight: bold;
-}
-#schedule a:hover {
-  color: black;
-}
+#schedule h1{
+    margin: 0;
+    margin-top:0;
+    padding-bottom: 0rem;
+    grid-column: 1;
+    grid-row: 1;
+    z-index: 2;
+    font-family: 'Teko', sans-serif;
+    font-size: 6rem;
+    text-transform: uppercase;
+    font-weight:bold;
+    animation: glow 1s ease-in-out infinite alternate;
+    text-align: center;
 
-@keyframes glow {
-  from {
-    text-shadow: 0 0 30px #58a2b4;
   }
-  to {
-    text-shadow: 0 0 30px #34b3c1, 0 0 10px #4dbbc7;
+#schedule a{
+    font-family: 'Teko', sans-serif;
+    color: #1354df;
+    grid-column: 1;
+    grid-row: 1;
+    align-self: end;
+    justify-self: center;
+    font-weight: bold;
+
   }
-}
-#schedule {
-  margin-top: 0px;
+#schedule a:hover{
+  color:black;
+ }
+
+ @keyframes glow {
+    from {
+      text-shadow: 0 0 30px #58a2b4;
+    }
+    to {
+      text-shadow: 0 0 30px #34b3c1, 0 0 10px #4dbbc7;
+    }
+  }
+#schedule{
+margin-top:0px;
 }
 
-.registerpage {
+.registerpage{
   font-size: 70px;
 }
 .siginbutton {
-  border-width: 3px;
-  margin-right: 5px;
+  border-width:3px;
 }
 
-.display-head1 {
-  font-family: "Righteous", cursive;
+.display-head1{
+  font-family: 'Righteous', cursive;
 }
+
 
 /* Profile start */
 
-#profile {
-  font-family: "Roboto", sans-serif;
+#profile{
+  font-family: 'Roboto', sans-serif;
   text-align: center;
   color: white;
   background-image: url("/static/prastuti/img/profile.jpg");
@@ -1001,7 +1009,7 @@ h4 {
   background-size: cover;
 }
 
-.personal-details {
+.personal-details{
   margin: 0 aut0;
   color: white;
   display: flex;
@@ -1012,44 +1020,45 @@ h4 {
   border-radius: 3px;
 }
 
-.personal-details-sub {
+.personal-details-sub{
   font-size: larger;
   font-weight: bolder;
   margin: 5px;
 }
-.profile-name {
+.profile-name{
   font-size: 3rem;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
   font-weight: bold;
 }
 
-#my-teams,
-#invitations {
+#my-teams, #invitations{
   width: 95%;
-  /* color: ; */
   margin: auto;
 }
-#my-teams {
-  color: black;
+
+#my-teams{
   display: flex;
+  flex-wrap: wrap;
+  color: black;
   flex-direction: row;
   justify-content: center;
 }
 
-#invitations {
+#invitations{
   color: black;
-  overflow-x: scroll;
+  overflow-x: scroll; 
   white-space: nowrap;
   scroll-snap-type: x mandatory;
+  margin: 0.5rem auto;
 }
 
 #invitations::-webkit-scrollbar {
-  height: 0.4rem;
+  height: 0.2rem;
 }
 
 /* Track */
 #invitations::-webkit-scrollbar-track {
-  background: #001b4a;
+  background: #241F55;
 }
 
 /* Handle */
@@ -1057,60 +1066,60 @@ h4 {
   background: rgb(255, 255, 255);
   border-radius: 0px;
 }
-#invitations::-webkit-scrollbar-thumb:hover {
+#invitations::-webkit-scrollbar-thumb:hover{
   background: rgb(235, 235, 235);
 }
 /* Handle on hover */
 #invitations::-webkit-scrollbar-thumb:hover {
-  background: #001b4a;
+  background: #241F55;
 }
 
-.inv-team-name {
-  margin: 0;
+
+.inv-team-name{
+  margin:0;
   font-weight: bold;
 }
 
-.team-mem {
+.team-mem{
   background: #f6f6f6;
   color: black;
   padding: 0%;
   border: none;
 }
 
-.my-team,
-.invitation {
-  scroll-snap-align: center;
-  scroll-behavior: smooth;
+.my-team, .invitation{
+  scroll-snap-align: start;
   white-space: normal;
   display: inline-block;
-  margin: 0.5rem 0.4%;
+  margin: 0.5rem 0.5%;
   color: black;
   border-radius: 3px;
   box-shadow: 0 0 2px rgb(255, 255, 255);
   background: #f6f6f6;
 }
 
-.my-team:hover {
+.my-team:hover{
   box-shadow: 0 0 15px rgb(255, 255, 255);
 }
 
-#myteams {
-  color: black;
-  font-weight: bolder;
-  margin-bottom: 40px;
+
+#myteams{
+   color: black;
+   font-weight: bolder;
+   margin: 20px 0 20px 0;
 }
 
-.team-name {
+.team-name{
   color: white;
-  background-color: #002e7e;
+  background-color:#002e7e;
   border-radius: 3px;
   padding-bottom: 5px;
   padding-top: 5px;
 }
 
-.list-group.list-group-flush {
-  margin-top: 0px;
-  margin-bottom: 20px;
+.list-group.list-group-flush{
+    margin-top: 0px;
+    margin-bottom: 20px;
 }
 
 /* End profile */
@@ -1122,9 +1131,10 @@ h4 {
   to {
     text-shadow: 0 0 30px #34b3c1, 0 0 10px #4dbbc7;
   }
+
 }
 .display-head2 {
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .loader {
