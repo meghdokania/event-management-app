@@ -113,11 +113,12 @@ def registerTeam(request, event):
             team.team_not_accepted.add(mem)
             team.team_member.add(mem)
         team.team_not_accepted.remove(member_profile)
+        for option_team in member_profile.pending.filter(team_event = team.team_event):
+            option_team.delete()
         if team.team_not_accepted.count() == 0:
             team.team_active = True
         team.save()
         return redirect(request.user.get_absolute_url())
-
     else:
         mx_team_sz = event.team_size_mx
         mn_team_sz = event.team_size_mn
