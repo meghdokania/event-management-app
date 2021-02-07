@@ -75,7 +75,7 @@ def userSignup(request):
                 mail_subject, message, to=[to_email]
             )
             email.send()
-            return HttpResponse('Please confirm your email address to complete the registration')
+            return HttpResponse('<h1>Please confirm your email address to complete the registration.Please check your spam folder also.If you did not recieve mail please contact <a href="mailto:prastuti@iitbhu.ac.in">prastuti@iitbhu.ac.in</a></h1>')
     else:
         user_form = forms.UserForm()
     return render(request, 'users/signup.html',
@@ -99,6 +99,7 @@ def activate(request, uidb64, token):
     else:
         return HttpResponse('Activation link is invalid!')
 
+
 @login_required(login_url='users:usersignin')
 def userLogout(request):
     prev = request.META.get('HTTP_REFERER')
@@ -109,11 +110,18 @@ def userLogout(request):
 @login_required(login_url='users:usersignin')
 def userProfile(request, email):
     user = CustomUser.objects.get(email=email)
+    team_cnt = 0
+    inv_cnt = 0
+    for team in user.team_set.all():
+        team_cnt += 1
+        for prof in team.team_not_accepted.all():
+            if prof == user:
+                inv_cnt += 1
     # user.email_user('View CustomUser', "Hii you viewed your profile", EMAIL_HOST_USER)
     update = True
     if user != request.user:
         update = False
-    return render(request, 'users/profile.html', {'profile': user, 'update': update, 'teams': user.team_set.all()})
+    return render(request, 'users/profile.html', {'profile': user, 'update': update, 'teams': user.team_set.all(), 'team_cnt': team_cnt, 'inv_cnt': inv_cnt})
 
 
 def userRecovery(request):
@@ -181,7 +189,7 @@ def eventAcceptance(request, team):
             custom = CustomUser.objects.get(email=request.user.email)
             team.team_not_accepted.remove(custom)
             team.save()
-            for option_team in custom.pending.filter(team_event = team.team_event):
+            for option_team in custom.pending.filter(team_event=team.team_event):
                 option_team.delete()
             if(team.team_not_accepted.count() == 0):
                 team.team_active = True
