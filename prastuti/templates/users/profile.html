@@ -16,6 +16,10 @@
             <!-- begin accepted section -->
             <hr>
             <h2 id="myteams">MY TEAMS</h2>
+            {% if not team_cnt %}
+            <h5 style="color:black; font-weight:bolder;">You have not participated in any events yet</h5>
+            
+            {% endif %}
             <section id="my-teams">
                 {% for team in teams %}
                  {% if profile not in team.team_not_accepted.all %}
@@ -69,6 +73,9 @@
             <!-- begin invitations section -->
 
             <h2 id="myteams">INVITATIONS</h2>
+            {% if not inv_cnt %}
+            <h5 style="color:black; font-weight:bolder;">No pending invitations</h5>
+            {% endif %}
             <section id="invitations">
                 {% for team in teams %}
                  {% if profile in team.team_not_accepted.all %}
