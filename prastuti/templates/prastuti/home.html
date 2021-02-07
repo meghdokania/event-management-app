@@ -4,18 +4,9 @@
     <img class="loader_img" src="{% static 'prastuti/img/loader.gif' %}" />
   </div>
   <div id="top-section">
-    <video
-      id="bg-video"
-      src="{% static 'prastuti/img/Circuit Board Background.mp4' %}"
-      autoplay
-      loop
-      muted
-    ></video>
+    <video id="bg-video" src="{% static 'prastuti/img/Circuit Board Background.mp4' %}" autoplay loop muted></video>
     {% for message in messages %}
-    <div
-      class="alert alert-{{message.tags}} alert-dismissible fade show"
-      id="messages"
-    >
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" id="messages">
       <button type="button" class="close" data-dismiss="alert">&times;</button>
       {{message}}
     </div>
@@ -32,9 +23,25 @@
       <section class="section">
         <div class="section-header my-schedule section-heading-home">
           <h1>
-            <span>A</span><span>B</span><span>O</span><span>U</span
-            ><span>T</span>
+            <span>A</span><span>B</span><span>O</span><span>U</span><span>T</span>
           </h1>
+          <div class="container single-timeline about">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Fames ac turpis egestas sed tempus urna et pharetra. Nec sagittis aliquam malesuada
+              bibendum. Nulla facilisi etiam dignissim diam quis. Enim sit amet venenatis urna cursus. Risus nec feugiat
+              in fermentum posuere urna nec tincidunt praesent. Habitasse platea dictumst vestibulum rhoncus. Gravida in
+              fermentum et sollicitudin. Eu augue ut lectus arcu. Id faucibus nisl tincidunt eget nullam.
+
+              Duis convallis convallis tellus id interdum velit laoreet id donec. Scelerisque varius morbi enim nunc
+              faucibus a pellentesque sit amet. Diam volutpat commodo sed egestas egestas. Aliquet nec ullamcorper sit
+              amet risus nullam eget felis eget. Tortor condimentum lacinia quis vel eros donec ac odio tempor. Sapien
+              et ligula ullamcorper malesuada proin libero nunc consequat. Placerat orci nulla pellentesque dignissim
+              enim sit amet. Purus non enim praesent elementum facilisis leo vel fringilla est. Dolor sit amet
+              consectetur adipiscing elit ut aliquam purus. Sagittis id consectetur purus ut faucibus pulvinar. Ultrices
+              vitae auctor eu augue. Est ante in nibh mauris cursus mattis molestie a iaculis. Dignissim cras tincidunt
+              lobortis feugiat vivamus at. Amet tellus cras adipiscing enim. Scelerisque varius morbi enim nunc faucibus
+              a pellentesque sit amet.</p>
+          </div>
         </div>
       </section>
     </div>
@@ -42,8 +49,7 @@
       <section class="section">
         <div class="section-header my-schedule section-heading-home">
           <h1>
-            <span>E</span><span>V</span><span>E</span><span>N</span
-            ><span>T</span><span>S</span>
+            <span>E</span><span>V</span><span>E</span><span>N</span><span>T</span><span>S</span>
           </h1>
         </div>
       </section>
@@ -52,11 +58,7 @@
         <div class="row mb-3 event-card">
           <div class="event-card-in no-gutters">
             <div class="event-img">
-              <img
-                src='{% static "prastuti/img/"|add:event.event_name|add:".jpg"  %}'
-                class="card-img"
-                alt="..."
-              />
+              <img src='{% static "prastuti/img/"|add:event.event_name|add:".jpg"  %}' class="card-img" alt="..." />
             </div>
             <div>
               <div class="card-body" style="padding: 2%">
@@ -66,16 +68,11 @@
                 <p class="card-text">{{event.discription}}</p>
               </div>
               <div class="event-btns" style="padding: 2%">
-                <a
-                  class="btn btn-block btn-outline-info"
-                  href="{% url 'event_registration:register' event.event_name %}"
-                >
+                <a class="btn btn-block btn-outline-info"
+                  href="{% url 'event_registration:register' event.event_name %}">
                   Register
                 </a>
-                <a
-                  class="btn btn-block btn-outline-info"
-                  href="{% url 'events:event_info' event.event_name|lower %}"
-                >
+                <a class="btn btn-block btn-outline-info" href="{% url 'events:event_info' event.event_name|lower %}">
                   About
                 </a>
               </div>
