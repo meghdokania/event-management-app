@@ -34,6 +34,7 @@
                      
                     </div>
                       <ul class="list-group list-group-flush">
+                        <h5><strong>Members</strong></h5>
                      {% for member in team.team_member.all %}
                      {% if member == user %}
                         <a href="#">
@@ -76,6 +77,7 @@
                         <form method="POST" action="{% url 'users:eventacceptance' team=team.id %}">
                             {%csrf_token %}
                             <div>
+                                <span style="font-size: 1.4rem"><b>{{team.team_event}}</b></span><br>
                                 <span style="font-size:1.4rem" ;><strong>{{team.team_name}}</strong></span>
                                 <label for="accepted">invited you to join their team.</label>
                                 <hr style="margin:5px;">
