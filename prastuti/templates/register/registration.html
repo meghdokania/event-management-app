@@ -12,7 +12,11 @@
           <div class="form-group">
             <label for="team_size">Choose the team size: </label>
             <select class="form-control py-2" name="team_size" id="size" onchange="emailField()">
-                <option class="text-muted" value="{{teamsize}}">{{teamsize}}</option>
+              {% if not teamsize %}  
+              <option class="text-muted" value="0">Select Team Size</option>
+              {% else %}
+              <option class="text-muted" value="{{teamsize}}">{{teamsize}}</option>
+              {% endif %}
                 {% for i in allowed_team_sizes %}
                     <option value="{{i}}">{{i}}</option>
                 {% endfor %}
@@ -33,7 +37,7 @@
               {% endif %}
               <div class="form-group">
                 <label for="teamname">Team name:</label>
-                <input class="form-control form-control-sm" type="text"  id="teamname" name='team_name' value = "{{teamname}}">
+                <input class="form-control form-control-sm" type="text"  id="teamname" name='team_name' value = "{{teamname}}" required>
                     {% if error|get_key:teamname %}
                       <div class="alert alert-danger">
                         <span>{{error|get_key:teamname}}</span>
@@ -92,6 +96,7 @@
             var name = document.createElement("input")
             name.setAttribute("class","form-control form-control-sm")
             name.setAttribute("type",'text')
+            name.required = true
             name.setAttribute("name","team_name")
             node.appendChild(lab)
             node.appendChild(name)

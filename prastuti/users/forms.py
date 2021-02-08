@@ -13,10 +13,6 @@ class UserForm(UserCreationForm):
         model = CustomUser
         fields = ('name', 'email','institute', 'year', 'password1', 'password2')
 
-    error_messages = {
-        'year_error': _('Year must be between 1 to 5'),
-    }
-
     def clean_year(self):
         year = self.cleaned_data['year']
         if year <= 0 or year > 5:
