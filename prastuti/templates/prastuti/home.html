@@ -1,6 +1,6 @@
 {% extends 'prastuti/base.html' %} {% load static %} {% block body_block %}
 <div>
-  <div class="loader">
+  <div class="loader justify-centre">
     <img class="loader_img" src="{% static 'prastuti/img/loader.gif' %}" />
   </div>
   <div id="top-section">
@@ -90,6 +90,6 @@
   setTimeout(function () {
     $(".loader").fadeOut();
     $(".loader_img").delay(150).fadeOut("slow");
-  }, 300);
+  }, 3000);
 </script>
 {% endblock %}
