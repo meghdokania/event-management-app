@@ -56,10 +56,10 @@
                 <div class="form-group">
                     {% if event.event_name == 'Recognizance'%}
                     <label for="team_id">kaggle id of the team</label>
-                    <input class="form-control form-control-sm" type="text"  id="team_id" name='team_id' value = "{{team_id}}">
+                    <input class="form-control form-control-sm" type="text"  id="team_id" name='team_id' value = "{{team_id}}" required>
                   {% else %}
                    <label for="team_id">HackerRank id of the user</label>
-                  <input class="form-control form-control-sm" type="text" id="team_id" name='team_id' value = "{{team_id}}">
+                  <input class="form-control form-control-sm" type="text" id="team_id" name='team_id' value = "{{team_id}}" required>
                     {% endif %}
                 </div>
               {% endif %}
