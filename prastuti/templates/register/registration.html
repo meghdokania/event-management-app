@@ -11,7 +11,7 @@
           <hr>
           <div class="form-group">
             <label for="team_size">Choose the team size: </label>
-            <select class="form-control py-2" name="team_size" id="size" onchange="emailField()">
+            <select class="form-control py-2" name="team_size" id="size" onchange="emailField()" onload="emailField()">
                 <option class="text-muted" value="{{teamsize}}">{{teamsize}}</option>
                 {% for i in allowed_team_sizes %}
                     <option value="{{i}}">{{i}}</option>
