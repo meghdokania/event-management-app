@@ -32,9 +32,9 @@
                         </div><hr>
                         <span style="font-size: 1.4rem"><b>{{team.team_event}}</b></span><br>
                         {% if team.team_event.event_name == 'Codigo'%}
-                            <p>HackerRank Id : <strong>{{team.team_id}}</strong></p>
+                            <p>HackerRank Id : <strong><a href = "http://hackerrank.com/{{team.team_id}}">{{team.team_id}}</a></strong></p>
                         {% elif team.team_event.event_name == 'Recognizance' %}
-                            <p>Kaggle Id : <strong>{{team.team_id}}</strong></p>
+                            <p>Kaggle Id : <strong><a href = "http://kaggle.com/{{team.team_id}}">{{team.team_id}}</a></strong></p>
                         {% endif %}
                         <form method="POST" action="{% url 'event_registration:delete_team' team.id %}" class="mt-3" id="team{{team.id}}">
                             {%csrf_token %}
@@ -88,9 +88,9 @@
                                 <label for="accepted">invited you to join their team.</label>
                                 <hr style="margin:5px;">
                                 {% if team.team_event.event_name == 'Codigo'%}
-                                    <p>HackerRank Id : <strong>{{team.team_id}}</strong></p>
+                                <p>HackerRank Id : <strong><a href = "http://hackerrank.com/{{team.team_id}}">{{team.team_id}}</a></strong></p>
                                 {% elif team.team_event.event_name == 'Recognizance' %}
-                                    <p>Kaggle Id : <strong>{{team.team_id}}</strong></p>
+                                <p>Kaggle Id : <strong><a href = "http://kaggle.com/{{team.team_id}}">{{team.team_id}}</a></strong></p>
                                 {% endif %}
                             </div>
                             <label for="accepted">Accept their invitation?</label>
