@@ -19,8 +19,6 @@ CustomUser = get_user_model()
 # Views start from here
 
 
-def usersList(request):
-    return HttpResponse("Hii! This is user list")
 
 
 @login_required(login_url='users:usersignin')
@@ -104,9 +102,8 @@ def activate(request, uidb64, token):
 
 @login_required(login_url='users:usersignin')
 def userLogout(request):
-    prev = request.META.get('HTTP_REFERER')
     logout(request)
-    return redirect(prev)
+    return redirect('home')
 
 
 @login_required(login_url='users:usersignin')

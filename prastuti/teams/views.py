@@ -26,6 +26,7 @@ def registerTeam(request, event):
 
         # validation error to raise here
     if request.method == 'POST':
+        print("rextdfcyugbhjnklm")
         error = {}
         emails = {}
         team_name = request.POST['team_name']
@@ -90,7 +91,7 @@ def registerTeam(request, event):
             team_id = 'xyz'
             if event.event_name == 'Codigo' or event.event_name == 'Recognizance':
                 team_id = request.POST['team_id']
-            for i in range(mn_team_sz+1, mx_team_sz + 1):
+            for i in range(mn_team_sz, mx_team_sz + 1):
                 allowed_team_size.append(i)
             return render(request, 'register/registration.html',
                           {'allowed_team_sizes': allowed_team_size, 'event': event, 'error': error,
@@ -121,10 +122,10 @@ def registerTeam(request, event):
         # teamsize = 0
         # teamname = ""
         team_id = 'xyz'
-        for i in range(mn_team_sz+1, mx_team_sz + 1):
+        for i in range(mn_team_sz, mx_team_sz + 1):
             allowed_team_size.append(i)
         return render(request, 'register/registration.html',
-                      {'allowed_team_sizes': allowed_team_size, 'event': event, 'teamsize': 1, 'error': error,
+                      {'allowed_team_sizes': allowed_team_size, 'event': event, 'teamsize': 0, 'error': error,
                        'emailids': emails})
 
 

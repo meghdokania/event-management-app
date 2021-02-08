@@ -42,13 +42,9 @@
                         <h5><strong>Members</strong></h5>
                      {% for member in team.team_member.all %}
                      {% if member.name == user.name %}
-                        <a href="#">
                             <li class="list-group-item team-mem">YOU</li>
-                        </a>
                     {% else %}
-                        <a href="#">
                             <li class="list-group-item team-mem">{{member.name}}</li>
-                        </a>
                     {% endif %}
                     {% endfor %}
                     </ul>
@@ -56,9 +52,7 @@
                     <ul class="list-group list-group-flush">
                         <h5 ><strong>Pending</strong></h5>
                          {% for profile in team.team_not_accepted.all %}
-                        <a href="#">
                             <li class="list-group-item team-mem"> {{profile.name}}</li>
-                        </a>
                        {% endfor %}
                     </ul>
                     {% endif %}
