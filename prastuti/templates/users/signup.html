@@ -30,7 +30,7 @@
                             <div style="color: red;">
                                 {{user_form.year.errors}}
                             </div>
-                            <input class="form-control form-control-sm" placeholder="Enter year of study" type="number" name="year" required="" id="id_year">
+                            <input class="form-control form-control-sm" placeholder="Enter year of study" type="number" name="year" required="" id="id_year" min="1" max="5">
                         </div>
                         <div class="form-group">
                             <input placeholder="Enter password" class="form-control-sm form-control mb-1" type="password" name="password1" autocomplete="new-password" required="" id="id_password1">
@@ -47,7 +47,7 @@
                     </fieldset>
                     <button class="btn btn-block btn-info mt-3 mb-3" style="margin-bottom:20px;" type="submit" ,="" value="Signup">Signup</button>
                 </form>
-                <p ><a href="{% url 'users:usersignin' %}" class="mb-5">Already have an account? SignIn Instead</a>
+                <p ><a href="{% url 'users:usersignin' %}" class="mb-5">Already have an account? Sign In Instead</a>
             </div>
         </div>
 

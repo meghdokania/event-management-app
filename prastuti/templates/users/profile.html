@@ -27,6 +27,11 @@
                             <span style="font-size:1.4rem" ;><strong>Team: {{team.team_name}}</strong></span>
                         </div><hr>
                         <span style="font-size: 1.4rem"><b>{{team.team_event}}</b></span><br>
+                        {% if team.team_event.event_name == 'Codigo'%}
+                            <p>HackerRank Id : <strong>{{team.team_id}}</strong></p>
+                        {% elif team.team_event.event_name == 'Recognizance' %}
+                            <p>Kaggle Id : <strong>{{team.team_id}}</strong></p>
+                        {% endif %}
                         <form method="POST" action="{% url 'event_registration:delete_team' team.id %}" class="mt-3" id="team{{team.id}}">
                             {%csrf_token %}
                         </form>
@@ -36,7 +41,7 @@
                       <ul class="list-group list-group-flush">
                         <h5><strong>Members</strong></h5>
                      {% for member in team.team_member.all %}
-                     {% if member == user %}
+                     {% if member.name == user.name %}
                         <a href="#">
                             <li class="list-group-item team-mem">YOU</li>
                         </a>
@@ -84,6 +89,11 @@
                                 <span style="font-size:1.4rem" ;><strong>{{team.team_name}}</strong></span>
                                 <label for="accepted">invited you to join their team.</label>
                                 <hr style="margin:5px;">
+                                {% if team.team_event.event_name == 'Codigo'%}
+                                    <p>HackerRank Id : <strong>{{team.team_id}}</strong></p>
+                                {% elif team.team_event.event_name == 'Recognizance' %}
+                                    <p>Kaggle Id : <strong>{{team.team_id}}</strong></p>
+                                {% endif %}
                             </div>
                             <label for="accepted">Accept their invitation?</label>
                             <br>
@@ -109,9 +119,12 @@
                     {% if team.team_active is False %}
                     <ul class="list-group list-group-flush">
                         <h5 ><strong>Pending </strong></h5>
-                         {% for profile in team.team_not_accepted.all %}
-                         <p>{{profile.name}}</p>
-                       
+                        {% for profile in team.team_not_accepted.all %}
+                            {% if profile == user %}
+                                <li class="list-group-item team-mem">You</li>
+                            {% else %}
+                                <li class="list-group-item team-mem">{{profile.name}}</li>
+                            {% endif %}
                         {% endfor %}
                     </ul>
                     {% endif %}

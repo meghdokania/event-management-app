@@ -96,8 +96,6 @@ ul.topBotomBordersOut .nav-link:hover:after {
   transform: translateY(0px);
 }
 
-
-
 /*Event Details*/
 h4 {
   display: inline-grid;
@@ -212,11 +210,6 @@ h4 {
 
 /* events section */
 
-
-
-
-
-
 .events-cards {
   padding: 2%;
   color: white;
@@ -256,28 +249,19 @@ h4 {
 
 .event-btns {
   padding: 0 10px;
-
 }
 
 .event-btns a {
-
   font-weight: bolder;
   font-size: large;
   /* color: rgb(221, 235, 158); */
 }
 
-.event-btns>.btn {
+.event-btns > .btn {
   border-radius: 2px;
 }
 
 /* end events section */
-
-
-
-
-
-
-
 
 #footer {
   background-color: #030303;
@@ -454,7 +438,6 @@ h4 {
 #recover-form {
   padding-left: 40px;
   padding-right: 40px;
-
 }
 
 #new-password-container {
@@ -495,7 +478,6 @@ h4 {
   .nav-item {
     font-size: 1.2rem;
   }
-
 }
 
 @media (max-width: 1000px) {
@@ -732,15 +714,11 @@ h4 {
   background-color: #9e44c4;
 }
 
-
-
 /*general*/
 /* img{
   width: 40%;
   border-radius: 20px;
 } */
-
-
 
 .col {
   text-align: center;
@@ -761,7 +739,7 @@ h4 {
   padding-bottom: 60px;
   color: white;
   font-weight: bolder;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 25px;
   font-weight: 600;
   line-height: 23px;
@@ -773,7 +751,7 @@ h4 {
 .up_workshop {
   padding-bottom: 90px;
   color: white;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 25px;
   font-weight: 600;
   line-height: 23px;
@@ -789,7 +767,7 @@ h4 {
 
 .image-header {
   color: white;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 25px;
   font-weight: 600;
   line-height: 23px;
@@ -810,10 +788,8 @@ h4 {
   transition: transform 1s;
 }
 
-
 .shadow-box:hover {
   box-shadow: 0 1px 40px #36e236;
-
 }
 
 .my-schedule h1 {
@@ -822,7 +798,7 @@ h4 {
   grid-column: 1;
   grid-row: 1;
   z-index: 1;
-  font-family: 'Teko', sans-serif;
+  font-family: "Teko", sans-serif;
   font-size: 7rem;
   font-weight: bolder;
   text-transform: uppercase;
@@ -831,17 +807,16 @@ h4 {
 }
 
 .my-schedule a {
-  font-family: 'Teko', sans-serif;
+  font-family: "Teko", sans-serif;
   grid-column: 1;
   font-weight: bolder;
   grid-row: 1;
   align-self: end;
   justify-self: center;
-
 }
 
 .my-schedule a:hover {
-  font-family: 'Teko', sans-serif;
+  font-family: "Teko", sans-serif;
   /* background-color: grey; */
   /* color: white; */
   grid-column: 1;
@@ -850,7 +825,6 @@ h4 {
   font-size: larger;
   font-weight: bolder;
   justify-self: center;
-
 }
 
 .my-schedule ul {
@@ -866,7 +840,6 @@ h4 {
     text-shadow: 0 0 30px #34b3c1, 0 0 10px #4dbbc7;
   }
 }
-
 
 .dropdown-div {
   background-color: black;
@@ -921,9 +894,7 @@ h4 {
 
 #update-container form {
   width: 100%;
-
 }
-
 
 .section-header {
   text-align: center;
@@ -995,13 +966,11 @@ h4 {
 }
 
 #schedule .single-timeline {
-
   box-shadow: 0 4px 8px 0 rgba(24, 2, 2, 0.24);
   transition: 0.5s;
   border-radius: 30px;
   font-family: "Montserrat", sans-serif;
   align-content: center;
-
 }
 
 #schedule .shadow-box:hover {
@@ -1015,24 +984,22 @@ h4 {
   grid-column: 1;
   grid-row: 1;
   z-index: 2;
-  font-family: 'Teko', sans-serif;
+  font-family: "Teko", sans-serif;
   font-size: 6rem;
   text-transform: uppercase;
   font-weight: bold;
   animation: glow 1s ease-in-out infinite alternate;
   text-align: center;
-
 }
 
 #schedule a {
-  font-family: 'Teko', sans-serif;
+  font-family: "Teko", sans-serif;
   color: #1354df;
   grid-column: 1;
   grid-row: 1;
   align-self: end;
   justify-self: center;
   font-weight: bold;
-
 }
 
 #schedule a:hover {
@@ -1062,14 +1029,13 @@ h4 {
 }
 
 .display-head1 {
-  font-family: 'Righteous', cursive;
+  font-family: "Righteous", cursive;
 }
-
 
 /* Profile start */
 
 #profile {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
   color: white;
   background-image: url("/static/prastuti/img/profile.jpg");
@@ -1129,7 +1095,7 @@ h4 {
 
 /* Track */
 #invitations::-webkit-scrollbar-track {
-  background: #241F55;
+  background: #241f55;
 }
 
 /* Handle */
@@ -1144,9 +1110,8 @@ h4 {
 
 /* Handle on hover */
 #invitations::-webkit-scrollbar-thumb:hover {
-  background: #241F55;
+  background: #241f55;
 }
-
 
 .inv-team-name {
   margin: 0;
@@ -1175,7 +1140,6 @@ h4 {
 .my-team:hover {
   box-shadow: 0 0 15px rgb(255, 255, 255);
 }
-
 
 #myteams {
   color: black;
@@ -1206,11 +1170,10 @@ h4 {
   to {
     text-shadow: 0 0 30px #34b3c1, 0 0 10px #4dbbc7;
   }
-
 }
 
 .display-head2 {
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .loader {
@@ -1221,12 +1184,15 @@ h4 {
   height: 100%;
   z-index: 9999;
   background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .loader img {
   position: absolute;
-  left: 30%;
-  top: 25%;
+  top: 30%;
+  width: 50vh;
 }
 
 .hide {
