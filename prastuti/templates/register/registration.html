@@ -3,6 +3,7 @@
 {% load static %}
 {% block body_block %}
 <div id="registration-container" class="content3">
+  <input id="backbuttonstate" type="text" value="0" style="display:none;" />
   <div class="row">
     <div class="col col-12 col-lg-12">
       <form method="POST" action="{% url 'event_registration:register' event %}" class="display-5">
@@ -12,13 +13,13 @@
           <div class="form-group">
             <label for="team_size">Choose the team size: </label>
             <select class="form-control py-2" name="team_size" id="size" onchange="emailField()">
-              {% if not teamsize %}  
+              {% if not teamsize %}
               <option class="text-muted" value="0">Select Team Size</option>
               {% else %}
               <option class="text-muted" value="{{teamsize}}">{{teamsize}}</option>
               {% endif %}
                 {% for i in allowed_team_sizes %}
-                    <option value="{{i}}">{{i}}</option>
+                  <option value="{{i}}">{{i}}</option>
                 {% endfor %}
             </select>
           </div>
@@ -59,7 +60,7 @@
               {% if event.event_name == 'Codigo' or  event.event_name == 'Recognizance' %}
                 <div class="form-group">
                     {% if event.event_name == 'Recognizance'%}
-                    <label for="team_id">kaggle id of the team</label>
+                    <label for="team_id">Kaggle id of the team</label>
                     <input class="form-control form-control-sm" type="text"  id="team_id" name='team_id' value = "{{team_id}}" required>
                   {% else %}
                    <label for="team_id">HackerRank id of the user</label>
@@ -81,6 +82,21 @@
 
 {% block js %}
      <script>
+       document.addEventListener('DOMContentLoaded', function () {
+          var ibackbutton = document.getElementById("backbuttonstate");
+          setTimeout(function () {
+
+              if (ibackbutton.value == "0") {
+                  // Page has been loaded for the first time - Set marker
+                  ibackbutton.value = "1";
+              } else {
+                  // Back button has been fired.. Do Something different..
+                  emailField();
+              }
+          }, 200);
+          }, false);
+
+        
          function emailField(){
 
             var lst = parseInt(document.getElementById("size").value)
@@ -138,7 +154,7 @@
             emails.appendChild(node);
             {% endif %}
             var but = document.createElement("button")
-            but.setAttribute("class","btn btn-success")
+            but.setAttribute("class","btn-block btn btn-success")
             but.setAttribute("value","Submit")
             but.innerHTML = "Submit"
             emails.appendChild(but)
