@@ -1088,6 +1088,13 @@ h4 {
   scroll-snap-type: x mandatory;
   margin: 0.5rem auto;
 }
+#invitations {
+  display: flex;
+  flex-wrap: wrap;
+  color: black;
+  flex-direction: row;
+  justify-content: center;
+}
 
 #invitations::-webkit-scrollbar {
   height: 0.2rem;
