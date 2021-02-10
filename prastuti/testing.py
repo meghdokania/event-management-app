@@ -17,8 +17,13 @@ from django.contrib.auth.models import User
 # profiles = CustomUser.objects.all()
 # pr = profiles[0]
 # print(profiles.filter())
-# Event.objects.get_or_create(event_name = 'Simulim', team_size_mn = 1, team_size_mx = 3,discription = "This is a MATLAB event.")
-# Event.objects.get_or_create(event_name = 'Consilium',team_size_mn = 1, team_size_mx = 3, discription = "This is a digital Electronics event.")
+Event.objects.get_or_create(event_name = 'Codigo', team_size_mn = 1, team_size_mx = 1,discription = "The competitive programming event.")
+cryptx = Event.objects.filter(event_name = 'CryptX')[1]
+cryptx.delete()
+Event.objects.get_or_create(event_name = 'Recognizance', team_size_mn = 1, team_size_mx = 4,discription = "This is a machine learning event.")
+Event.objects.get_or_create(event_name = 'Simulim', team_size_mn = 1, team_size_mx = 4,discription = "The electrical simulations event.")
+Event.objects.get_or_create(event_name = 'Consilium',team_size_mn = 1, team_size_mx = 4, discription = "The digital electronic event.")
+
 # event = Event.objects.get(event_name = "Cryptx")
 # event.event_name = "CryptX"
 # event.save()
