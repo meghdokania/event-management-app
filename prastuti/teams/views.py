@@ -26,7 +26,6 @@ def registerTeam(request, event):
 
         # validation error to raise here
     if request.method == 'POST':
-        print("rextdfcyugbhjnklm")
         error = {}
         emails = {}
         team_name = request.POST['team_name']
@@ -80,7 +79,6 @@ def registerTeam(request, event):
         # if there is any error
         if not self_register:
             error['notregister'] = 'You must be in the team'
-        print(len(set(team_members)), cnt)
         if len(set(team_members)) != cnt:
             error[team_size] = 'Team members should be distinct'
 

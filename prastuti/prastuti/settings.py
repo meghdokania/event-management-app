@@ -23,12 +23,13 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 's0+e9-bacqoj1237)@_u8=*i=ajmk^ffk801o48$q1=spi&8vo'
+SECRET_KEY = 'balasayamamanj1237)@_u8=*gaddopur=ajmk^sdakgjhksfkjshdkjfh$q1=spi&8vo'
+# SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 # Application definition
 
@@ -142,3 +143,4 @@ EMAIL_PORT = EMAIL_PORT
 MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
+
