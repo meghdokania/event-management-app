@@ -41,8 +41,8 @@
                       <ul class="list-group list-group-flush">
                         <h5><strong>Members</strong></h5>
                      {% for member in team.team_member.all %}
-                     {% if member.name == user.name %}
-                            <li class="list-group-item team-mem">YOU</li>
+                     {% if member == user %}
+                            <li class="list-group-item team-mem">You</li>
                     {% else %}
                             <li class="list-group-item team-mem">{{member.name}}</li>
                     {% endif %}

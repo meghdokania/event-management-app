@@ -15,13 +15,15 @@ maximum-scale=1.0, user-scalable=no" />
   <link href="https://fonts.googleapis.com/css2?family=Monda&family=Righteous&family=Russo+One&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="{% static 'prastuti/css/style.css' %}" />
-  <title>Prastuti</title>
+  <title>Home</title>
 </head>
 
 <body>
   <div>
     <nav class="navbar fixed-top navbar-expand-lg">
       <div class="container-fluid">
+        <a class="navbar-brand name_logo" href="#bg-video"><img class="name_image" src="{% static 'prastuti/img/logo.png'%}" />
+        </a>
         <button class="navbar-toggler custom-toggler float-xs-right ml-auto" type="button" data-toggle="collapse"
           data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
           aria-label="Toggle navigation">
@@ -88,11 +90,12 @@ maximum-scale=1.0, user-scalable=no" />
     <div class="footer-top">
       <div class="container">
         <div class="row">
-          <div class="col"></div>
+          <!--<div class="col"></div>-->
           <div class="col">
-            <!-- <img src="{% static 'prastuti/img/Department.png'%}" id="department" /> -->
+            <img class="footer_image" src="{% static 'prastuti/img/logo.png'%}" />
+            <span class="text-white footer_text">Events by Electrical Engineering, IIT BHU</span>
           </div>
-          <div class="col"></div>
+          <!--<div class="col"></div>-->
         </div>
       </div>
     </div>
