@@ -14,6 +14,7 @@ from pathlib import Path
 import os
 from .emailInfo import *
 from django.contrib.messages import constants as messages
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,9 +28,9 @@ SECRET_KEY = 'balasayamamanj1237)@_u8=*gaddopur=ajmk^sdakgjhksfkjshdkjfh$q1=spi&
 # SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -144,3 +145,7 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
 
+
+
+django_heroku.settings(locals())
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
